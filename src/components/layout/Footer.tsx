@@ -3,7 +3,7 @@ import { GraduationCap, Mail, MapPin, Phone, Facebook, Instagram, Twitter } from
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-primary-foreground">
+    <footer className="hidden md:block bg-foreground text-primary-foreground">
       <div className="container-section py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo & Description */}
@@ -12,14 +12,19 @@ export function Footer() {
               <div className="w-10 h-10 rounded-xl bg-primary-foreground/10 flex items-center justify-center">
                 <GraduationCap className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="font-display font-bold text-lg">
-                BDE Université
-              </span>
+              <div>
+                <span className="font-display font-bold text-lg block leading-tight">
+                  BDE Excellence
+                </span>
+                <span className="text-xs text-primary-foreground/70">
+                  Université Internationale Excellence
+                </span>
+              </div>
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed max-w-md">
               Le Bureau des Étudiants œuvre pour améliorer la vie étudiante, 
               organiser des activités enrichissantes et représenter les intérêts 
-              de tous les étudiants.
+              de tous les étudiants de l'Université Internationale Excellence.
             </p>
           </div>
 
@@ -52,7 +57,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-primary-foreground/70">
                 <Mail className="w-4 h-4" />
-                <span>bde@universite.edu</span>
+                <span>bde@uie.edu</span>
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/70">
                 <Phone className="w-4 h-4" />
@@ -60,7 +65,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 text-sm text-primary-foreground/70">
                 <MapPin className="w-4 h-4 mt-0.5" />
-                <span>Campus universitaire, Bâtiment A</span>
+                <span>Campus UIE, Dakar</span>
               </li>
             </ul>
 
@@ -86,7 +91,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-primary-foreground/10 mt-8 pt-8 text-center text-sm text-primary-foreground/50">
-          <p>© {new Date().getFullYear()} Bureau des Étudiants. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} BDE - Université Internationale Excellence. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

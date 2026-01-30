@@ -1,193 +1,134 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Calendar, MapPin, Users, Filter, CheckCircle, Clock } from "lucide-react";
+import { Calendar, MapPin, Users, ArrowLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const activities = [
   {
     id: 1,
-    title: "Journée d'intégration",
-    description: "Accueil des nouveaux étudiants avec jeux et animations",
-    date: "15 Février 2025",
-    location: "Campus principal",
-    participants: 150,
-    pole: "Organisation",
+    title: "Sortie beach party",
+    description: "Soirée entante 2024. Trem pous des dosion casle, u pas des seuvermaine sat coventsprovdiomater, tit tav arite irestipe past ans pole a coretallent a edi acces.",
+    date: "5 Mai 2024",
+    location: "Plage de Ngor",
+    participants: 120,
+    pole: "Culture & Sport",
     status: "upcoming",
+    image: true,
   },
   {
     id: 2,
-    title: "Tournoi de football inter-facultés",
-    description: "Compétition sportive ouverte à toutes les facultés",
-    date: "22 Février 2025",
+    title: "Tournoi de football",
+    description: "Compétition sportive inter-facultés ouverte à tous les étudiants.",
+    date: "20 Avril 2024",
     location: "Terrain universitaire",
-    participants: 80,
+    participants: 128,
     pole: "Culture & Sport",
     status: "upcoming",
+    image: false,
   },
   {
     id: 3,
-    title: "Forum de l'emploi",
-    description: "Rencontres avec des entreprises et ateliers CV",
-    date: "1 Mars 2025",
-    location: "Amphithéâtre A",
-    participants: 200,
-    pole: "Entrepreneuriat",
-    status: "upcoming",
+    title: "Don de sang",
+    description: "Collecte de sang en partenariat avec la Croix-Rouge.",
+    date: "10 Janvier 2024",
+    location: "Centre médical",
+    participants: 80,
+    pole: "Humanitaire",
+    status: "past",
+    image: true,
   },
   {
     id: 4,
-    title: "Don de sang",
-    description: "Collecte de sang en partenariat avec la Croix-Rouge",
-    date: "10 Janvier 2025",
-    location: "Centre médical",
-    participants: 45,
-    pole: "Humanitaire",
+    title: "Atelier entreprex",
+    description: "Ateliers de préparation aux entretiens d'embauche.",
+    date: "5 Janvier 2024",
+    location: "Salle de conférence",
+    participants: 75,
+    pole: "Entrepreneuriat",
     status: "past",
-  },
-  {
-    id: 5,
-    title: "Atelier langues locales",
-    description: "Initiation au wolof et au pulaar",
-    date: "5 Janvier 2025",
-    location: "Salle B12",
-    participants: 30,
-    pole: "Langues",
-    status: "past",
+    image: true,
   },
 ];
 
-const poles = ["Tous", "Organisation", "Culture & Sport", "Entrepreneuriat", "Humanitaire", "Langues", "Communication", "Numérique"];
+const filters = ["À venir", "Réalisées", "Réalisees"];
 
 const ActivitesPage = () => {
-  const [filter, setFilter] = useState("Tous");
-  const [showUpcoming, setShowUpcoming] = useState(true);
+  const [activeFilter, setActiveFilter] = useState("À venir");
 
   const filteredActivities = activities.filter((activity) => {
-    const matchesPole = filter === "Tous" || activity.pole === filter;
-    const matchesStatus = showUpcoming ? activity.status === "upcoming" : activity.status === "past";
-    return matchesPole && matchesStatus;
+    if (activeFilter === "À venir") return activity.status === "upcoming";
+    return activity.status === "past";
   });
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="py-12 md:py-16 bg-primary-light">
-        <div className="container-section text-center">
-          <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-            Activités
-          </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Découvrez nos événements à venir et revivez les moments forts de notre mandat.
-          </p>
-        </div>
-      </section>
-
-      {/* Filters */}
-      <section className="py-6 border-b border-border sticky top-16 bg-background z-40">
+      {/* Header */}
+      <section className="py-4">
         <div className="container-section">
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-            {/* Status Toggle */}
-            <div className="flex gap-2 bg-secondary rounded-xl p-1">
-              <button
-                onClick={() => setShowUpcoming(true)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  showUpcoming ? "bg-card shadow-sm text-foreground" : "text-muted-foreground"
-                }`}
-              >
-                <Clock className="w-4 h-4 inline mr-2" />
-                À venir
-              </button>
-              <button
-                onClick={() => setShowUpcoming(false)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  !showUpcoming ? "bg-card shadow-sm text-foreground" : "text-muted-foreground"
-                }`}
-              >
-                <CheckCircle className="w-4 h-4 inline mr-2" />
-                Réalisées
-              </button>
-            </div>
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="font-display font-semibold text-lg text-foreground">Activités</span>
+          </Link>
 
-            {/* Pole Filter */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 w-full sm:w-auto">
-              <Filter className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              {poles.slice(0, 5).map((pole) => (
-                <button
-                  key={pole}
-                  onClick={() => setFilter(pole)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
-                    filter === pole
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {pole}
-                </button>
-              ))}
-            </div>
+          {/* Filters */}
+          <div className="flex gap-2 overflow-x-auto pb-2">
+            {filters.slice(0, 2).map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                  activeFilter === filter
+                    ? "bg-primary text-primary-foreground"
+                    : "border border-border text-muted-foreground hover:bg-secondary"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Activities List */}
-      <section className="py-8">
-        <div className="container-section">
-          {filteredActivities.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">Aucune activité trouvée pour ce filtre.</p>
-            </div>
-          ) : (
-            <div className="grid gap-4 md:grid-cols-2">
-              {filteredActivities.map((activity) => (
-                <div key={activity.id} className="card-elevated p-5">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <div className={`w-14 h-14 rounded-xl flex flex-col items-center justify-center ${
-                        activity.status === "upcoming" ? "gradient-hero text-primary-foreground" : "bg-secondary text-muted-foreground"
-                      }`}>
-                        <span className="text-lg font-bold">{activity.date.split(" ")[0]}</span>
-                        <span className="text-xs">{activity.date.split(" ")[1].slice(0, 3)}</span>
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-2 mb-1">
-                        <span className="px-2 py-0.5 rounded-full bg-accent/10 text-accent text-xs font-medium">
-                          {activity.pole}
-                        </span>
-                      </div>
-                      <h3 className="font-display font-semibold text-foreground mb-1 truncate">
-                        {activity.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                        {activity.description}
-                      </p>
-                      <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {activity.date}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-3 h-3" />
-                          {activity.location}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Users className="w-3 h-3" />
-                          {activity.participants}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  {activity.status === "upcoming" && (
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <Button className="w-full btn-primary">
-                        S'inscrire
-                      </Button>
-                    </div>
-                  )}
+      <section className="py-4">
+        <div className="container-section space-y-4">
+          {filteredActivities.map((activity) => (
+            <div key={activity.id} className="card-elevated overflow-hidden">
+              {activity.image && (
+                <div className="h-32 gradient-hero flex items-center justify-center">
+                  <span className="text-primary-foreground/60 text-sm">Image</span>
                 </div>
-              ))}
+              )}
+              <div className="p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground mb-1">{activity.title}</h3>
+                    <p className="text-xs text-muted-foreground mb-2">{activity.date}</p>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{activity.description}</p>
+                  </div>
+                </div>
+
+                {activity.status === "upcoming" && (
+                  <Button className="w-full btn-primary mt-4">
+                    Voir les détails
+                  </Button>
+                )}
+
+                {activity.status === "past" && (
+                  <div className="flex items-center gap-4 mt-3 text-xs text-muted-foreground">
+                    <span className="flex items-center gap-1">
+                      <Users className="w-3 h-3" />
+                      {activity.participants} participants
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
-          )}
+          ))}
         </div>
       </section>
     </Layout>
