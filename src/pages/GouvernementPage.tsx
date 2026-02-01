@@ -1,14 +1,14 @@
 import { Layout } from "@/components/layout/Layout";
 import { OrganigrammeSection } from "@/components/gouvernement/OrganigrammeSection";
-import { 
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { 
-  Shield, 
-  Target, 
+import {
+  Shield,
+  Target,
   BookOpen,
   ArrowLeft,
   CheckCircle2,
@@ -44,89 +44,91 @@ const GouvernementPage = () => {
           </Link>
 
           {/* Hero */}
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-6 mb-6">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-12 h-12 rounded-xl gradient-hero flex items-center justify-center">
-                <Shield className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div>
-                <h1 className="font-display font-bold text-xl text-foreground">
-                  Gouvernement UIE
-                </h1>
-                <p className="text-sm text-muted-foreground">
-                  Présidence des Étudiants 2025-2026
-                </p>
-              </div>
+          <div className="glass-dark rounded-[2.5rem] p-10 mb-12 border-accent/20 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-5">
+              <Shield size={160} />
             </div>
-            <div className="flex items-center gap-2 text-accent">
-              <Star className="w-4 h-4" />
-              <p className="text-sm font-medium">Union • Implication • Excellence</p>
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-2xl gradient-hero flex items-center justify-center shadow-xl">
+                  <Shield className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h1 className="font-display font-bold text-3xl text-foreground tracking-tight">
+                    Le Gouvernement <span className="text-accent italic">UIE</span>
+                  </h1>
+                  <p className="text-sm text-muted-foreground font-body uppercase tracking-[0.3em] font-bold">
+                    Mandat de Prestige 2025-2026
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-accent bg-accent/5 w-fit px-4 py-2 rounded-full border border-accent/10">
+                <Star className="w-4 h-4 animate-pulse" />
+                <p className="text-xs font-bold uppercase tracking-widest">Union • Implication • Excellence</p>
+              </div>
             </div>
           </div>
 
           {/* Accordion sections */}
-          <Accordion type="single" collapsible defaultValue="mission" className="space-y-3">
-            <AccordionItem value="mission" className="card-elevated px-4 border-none">
-              <AccordionTrigger className="hover:no-underline py-3">
-                <div className="flex items-center gap-2">
-                  <Target className="w-4 h-4 text-primary" />
-                  <span className="font-display font-semibold text-foreground text-sm">
+          <Accordion type="single" collapsible defaultValue="mission" className="space-y-6">
+            <AccordionItem value="mission" className="glass-dark px-6 border-white/5 rounded-3xl overflow-hidden hover:border-primary/20 transition-all">
+              <AccordionTrigger className="hover:no-underline py-5 group">
+                <div className="flex items-center gap-3">
+                  <Target className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                  <span className="font-display font-bold text-foreground text-lg italic">
                     Notre Mission
                   </span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pb-4">
-                <div className="space-y-2">
+              <AccordionContent className="pb-6">
+                <div className="space-y-4">
                   {missions.map((mission, index) => (
-                    <div key={index} className="flex items-start gap-2">
+                    <div key={index} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">
                       <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-muted-foreground">{mission}</p>
+                      <p className="text-sm text-muted-foreground font-body leading-relaxed">{mission}</p>
                     </div>
                   ))}
                 </div>
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="engagement" className="card-elevated px-4 border-none">
-              <AccordionTrigger className="hover:no-underline py-3">
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-primary" />
-                  <span className="font-display font-semibold text-foreground text-sm">
-                    Pourquoi s'engager ?
+            <AccordionItem value="engagement" className="glass-dark px-6 border-white/5 rounded-3xl overflow-hidden hover:border-accent/20 transition-all">
+              <AccordionTrigger className="hover:no-underline py-5 group">
+                <div className="flex items-center gap-3">
+                  <Users className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
+                  <span className="font-display font-bold text-foreground text-lg italic">
+                    L'Appel à l'Engagement
                   </span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pb-4">
-                <div className="space-y-2">
+              <AccordionContent className="pb-6">
+                <div className="space-y-4">
                   {engagements.map((engagement, index) => (
-                    <div key={index} className="flex items-start gap-2">
+                    <div key={index} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">
                       <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-muted-foreground">{engagement}</p>
+                      <p className="text-sm text-muted-foreground font-body leading-relaxed">{engagement}</p>
                     </div>
                   ))}
                 </div>
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="fonctionnement" className="card-elevated px-4 border-none">
-              <AccordionTrigger className="hover:no-underline py-3">
-                <div className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4 text-primary" />
-                  <span className="font-display font-semibold text-foreground text-sm">
-                    Fonctionnement
+            <AccordionItem value="fonctionnement" className="glass-dark px-6 border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all">
+              <AccordionTrigger className="hover:no-underline py-5 group">
+                <div className="flex items-center gap-3">
+                  <BookOpen className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                  <span className="font-display font-bold text-foreground text-lg italic">
+                    Principes Fondamentaux
                   </span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pb-4 text-sm text-muted-foreground space-y-3">
+              <AccordionContent className="pb-6 text-sm text-muted-foreground font-body space-y-4 leading-relaxed p-4">
                 <p>
-                  Le Gouvernement UIE est apolitique, à but non lucratif et fonctionne selon un mode de gouvernance démocratique.
+                  Le Gouvernement UIE est une institution apolitique et fraternelle, dédiée au bien-être de chaque étudiant.
                 </p>
-                <p>
-                  Le/la Président(e) et le/la Vice-Président(e) ne doivent pas tous deux être en fin de cycle (Licence 3), afin d'assurer la continuité des actions.
-                </p>
-                <p>
-                  Les étudiants en Licence 2 ou Licence 3 sont éligibles au poste de Président(e). Les étudiants en Licence 1 peuvent occuper tout autre poste au sein du bureau.
-                </p>
+                <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 italic">
+                  "L'alternance et la continuité sont les piliers de notre gouvernance."
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -146,7 +148,7 @@ const GouvernementPage = () => {
             <p className="text-sm opacity-90 mb-4">
               Candidate pour un poste et contribue à la vie étudiante
             </p>
-            <Link 
+            <Link
               to="/participer"
               className="inline-flex items-center gap-2 bg-white text-primary px-6 py-2 rounded-lg font-semibold text-sm hover:bg-white/90 transition-colors"
             >

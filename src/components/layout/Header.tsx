@@ -17,33 +17,33 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 border-b border-border">
+    <header className="sticky top-0 z-50 w-full glass-dark border-b border-white/5">
       <div className="container-section">
-        <div className="flex h-14 items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg gradient-hero flex items-center justify-center">
-              <Shield className="w-4 h-4 text-primary-foreground" />
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-xl gradient-hero flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Shield className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-bold text-sm text-primary leading-none">
-                GOV UIE
+              <span className="font-display font-bold text-lg text-foreground leading-none tracking-tight">
+                GOV <span className="text-accent italic">UIE</span>
               </span>
-              <span className="text-[10px] text-muted-foreground leading-tight">
+              <span className="text-[10px] text-muted-foreground leading-tight uppercase tracking-widest font-body font-light">
                 Union • Implication • Excellence
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${location.pathname === item.href
-                    ? "bg-primary-light text-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${location.pathname === item.href
+                  ? "bg-primary text-white shadow-[0_0_15px_rgba(37,99,235,0.3)]"
+                  : "text-muted-foreground hover:text-foreground hover:bg-white/5"
                   }`}
               >
                 {item.label}
@@ -51,19 +51,20 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Mobile Icons */}
-          <div className="flex items-center gap-2">
+          {/* Desktop/Mobile Icons */}
+          <div className="flex items-center gap-3">
             <button
-              className="p-2 rounded-lg hover:bg-secondary transition-colors"
+              className="p-2.5 rounded-full hover:bg-white/5 text-muted-foreground hover:text-foreground transition-all duration-300"
               aria-label="Rechercher"
               onClick={() => setSearchOpen(true)}
             >
-              <Search className="w-5 h-5 text-muted-foreground" />
+              <Search className="w-5 h-5" />
             </button>
 
             <NotificationsPopover>
-              <button className="p-2 rounded-lg hover:bg-secondary transition-colors" aria-label="Notifications">
-                <Bell className="w-5 h-5 text-muted-foreground" />
+              <button className="p-2.5 rounded-full hover:bg-white/5 text-muted-foreground hover:text-foreground transition-all duration-300 relative" aria-label="Notifications">
+                <Bell className="w-5 h-5" />
+                <span className="absolute top-2 right-2 w-2 h-2 bg-accent rounded-full border-2 border-black"></span>
               </button>
             </NotificationsPopover>
           </div>

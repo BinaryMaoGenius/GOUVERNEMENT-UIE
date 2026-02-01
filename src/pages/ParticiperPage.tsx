@@ -102,46 +102,48 @@ const ParticiperPage = () => {
       {/* Header */}
       <section className="py-4">
         <div className="container-section">
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm">Retour</span>
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent mb-8 group">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span className="font-display font-bold text-2xl text-foreground italic tracking-tight">Rejoignez l'Aventure</span>
           </Link>
 
-          <div className="mb-6">
-            <h1 className="font-display font-bold text-xl text-foreground mb-2">
-              Rejoins le Gouvernement UIE
-            </h1>
-            <p className="text-sm text-muted-foreground">
-              Candidate pour un poste et contribue à la vie étudiante
-            </p>
+          <div className="glass-dark rounded-[2.5rem] p-10 mb-12 border-accent/20 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-5">
+              <Star size={160} />
+            </div>
+            <div className="relative z-10 text-center md:text-left">
+              <h1 className="font-display font-bold text-4xl text-foreground mb-4 leading-tight">
+                Forgez votre <span className="text-accent">Destin</span> Étudiant
+              </h1>
+              <p className="text-lg text-muted-foreground font-body max-w-xl leading-relaxed">
+                Le Gouvernement UIE est un accélérateur de talents. Trouvez votre place et marquez l'histoire de notre campus.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Candidater à un poste */}
-      <section className="py-4">
+      <section className="py-6">
         <div className="container-section">
-          <div className="card-elevated p-4">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-12 h-12 rounded-xl gradient-hero flex items-center justify-center">
-                <Crown className="w-6 h-6 text-primary-foreground" />
+          <div className="glass-dark p-8 rounded-[2rem] border-accent/20 hover:border-accent/40 transition-all group">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-2xl gradient-hero flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                <Crown className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h2 className="font-display font-bold text-base">Candidater à un poste</h2>
-                <p className="text-xs text-muted-foreground">
-                  Bureau exécutif ou responsable de pôle
-                </p>
+                <h2 className="font-display font-bold text-2xl text-foreground">Candidater à un poste</h2>
+                <p className="text-sm text-accent uppercase tracking-widest font-bold">Bureau Exécutif ou Responsable</p>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-4">
-              Les étudiants en L2/L3 peuvent candidater à la présidence.
-              Les étudiants en L1 peuvent postuler aux autres postes.
+            <p className="text-muted-foreground font-body mb-8 leading-relaxed">
+              Incarnez le leadership étudiant. Accompagnez Madina dans sa vision et gérez les pôles stratégiques de notre université.
             </p>
             <Button
-              className="w-full btn-primary"
+              className="w-full h-14 rounded-2xl bg-white text-black hover:bg-white/90 font-bold shadow-[0_0_20px_rgba(255,191,0,0.2)]"
               onClick={() => setSelectedAction("candidature")}
             >
-              Je candidate !
+              Déposer mon Manifeste
             </Button>
           </div>
         </div>
@@ -236,8 +238,8 @@ const ParticiperPage = () => {
 
       {/* Form Modal */}
       {selectedAction && (
-        <section className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-end">
-          <div className="bg-card w-full rounded-t-2xl p-6 max-h-[80vh] overflow-auto animate-slide-up">
+        <section className="fixed inset-0 bg-background/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+          <div className="glass-dark w-full max-w-2xl rounded-[3rem] p-8 md:p-12 max-h-[90vh] overflow-auto border-accent/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] animate-scale-in">
             {submitted ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-4">
@@ -252,16 +254,16 @@ const ParticiperPage = () => {
               </div>
             ) : (
               <>
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-display font-semibold text-foreground">
-                    {selectedAction === "candidature" && "Candidater à un poste"}
-                    {selectedAction === "pole" && "Rejoindre un pôle"}
-                    {selectedAction === "idea" && "Proposer une activité"}
-                    {selectedAction === "volunteer" && "Devenir bénévole"}
+                <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-6">
+                  <h3 className="font-display font-bold text-2xl text-foreground italic">
+                    {selectedAction === "candidature" && "Dossier de Candidature"}
+                    {selectedAction === "pole" && "Intégration d'un Pôle"}
+                    {selectedAction === "idea" && "Proposition d'Activité"}
+                    {selectedAction === "volunteer" && "Engagement Bénévole"}
                   </h3>
                   <button
                     onClick={() => setSelectedAction(null)}
-                    className="text-muted-foreground hover:text-foreground"
+                    className="w-10 h-10 rounded-full glass-dark border-white/10 flex items-center justify-center text-muted-foreground hover:text-white transition-colors"
                   >
                     ✕
                   </button>

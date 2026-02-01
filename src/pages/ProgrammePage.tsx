@@ -1,18 +1,18 @@
 import { Layout } from "@/components/layout/Layout";
-import { 
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { 
-  Shield, 
-  Megaphone, 
-  Users, 
-  Palette, 
-  Heart, 
-  Briefcase, 
-  Languages, 
+import {
+  Shield,
+  Megaphone,
+  Users,
+  Palette,
+  Heart,
+  Briefcase,
+  Languages,
   Laptop,
   Target,
   Calendar,
@@ -186,14 +186,16 @@ const ProgrammePage = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-12 md:py-16 bg-primary-light">
-        <div className="container-section text-center">
-          <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-            Programme du mandat
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
+        </div>
+        <div className="container-section relative z-10 text-center">
+          <h1 className="section-title text-4xl md:text-5xl italic mb-6">
+            Le Manifeste de l'Excellence
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Découvrez en détail les objectifs, activités et résultats attendus 
-            pour chacun de nos 8 pôles d'action.
+          <p className="text-muted-foreground font-body text-lg max-w-2xl mx-auto leading-relaxed">
+            Découvrez notre vision stratégique pour chaque pôle. Un programme bâti par des étudiants, pour des étudiants.
           </p>
         </div>
       </section>
@@ -203,10 +205,10 @@ const ProgrammePage = () => {
         <div className="container-section">
           <Accordion type="single" collapsible className="space-y-4">
             {poles.map((pole, index) => (
-              <AccordionItem 
-                key={pole.name} 
-                value={`pole-${index}`} 
-                className="card-elevated px-4 md:px-6 border-none"
+              <AccordionItem
+                key={pole.name}
+                value={`pole-${index}`}
+                className="glass-dark px-6 md:px-8 border-white/5 rounded-[2rem] overflow-hidden mb-6 hover:border-primary/20 transition-all duration-300"
               >
                 <AccordionTrigger className="hover:no-underline py-4">
                   <div className="flex items-center gap-3">

@@ -66,9 +66,9 @@ const ActivitesPage = () => {
       {/* Header */}
       <section className="py-4">
         <div className="container-section">
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="font-display font-semibold text-lg text-foreground">Activités</span>
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent mb-8 group">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span className="font-display font-bold text-2xl text-foreground italic tracking-tight">Le Journal des Actions</span>
           </Link>
 
           {/* Filters */}
@@ -77,11 +77,10 @@ const ActivitesPage = () => {
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                  activeFilter === filter
-                    ? "bg-primary text-primary-foreground"
-                    : "border border-border text-muted-foreground hover:bg-secondary"
-                }`}
+                className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${activeFilter === filter
+                    ? "bg-accent text-black shadow-[0_0_15px_rgba(255,191,0,0.3)]"
+                    : "glass-dark text-muted-foreground hover:text-white border-white/5"
+                  }`}
               >
                 {filter}
               </button>
@@ -94,37 +93,34 @@ const ActivitesPage = () => {
       <section className="py-4">
         <div className="container-section space-y-4">
           {filteredActivities.map((activity) => (
-            <div key={activity.id} className="card-elevated overflow-hidden">
+            <div key={activity.id} className="glass-dark rounded-[2.5rem] overflow-hidden border-white/5 hover:border-accent/20 transition-all duration-300 group">
               {activity.image && (
-                <div className="h-32 gradient-hero flex items-center justify-center">
-                  <span className="text-primary-foreground/60 text-sm">Image</span>
+                <div className="h-48 gradient-hero relative overflow-hidden">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity">
+                    <Calendar size={64} className="text-white" />
+                  </div>
                 </div>
               )}
-              <div className="p-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-5 h-5 text-primary" />
+              <div className="p-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-6 h-6 text-accent" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-foreground mb-1">{activity.title}</h3>
-                    <p className="text-xs text-muted-foreground mb-2">{activity.date}</p>
-                    <p className="text-sm text-muted-foreground line-clamp-2">{activity.description}</p>
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-display font-bold text-xl text-foreground leading-tight">{activity.title}</h3>
+                      <span className="text-[10px] font-bold text-accent glass-dark px-3 py-1 rounded-full border-accent/20 uppercase tracking-[0.2em]">{activity.pole}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground/60 mb-4 font-body uppercase tracking-widest font-bold">{activity.date} • {activity.location}</p>
+                    <p className="text-sm text-muted-foreground font-body leading-relaxed">{activity.description}</p>
                   </div>
                 </div>
 
                 {activity.status === "upcoming" && (
-                  <Button className="w-full btn-primary mt-4">
-                    Voir les détails
+                  <Button className="w-full h-12 rounded-2xl bg-white text-black hover:bg-white/90 font-bold mt-8 shadow-lg">
+                    Réserver ma place
                   </Button>
-                )}
-
-                {activity.status === "past" && (
-                  <div className="flex items-center gap-4 mt-3 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Users className="w-3 h-3" />
-                      {activity.participants} participants
-                    </span>
-                  </div>
                 )}
               </div>
             </div>

@@ -10,153 +10,87 @@ interface Pole {
   title: string;
   icon: React.ElementType;
   color: string;
-  members: Member[];
+  responsable: string;
+  adjoint: string;
 }
 
 const bureauExecutif: Member[] = [
-  { role: "Président", name: "À élire" },
-  { role: "Vice-Président(e)", name: "À élire" },
-  { role: "Secrétaire Général(e)", name: "À élire" },
-  { role: "Secrétaire Général(e) Adjoint(e)", name: "À élire", isAdjoint: true },
-  { role: "Trésorier(ère)", name: "À élire" },
-  { role: "Trésorier(ère) Adjoint(e)", name: "À élire", isAdjoint: true },
+  { role: "Présidente", name: "Madina Ali Touré" },
+  { role: "Vice-Président", name: "Ibrahim Traoré" },
+  { role: "Secrétaire Générale", name: "Fatoumata Daou" },
+  { role: "Secrétaire Général Adjoint", name: "Amadou Diallo", isAdjoint: true },
+  { role: "Trésorier", name: "Oumar Sidibé" },
+  { role: "Trésorière Adjointe", name: "Kadiatou Sow", isAdjoint: true },
 ];
 
 const poles: Pole[] = [
-  {
-    title: "Communication & Relations",
-    icon: MessageSquare,
-    color: "bg-blue-500",
-    members: [
-      { role: "Responsable", name: "À élire" },
-      { role: "Adjoint(e)", name: "À élire", isAdjoint: true },
-    ],
-  },
-  {
-    title: "Organisation & Mobilisation",
-    icon: UsersRound,
-    color: "bg-green-500",
-    members: [
-      { role: "Responsable", name: "À élire" },
-      { role: "Adjoint(e)", name: "À élire", isAdjoint: true },
-    ],
-  },
-  {
-    title: "Culture & Sport",
-    icon: Music,
-    color: "bg-orange-500",
-    members: [
-      { role: "Responsable", name: "À élire" },
-      { role: "Adjoint(e)", name: "À élire", isAdjoint: true },
-    ],
-  },
-  {
-    title: "Actions Humanitaires",
-    icon: Heart,
-    color: "bg-red-500",
-    members: [
-      { role: "Responsable", name: "À élire" },
-      { role: "Adjoint(e)", name: "À élire", isAdjoint: true },
-    ],
-  },
-  {
-    title: "Entrepreneuriat",
-    icon: Briefcase,
-    color: "bg-purple-500",
-    members: [
-      { role: "Responsable", name: "À élire" },
-      { role: "Adjoint(e)", name: "À élire", isAdjoint: true },
-    ],
-  },
-  {
-    title: "Promotion des Langues",
-    icon: Languages,
-    color: "bg-teal-500",
-    members: [
-      { role: "Responsable", name: "À élire" },
-      { role: "Adjoint(e)", name: "À élire", isAdjoint: true },
-    ],
-  },
-  {
-    title: "Informatique",
-    icon: Monitor,
-    color: "bg-indigo-500",
-    members: [
-      { role: "Responsable", name: "À élire" },
-      { role: "Adjoint(e)", name: "À élire", isAdjoint: true },
-    ],
-  },
-  {
-    title: "Droit",
-    icon: Scale,
-    color: "bg-amber-600",
-    members: [
-      { role: "Responsable", name: "À élire" },
-      { role: "Adjoint(e)", name: "À élire", isAdjoint: true },
-    ],
-  },
+  { title: "Communication", icon: MessageSquare, color: "bg-blue-500", responsable: "Djénèba Sidibé", adjoint: "Aliou Traoré" },
+  { title: "Organisation", icon: UsersRound, color: "bg-green-500", responsable: "Bakary Keïta", adjoint: "Saran Bagayoko" },
+  { title: "Culture & Sport", icon: Music, color: "bg-orange-500", responsable: "Mariam Doumbia", adjoint: "Cheick O. Koné" },
+  { title: "Humanitaire", icon: Heart, color: "bg-red-500", responsable: "Kadidia Sylla", adjoint: "Abdoulaye Maïga" },
+  { title: "Entrepreneuriat", icon: Briefcase, color: "bg-purple-500", responsable: "Seydou Kouyaté", adjoint: "Fanta Diarra" },
+  { title: "Langues", icon: Languages, color: "bg-teal-500", responsable: "Hawa Touré", adjoint: "Modibo Sidibé" },
+  { title: "Informatique", icon: Monitor, color: "bg-indigo-500", responsable: "Drissa Keïta", adjoint: "Salimata Barry" },
+  { title: "Droit & Éthique", icon: Scale, color: "bg-amber-600", responsable: "Boubacar Sow", adjoint: "Awa Diakité" },
 ];
 
 export function OrganigrammeSection() {
   return (
-    <section className="py-8">
-      <div className="container-section">
+    <section className="py-24 relative overflow-hidden bg-background">
+      <div className="container-section relative z-10">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-xl font-display font-bold text-foreground mb-2">
-            Structure du Gouvernement
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            22 membres au service des étudiants
-          </p>
+        <div className="text-center mb-16">
+          <h2 className="section-title text-3xl italic mb-4">La Structure du Pouvoir</h2>
+          <div className="flex items-center justify-center gap-2 text-muted-foreground font-body text-sm uppercase tracking-widest">
+            <Users className="w-4 h-4 text-accent" />
+            <span>22 Visionnaires au Service de l'Excellence</span>
+          </div>
         </div>
 
-        {/* Bureau Exécutif - Top Leadership */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Crown className="w-4 h-4 text-primary" />
+        {/* Bureau Exécutif */}
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-8 justify-center md:justify-start">
+            <div className="w-10 h-10 rounded-xl glass-dark flex items-center justify-center border-accent/20">
+              <Crown className="w-5 h-5 text-accent" />
             </div>
-            <h3 className="font-display font-semibold text-foreground">Bureau Exécutif</h3>
+            <h3 className="font-display font-bold text-xl text-foreground uppercase tracking-wider">Haut Commandement</h3>
           </div>
 
-          {/* President Card - Highlighted */}
-          <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-4 mb-4 text-primary-foreground">
-            <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
-                <Crown className="w-7 h-7" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* President Card */}
+            <div className="md:col-span-3 glass-dark p-8 rounded-[2.5rem] border-accent/20 relative overflow-hidden group hover:scale-[1.01] transition-all duration-500 shadow-[0_0_50px_rgba(255,191,0,0.1)]">
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Crown size={120} />
               </div>
-              <div>
-                <p className="font-display font-bold text-lg">Président(e)</p>
-                <p className="text-sm opacity-90">Chef du Gouvernement UIE</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Other Executive Members */}
-          <div className="grid grid-cols-2 gap-3">
-            {bureauExecutif.slice(1).map((member, index) => (
-              <div
-                key={index}
-                className={`bg-card rounded-xl p-3 border ${
-                  member.isAdjoint ? "border-border/50" : "border-primary/20"
-                }`}
-              >
-                <div className="flex items-center gap-2">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                    member.isAdjoint ? "bg-muted" : "bg-primary/10"
-                  }`}>
-                    {member.role.includes("Vice") && <Users className="w-4 h-4 text-primary" />}
-                    {member.role.includes("Secrétaire") && <FileText className="w-4 h-4 text-primary" />}
-                    {member.role.includes("Trésorier") && <Wallet className="w-4 h-4 text-primary" />}
+              <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                <div className="w-24 h-24 rounded-full gradient-hero p-1 shadow-lg">
+                  <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
+                    <Crown className="w-10 h-10 text-accent" />
                   </div>
-                  <div className="min-w-0">
-                    <p className={`font-medium text-xs truncate ${
-                      member.isAdjoint ? "text-muted-foreground" : "text-foreground"
+                </div>
+                <div className="text-center md:text-left">
+                  <p className="text-accent font-body text-xs uppercase tracking-[0.4em] mb-2 font-bold">Présidente du Gouvernement</p>
+                  <p className="font-display font-bold text-4xl text-foreground tracking-tight mb-2">Madina Ali Touré</p>
+                  <p className="text-muted-foreground font-body italic text-lg leading-relaxed max-w-2xl">
+                    "Notre engagement est le socle de notre réussite commune. Ensemble, bâtissons l'université de demain."
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Other Executive Members */}
+            {bureauExecutif.slice(1).map((member, index) => (
+              <div key={index} className="glass-dark rounded-2xl p-6 border-white/5 hover:border-accent/30 transition-all duration-300 hover:-translate-y-1 group">
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${member.isAdjoint ? "bg-white/5 text-muted-foreground" : "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white"
                     }`}>
-                      {member.role}
-                    </p>
-                    <p className="text-[10px] text-muted-foreground">{member.name}</p>
+                    {member.role.includes("Vice") && <Users className="w-5 h-5" />}
+                    {member.role.includes("Secrétaire") && <FileText className="w-5 h-5" />}
+                    {member.role.includes("Trésorier") && <Wallet className="w-5 h-5" />}
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-accent uppercase tracking-widest mb-1">{member.role}</p>
+                    <p className="font-display font-bold text-lg text-foreground">{member.name}</p>
                   </div>
                 </div>
               </div>
@@ -164,67 +98,37 @@ export function OrganigrammeSection() {
           </div>
         </div>
 
-        {/* Pôles */}
+        {/* Pôles Section */}
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
-              <Users className="w-4 h-4 text-accent" />
+          <div className="flex items-center gap-3 mb-8 justify-center md:justify-start">
+            <div className="w-10 h-10 rounded-xl glass-dark flex items-center justify-center border-white/10">
+              <UsersRound className="w-5 h-5 text-primary" />
             </div>
-            <h3 className="font-display font-semibold text-foreground">Les 8 Pôles</h3>
+            <h3 className="font-display font-bold text-xl text-foreground uppercase tracking-wider">Les Pôles Stratégiques</h3>
           </div>
 
-          <div className="grid grid-cols-1 gap-3">
-            {poles.map((pole, index) => {
-              const Icon = pole.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-card rounded-xl p-4 border border-border hover:border-primary/30 transition-colors"
-                >
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg ${pole.color} flex items-center justify-center flex-shrink-0`}>
-                      <Icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-display font-semibold text-sm text-foreground mb-2">
-                        {pole.title}
-                      </p>
-                      <div className="flex gap-2">
-                        {pole.members.map((member, mIndex) => (
-                          <div
-                            key={mIndex}
-                            className={`flex-1 rounded-lg p-2 ${
-                              member.isAdjoint ? "bg-muted/50" : "bg-primary/5"
-                            }`}
-                          >
-                            <p className="text-[10px] font-medium text-muted-foreground">
-                              {member.role}
-                            </p>
-                            <p className="text-xs text-foreground truncate">{member.name}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {poles.map((pole, index) => (
+              <div key={index} className="glass-dark rounded-3xl p-6 border-white/5 hover:border-primary/20 transition-all duration-300 group">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`w-12 h-12 rounded-2xl ${pole.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
+                    <pole.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-display font-bold text-foreground leading-tight">{pole.title}</h4>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                    <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Responsable</p>
+                    <p className="text-sm font-semibold text-foreground">{pole.responsable}</p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/5 opacity-80">
+                    <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Adjoint</p>
+                    <p className="text-sm font-semibold text-foreground">{pole.adjoint}</p>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-8 grid grid-cols-3 gap-3">
-          <div className="bg-primary/5 rounded-xl p-4 text-center">
-            <p className="text-2xl font-display font-bold text-primary">22</p>
-            <p className="text-xs text-muted-foreground">Membres</p>
-          </div>
-          <div className="bg-accent/5 rounded-xl p-4 text-center">
-            <p className="text-2xl font-display font-bold text-accent">8</p>
-            <p className="text-xs text-muted-foreground">Pôles</p>
-          </div>
-          <div className="bg-green-500/10 rounded-xl p-4 text-center">
-            <p className="text-2xl font-display font-bold text-green-600">1</p>
-            <p className="text-xs text-muted-foreground">Objectif</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

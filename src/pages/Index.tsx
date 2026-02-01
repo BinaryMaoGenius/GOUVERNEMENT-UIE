@@ -4,6 +4,8 @@ import { NextActivitySection } from "@/components/home/NextActivitySection";
 import { PolesSection } from "@/components/home/PolesSection";
 import { OrganigrammeSection } from "@/components/gouvernement/OrganigrammeSection";
 import { PresidentMessage } from "@/components/home/PresidentMessage";
+import { TimelineSection } from "@/components/home/TimelineSection";
+import { IdeaWall } from "@/components/home/IdeaWall";
 import { CTASection } from "@/components/home/CTASection";
 
 const Index = () => {
@@ -12,8 +14,10 @@ const Index = () => {
       <HeroSection />
       <NextActivitySection />
       <PolesSection />
-      <OrganigrammeSection />
       <PresidentMessage />
+      <TimelineSection />
+      <OrganigrammeSection />
+      <IdeaWall />
       <CTASection />
     </Layout>
   );
