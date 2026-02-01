@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -47,17 +47,54 @@ const ParticiperPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast({
-      title: "Candidature envoyée !",
-      description: "Nous vous contacterons très bientôt.",
-    });
-    setTimeout(() => {
-      setSelectedAction(null);
-      setSubmitted(false);
-    }, 3000);
+    setSubmitted(false);
+
+    // Collecte des données du formulaire via FormData
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+
+    const payload = {
+      type: selectedAction,
+      nom: formData.get('nom') as string,
+      prenom: formData.get('prenom') as string,
+      email: formData.get('email') as string,
+      telephone: formData.get('telephone') as string,
+      niveau: formData.get('niveau') as string,
+      poste: formData.get('poste') as string,
+      pole: formData.get('pole') as string,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const response = await fetch('/.netlify/functions/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        toast({
+          title: "Candidature envoyée !",
+          description: "Vos informations ont été enregistrées avec succès.",
+        });
+        setTimeout(() => {
+          setSelectedAction(null);
+          setSubmitted(false);
+        }, 3000);
+      } else {
+        throw new Error('Erreur lors de l\'envoi');
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Erreur",
+        description: "Une erreur est survenue lors de l'envoi. Veuillez réessayer.",
+      });
+    }
   };
 
   return (
@@ -69,7 +106,7 @@ const ParticiperPage = () => {
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm">Retour</span>
           </Link>
-          
+
           <div className="mb-6">
             <h1 className="font-display font-bold text-xl text-foreground mb-2">
               Rejoins le Gouvernement UIE
@@ -97,10 +134,10 @@ const ParticiperPage = () => {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              Les étudiants en L2/L3 peuvent candidater à la présidence. 
+              Les étudiants en L2/L3 peuvent candidater à la présidence.
               Les étudiants en L1 peuvent postuler aux autres postes.
             </p>
-            <Button 
+            <Button
               className="w-full btn-primary"
               onClick={() => setSelectedAction("candidature")}
             >
@@ -128,7 +165,7 @@ const ParticiperPage = () => {
             <p className="text-sm text-muted-foreground mb-4">
               Intègre un pôle selon tes centres d'intérêt : communication, culture, sport, informatique...
             </p>
-            <Button 
+            <Button
               variant="outline"
               className="w-full border-2 border-primary text-primary"
               onClick={() => setSelectedAction("pole")}
@@ -157,7 +194,7 @@ const ParticiperPage = () => {
             <p className="text-sm text-muted-foreground mb-4">
               Tu as une idée d'événement ? Soumets-la au Gouvernement UIE !
             </p>
-            <Button 
+            <Button
               variant="outline"
               className="w-full border-2 border-primary text-primary"
               onClick={() => setSelectedAction("idea")}
@@ -186,7 +223,7 @@ const ParticiperPage = () => {
             <p className="text-sm text-muted-foreground mb-4">
               Rejoins notre équipe de bénévoles et aide à organiser les événements du campus.
             </p>
-            <Button 
+            <Button
               variant="outline"
               className="w-full border-2 border-primary text-primary"
               onClick={() => setSelectedAction("volunteer")}
@@ -222,7 +259,7 @@ const ParticiperPage = () => {
                     {selectedAction === "idea" && "Proposer une activité"}
                     {selectedAction === "volunteer" && "Devenir bénévole"}
                   </h3>
-                  <button 
+                  <button
                     onClick={() => setSelectedAction(null)}
                     className="text-muted-foreground hover:text-foreground"
                   >
@@ -233,27 +270,27 @@ const ParticiperPage = () => {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="text-sm font-medium text-foreground mb-1 block">Prénom</label>
-                      <Input placeholder="Votre prénom" required />
+                      <Input name="prenom" placeholder="Votre prénom" required />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-1 block">Nom</label>
-                      <Input placeholder="Votre nom" required />
+                      <Input name="nom" placeholder="Votre nom" required />
                     </div>
                   </div>
 
                   <div>
                     <label className="text-sm font-medium text-foreground mb-1 block">Email</label>
-                    <Input type="email" placeholder="votre@email.com" required />
+                    <Input name="email" type="email" placeholder="votre@email.com" required />
                   </div>
 
                   <div>
                     <label className="text-sm font-medium text-foreground mb-1 block">Téléphone</label>
-                    <Input type="tel" placeholder="+223 XX XX XX XX" />
+                    <Input name="telephone" type="tel" placeholder="+223 XX XX XX XX" />
                   </div>
 
                   <div>
                     <label className="text-sm font-medium text-foreground mb-1 block">Niveau d'études</label>
-                    <Select required>
+                    <Select name="niveau" required>
                       <SelectTrigger>
                         <SelectValue placeholder="Votre niveau" />
                       </SelectTrigger>
@@ -270,7 +307,7 @@ const ParticiperPage = () => {
                   {selectedAction === "candidature" && (
                     <div>
                       <label className="text-sm font-medium text-foreground mb-1 block">Poste souhaité</label>
-                      <Select required>
+                      <Select name="poste" required>
                         <SelectTrigger>
                           <SelectValue placeholder="Choisir un poste" />
                         </SelectTrigger>
@@ -286,7 +323,7 @@ const ParticiperPage = () => {
                   {(selectedAction === "pole" || selectedAction === "volunteer") && (
                     <div>
                       <label className="text-sm font-medium text-foreground mb-1 block">Pôle souhaité</label>
-                      <Select>
+                      <Select name="pole">
                         <SelectTrigger>
                           <SelectValue placeholder="Choisir un pôle" />
                         </SelectTrigger>
@@ -304,13 +341,14 @@ const ParticiperPage = () => {
                       <label className="text-sm font-medium text-foreground mb-1 block">
                         {selectedAction === "candidature" ? "Motivation" : "Votre idée"}
                       </label>
-                      <Textarea 
-                        placeholder={selectedAction === "candidature" 
-                          ? "Décrivez vos motivations et ce que vous apporterez..." 
+                      <Textarea
+                        placeholder={selectedAction === "candidature"
+                          ? "Décrivez vos motivations et ce que vous apporterez..."
                           : "Décrivez votre idée d'activité..."
-                        } 
-                        rows={4} 
-                        required 
+                        }
+                        rows={4}
+                        name="message"
+                        required
                       />
                     </div>
                   )}
