@@ -77,10 +77,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground uppercase tracking-widest">
-          <p>© 2026 Gouvernement UIE. Tous droits réservés.</p>
-          <p>Union • Implication • Excellence</p>
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-bold">
+          <p>© 2026 Gouvernement UIE. Excellence Garantie.</p>
+          <div className="flex items-center gap-4 text-accent">
+            <span className="w-1 h-1 bg-accent rounded-full animate-ping" />
+            <p>Union • Implication • Excellence</p>
+            <span className="w-1 h-1 bg-accent rounded-full animate-ping" />
+          </div>
         </div>
+
+        {/* Global Royal Lueur at the very bottom */}
+        <div className="absolute bottom-[-50px] left-1/2 -translate-x-1/2 w-full h-[100px] bg-accent/5 blur-[80px] rounded-full pointer-events-none" />
       </div>
     </footer>
   );

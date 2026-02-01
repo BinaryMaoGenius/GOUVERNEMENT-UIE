@@ -6,11 +6,28 @@ import { Button } from "@/components/ui/button";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-24 md:pb-32 bg-background">
-      {/* Background elements for "Legendary" feel */}
-      <div className="absolute inset-0 z-0">
+      {/* Background elements with Stellar Particles */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Stellar Background */}
+        <div className="absolute inset-0 opacity-20">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="star-particle"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                width: `${Math.random() * 3 + 1}px`,
+                height: `${Math.random() * 3 + 1}px`,
+                '--duration': `${Math.random() * 3 + 2}s`,
+                animationDelay: `${Math.random() * 5}s`
+              } as React.CSSProperties}
+            />
+          ))}
+        </div>
+
         <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-accent/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-[20%] right-[10%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
       </div>
 
       <div className="container-section relative z-10">

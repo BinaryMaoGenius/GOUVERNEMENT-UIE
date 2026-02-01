@@ -259,4 +259,85 @@
       transform: scale(1);
     }
   }
+
+  /* Phase 6 : Animations Atmosphériques & Lueur Royale */
+  @keyframes float-ethereal {
+
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.3;
+    }
+
+    50% {
+      transform: translateY(-20px) scale(1.1);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes twinkle {
+
+    0%,
+    100% {
+      opacity: 0.2;
+      transform: scale(0.5);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  .star-particle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: twinkle var(--duration, 3s) infinite ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 191, 0, 0.4);
+  }
+
+  .ethereal-glow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255, 191, 0, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(20px);
+    pointer-events: none;
+    animation: float-ethereal 8s infinite ease-in-out;
+  }
+
+  .royal-shadow {
+    box-shadow: 0 0 30px rgba(255, 191, 0, 0.15);
+  }
+
+  .invitation-edge {
+    position: relative;
+  }
+
+  .invitation-edge::before,
+  .invitation-edge::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255, 191, 0, 0.3);
+    z-index: 10;
+  }
+
+  .invitation-edge::before {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .invitation-edge::after {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+  }
 }
