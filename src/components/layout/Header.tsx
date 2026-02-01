@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { Search, Bell, GraduationCap } from "lucide-react";
+import { Search, Bell, Shield } from "lucide-react";
 
 const navItems = [
   { label: "Accueil", href: "/" },
-  { label: "Le BDE", href: "/bde" },
+  { label: "Gouvernement", href: "/gouvernement" },
   { label: "Activités", href: "/activites" },
   { label: "Programme", href: "/programme" },
   { label: "Participer", href: "/participer" },
@@ -19,14 +19,14 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-8 h-8 rounded-lg gradient-hero flex items-center justify-center">
-              <GraduationCap className="w-4 h-4 text-primary-foreground" />
+              <Shield className="w-4 h-4 text-primary-foreground" />
             </div>
             <div className="flex flex-col">
               <span className="font-display font-bold text-sm text-primary leading-none">
-                BDE
+                GOV UIE
               </span>
               <span className="text-[10px] text-muted-foreground leading-tight">
-                Bureau des Étudiants
+                Union • Implication • Excellence
               </span>
             </div>
           </Link>

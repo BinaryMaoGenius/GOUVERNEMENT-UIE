@@ -6,17 +6,17 @@ export function PresidentMessage() {
           <div className="flex gap-4 items-start">
             {/* Photo placeholder */}
             <div className="w-14 h-14 rounded-full gradient-hero flex items-center justify-center text-primary-foreground font-bold flex-shrink-0">
-              AB
+              P
             </div>
 
             {/* Message */}
             <div className="flex-1">
               <p className="text-sm text-foreground leading-relaxed mb-2">
                 "Notre engagement est simple : être à votre écoute et créer ensemble 
-                un campus où chaque étudiant trouve sa place."
+                un campus où chaque étudiant trouve sa place et s'épanouit."
               </p>
               <p className="text-xs text-muted-foreground">
-                <span className="font-semibold text-foreground">Amadou Ba</span> • Président du BDE
+                <span className="font-semibold text-foreground">Le Président</span> • Gouvernement UIE
               </p>
             </div>
           </div>
