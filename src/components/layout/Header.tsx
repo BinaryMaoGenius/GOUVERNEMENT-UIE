@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Search, Bell, Shield } from "lucide-react";
+import { SearchDialog } from "./SearchDialog";
+import { NotificationsPopover } from "./NotificationsPopover";
 
 const navItems = [
   { label: "Accueil", href: "/" },
@@ -11,6 +14,7 @@ const navItems = [
 
 export function Header() {
   const location = useLocation();
+  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 border-b border-border">
@@ -37,11 +41,10 @@ export function Header() {
               <Link
                 key={item.href}
                 to={item.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  location.pathname === item.href
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${location.pathname === item.href
                     ? "bg-primary-light text-primary"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>
@@ -50,16 +53,25 @@ export function Header() {
 
           {/* Mobile Icons */}
           <div className="flex items-center gap-2">
-            <button className="p-2 rounded-lg hover:bg-secondary transition-colors" aria-label="Rechercher">
+            <button
+              className="p-2 rounded-lg hover:bg-secondary transition-colors"
+              aria-label="Rechercher"
+              onClick={() => setSearchOpen(true)}
+            >
               <Search className="w-5 h-5 text-muted-foreground" />
             </button>
-            <button className="p-2 rounded-lg hover:bg-secondary transition-colors relative" aria-label="Notifications">
-              <Bell className="w-5 h-5 text-muted-foreground" />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full" />
-            </button>
+
+            <NotificationsPopover>
+              <button className="p-2 rounded-lg hover:bg-secondary transition-colors" aria-label="Notifications">
+                <Bell className="w-5 h-5 text-muted-foreground" />
+              </button>
+            </NotificationsPopover>
           </div>
         </div>
       </div>
+
+      <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
     </header>
   );
 }
+
