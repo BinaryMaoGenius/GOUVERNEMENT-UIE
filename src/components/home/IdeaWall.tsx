@@ -3,14 +3,21 @@ import { Lightbulb, Send, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const initialIdeas = [
-    { id: 1, text: "Un forum mensuel de débat ouvert à tous les étudiants.", author: "Aminata K.", votes: 12 },
-    { id: 2, text: "Installation de zones de coworking avec Wi-Fi haut débit.", author: "Moussa T.", votes: 45 },
-    { id: 3, text: "Une application mobile pour suivre les activités du gouvernement.", author: "Issa D.", votes: 28 },
-    { id: 4, text: "Mise en place d'un programme de parrainage L1/L3.", author: "Fatoumata S.", votes: 34 },
+    { id: 1, text: "Un forum mensuel de débat ouvert à tous les étudiants.", author: "Aminata K.", votes: 12, category: "Gouvernance" },
+    { id: 2, text: "Installation de zones de coworking avec Wi-Fi haut débit.", author: "Moussa T.", votes: 45, category: "Numérique" },
+    { id: 3, text: "Une application mobile pour suivre les activités du gouvernement.", author: "Issa D.", votes: 28, category: "Numérique" },
+    { id: 4, text: "Mise en place d'un programme de parrainage L1/L3.", author: "Fatoumata S.", votes: 34, category: "Mobilisation" },
 ];
+
+const categories = ["Tous", "Gouvernance", "Numérique", "Mobilisation", "Culture", "Sport"];
 
 export function IdeaWall() {
     const [ideas, setIdeas] = useState(initialIdeas);
+    const [activeCategory, setActiveCategory] = useState("Tous");
+
+    const filteredIdeas = activeCategory === "Tous"
+        ? ideas
+        : ideas.filter(idea => idea.category === activeCategory);
 
     return (
         <section className="py-20 relative overflow-hidden bg-background">
@@ -28,13 +35,33 @@ export function IdeaWall() {
                     </Button>
                 </div>
 
+                <div className="flex flex-wrap gap-2 mb-8 justify-center md:justify-start">
+                    {categories.map(cat => (
+                        <button
+                            key={cat}
+                            onClick={() => setActiveCategory(cat)}
+                            className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 border ${activeCategory === cat
+                                    ? "bg-accent text-black border-accent shadow-lg shadow-accent/20"
+                                    : "bg-white/5 text-muted-foreground border-white/10 hover:border-accent/50"
+                                }`}
+                        >
+                            {cat}
+                        </button>
+                    ))}
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {ideas.map((idea) => (
+                    {filteredIdeas.map((idea) => (
                         <div key={idea.id} className="idea-card group flex flex-col justify-between h-64 border-accent/10">
                             <div>
-                                <div className="flex items-center gap-2 mb-4 text-accent/50 group-hover:text-accent transition-colors">
-                                    <Lightbulb size={20} />
-                                    <Sparkles size={14} className="animate-pulse" />
+                                <div className="flex justify-between items-start mb-4">
+                                    <div className="flex items-center gap-2 text-accent/50 group-hover:text-accent transition-colors">
+                                        <Lightbulb size={20} />
+                                        <Sparkles size={14} className="animate-pulse" />
+                                    </div>
+                                    <span className="text-[9px] font-bold bg-accent/10 text-accent px-2 py-1 rounded-md uppercase tracking-tighter">
+                                        {idea.category}
+                                    </span>
                                 </div>
                                 <p className="font-body text-foreground leading-relaxed italic">
                                     "{idea.text}"

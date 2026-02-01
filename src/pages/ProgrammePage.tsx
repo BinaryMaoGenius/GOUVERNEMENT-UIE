@@ -16,8 +16,10 @@ import {
   Laptop,
   Target,
   Calendar,
-  TrendingUp
+  TrendingUp,
+  Award
 } from "lucide-react";
+import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip as RechartsTooltip } from 'recharts';
 
 const poles = [
   {
@@ -39,6 +41,7 @@ const poles = [
       "4 assemblées générales par an",
       "Présence continue au bureau",
     ],
+    progress: 75,
   },
   {
     icon: Megaphone,
@@ -59,6 +62,7 @@ const poles = [
       "10 partenariats signés",
       "Communication hebdomadaire",
     ],
+    progress: 60,
   },
   {
     icon: Users,
@@ -79,6 +83,7 @@ const poles = [
       "15 événements organisés",
       "Participation record",
     ],
+    progress: 90,
   },
   {
     icon: Palette,
@@ -99,6 +104,7 @@ const poles = [
       "3 concerts par semestre",
       "Club de talents créé",
     ],
+    progress: 45,
   },
   {
     icon: Heart,
@@ -119,6 +125,7 @@ const poles = [
       "500+ personnes aidées",
       "3 partenariats ONG",
     ],
+    progress: 70,
   },
   {
     icon: Briefcase,
@@ -139,6 +146,7 @@ const poles = [
       "200 CV relus",
       "50 stages facilités",
     ],
+    progress: 55,
   },
   {
     icon: Languages,
@@ -159,6 +167,7 @@ const poles = [
       "4 journées culturelles",
       "100+ participants",
     ],
+    progress: 80,
   },
   {
     icon: Laptop,
@@ -179,6 +188,7 @@ const poles = [
       "50+ étudiants formés",
       "Guide des droits publié",
     ],
+    progress: 100,
   },
 ];
 
@@ -211,17 +221,57 @@ const ProgrammePage = () => {
                 className="glass-dark px-6 md:px-8 border-white/5 rounded-[2rem] overflow-hidden mb-6 hover:border-primary/20 transition-all duration-300"
               >
                 <AccordionTrigger className="hover:no-underline py-4">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-xl ${pole.color} flex items-center justify-center`}>
-                      <pole.icon className="w-5 h-5 text-white" />
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-xl ${pole.color} flex items-center justify-center`}>
+                        <pole.icon className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="font-display font-semibold text-foreground text-left">
+                        {pole.name}
+                      </span>
                     </div>
-                    <span className="font-display font-semibold text-foreground text-left">
-                      {pole.name}
-                    </span>
+                    <div className="hidden md:flex items-center gap-4 mr-4">
+                      <div className="w-32 h-2 bg-white/5 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-accent transition-all duration-1000"
+                          style={{ width: `${pole.progress}%` }}
+                        />
+                      </div>
+                      <span className="text-xs font-bold text-accent">{pole.progress}%</span>
+                    </div>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="pb-6">
-                  <div className="grid gap-6 md:grid-cols-3 mt-4">
+                  <div className="grid gap-6 md:grid-cols-4 mt-4">
+                    {/* Visualisation Chart */}
+                    <div className="bg-secondary/30 rounded-xl p-4 flex flex-col items-center justify-center min-h-[150px]">
+                      <div className="w-full h-32">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <PieChart>
+                            <Pie
+                              data={[
+                                { name: 'Complété', value: pole.progress },
+                                { name: 'Restant', value: 100 - pole.progress }
+                              ]}
+                              innerRadius={25}
+                              outerRadius={40}
+                              paddingAngle={5}
+                              dataKey="value"
+                            >
+                              <Cell fill="var(--accent)" />
+                              <Cell fill="rgba(255,255,255,0.05)" />
+                            </Pie>
+                            <RechartsTooltip
+                              contentStyle={{ backgroundColor: '#000', border: 'none', borderRadius: '8px', fontSize: '12px' }}
+                            />
+                          </PieChart>
+                        </ResponsiveContainer>
+                      </div>
+                      <div className="text-center mt-2">
+                        <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Réalisation</p>
+                        <p className="text-xl font-display font-bold text-foreground">{pole.progress}%</p>
+                      </div>
+                    </div>
                     {/* Objectifs */}
                     <div className="bg-secondary/50 rounded-xl p-4">
                       <div className="flex items-center gap-2 mb-3">
@@ -276,7 +326,7 @@ const ProgrammePage = () => {
           </Accordion>
         </div>
       </section>
-    </Layout>
+    </Layout >
   );
 };
 

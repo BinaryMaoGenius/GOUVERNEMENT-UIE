@@ -5,6 +5,7 @@ import { PolesSection } from "@/components/home/PolesSection";
 import { OrganigrammeSection } from "@/components/gouvernement/OrganigrammeSection";
 import { PresidentMessage } from "@/components/home/PresidentMessage";
 import { TimelineSection } from "@/components/home/TimelineSection";
+import { CultureSection } from "@/components/home/CultureSection";
 import { IdeaWall } from "@/components/home/IdeaWall";
 import { CTASection } from "@/components/home/CTASection";
 
@@ -16,6 +17,7 @@ const Index = () => {
       <PolesSection />
       <PresidentMessage />
       <TimelineSection />
+      <CultureSection />
       <OrganigrammeSection />
       <IdeaWall />
       <CTASection />
