@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Users, Calendar, FileText, HandHeart } from "lucide-react";
+import { Home, Shield, Calendar, FileText, HandHeart } from "lucide-react";
 
 const navItems = [
   { label: "Accueil", href: "/", icon: Home },
-  { label: "Le BDE", href: "/bde", icon: Users },
+  { label: "Gouv", href: "/gouvernement", icon: Shield },
   { label: "Activités", href: "/activites", icon: Calendar },
   { label: "Programme", href: "/programme", icon: FileText },
   { label: "Participer", href: "/participer", icon: HandHeart },

@@ -9,48 +9,37 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Users, Lightbulb, HandHeart, ArrowLeft, CheckCircle, Send } from "lucide-react";
+import { Shield, Lightbulb, HandHeart, ArrowLeft, CheckCircle, Send, Crown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const actions = [
-  {
-    id: "pole",
-    icon: Users,
-    title: "Rejoindre un pôle",
-    description: "Governance, Culture de Sport, Solidarités",
-    buttonText: "Je m'inscris !",
-    color: "bg-blue-500",
-  },
-  {
-    id: "idea",
-    icon: Lightbulb,
-    title: "Proposer une activité",
-    description: "Nous pes bureau saur the Cloits free muerique bonimes cerras eau prie im mante. Oe tusqriés!",
-    buttonText: "Je propose !",
-    color: "bg-amber-500",
-  },
-  {
-    id: "volunteer",
-    icon: HandHeart,
-    title: "Devenir bénévole",
-    description: "Rejoignez notre équipe de bénévoles pour les événements.",
-    buttonText: "Je m'engage !",
-    color: "bg-green-500",
-    hasImage: true,
-  },
+const postes = [
+  "Président(e)",
+  "Vice-Président(e)",
+  "Secrétaire Général(e)",
+  "Secrétaire Général(e) Adjoint(e)",
+  "Trésorier(ère)",
+  "Trésorier(ère) Adjoint(e)",
+  "Responsable Communication",
+  "Responsable Organisation",
+  "Responsable Culture & Sport",
+  "Responsable Actions Humanitaires",
+  "Responsable Entrepreneuriat",
+  "Responsable Promotion des Langues",
+  "Responsable Informatique",
+  "Responsable Droit",
 ];
 
 const poles = [
-  "Gouvernance & Administration",
   "Communication & Relations",
   "Organisation & Mobilisation",
   "Culture & Sport",
-  "Actions humanitaires",
-  "Entrepreneuriat & Employabilité",
-  "Langues & Identité",
-  "Numérique & Droits",
+  "Actions Humanitaires",
+  "Entrepreneuriat",
+  "Promotion des Langues",
+  "Informatique",
+  "Droit",
 ];
 
 const ParticiperPage = () => {
@@ -62,7 +51,7 @@ const ParticiperPage = () => {
     e.preventDefault();
     setSubmitted(true);
     toast({
-      title: "Demande envoyée !",
+      title: "Candidature envoyée !",
       description: "Nous vous contacterons très bientôt.",
     });
     setTimeout(() => {
@@ -78,74 +67,133 @@ const ParticiperPage = () => {
         <div className="container-section">
           <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4">
             <ArrowLeft className="w-4 h-4" />
-            <span className="font-display font-semibold text-lg text-foreground">Participer</span>
+            <span className="text-sm">Retour</span>
           </Link>
+          
+          <div className="mb-6">
+            <h1 className="font-display font-bold text-xl text-foreground mb-2">
+              Rejoins le Gouvernement UIE
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              Candidate pour un poste et contribue à la vie étudiante
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Candidater à un poste */}
+      <section className="py-4">
+        <div className="container-section">
+          <div className="card-elevated p-4">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-12 h-12 rounded-xl gradient-hero flex items-center justify-center">
+                <Crown className="w-6 h-6 text-primary-foreground" />
+              </div>
+              <div>
+                <h2 className="font-display font-bold text-base">Candidater à un poste</h2>
+                <p className="text-xs text-muted-foreground">
+                  Bureau exécutif ou responsable de pôle
+                </p>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4">
+              Les étudiants en L2/L3 peuvent candidater à la présidence. 
+              Les étudiants en L1 peuvent postuler aux autres postes.
+            </p>
+            <Button 
+              className="w-full btn-primary"
+              onClick={() => setSelectedAction("candidature")}
+            >
+              Je candidate !
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Rejoindre un pôle */}
       <section className="py-4">
         <div className="container-section">
-          <h2 className="font-display font-bold text-base mb-3">Rejoindre un pôle</h2>
-          
-          {/* Icons row */}
-          <div className="flex gap-4 mb-4">
-            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-              <Users className="w-6 h-6 text-blue-500" />
+          <div className="card-elevated p-4">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h2 className="font-display font-bold text-base">Rejoindre un pôle</h2>
+                <p className="text-xs text-muted-foreground">
+                  8 pôles thématiques disponibles
+                </p>
+              </div>
             </div>
-            <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
-              <Users className="w-6 h-6 text-orange-500" />
-            </div>
-            <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-              <HandHeart className="w-6 h-6 text-green-500" />
-            </div>
+            <p className="text-sm text-muted-foreground mb-4">
+              Intègre un pôle selon tes centres d'intérêt : communication, culture, sport, informatique...
+            </p>
+            <Button 
+              variant="outline"
+              className="w-full border-2 border-primary text-primary"
+              onClick={() => setSelectedAction("pole")}
+            >
+              Je m'inscris !
+            </Button>
           </div>
-          <p className="text-sm text-muted-foreground mb-4">
-            Governance, Culture de Sport, Solidarités
-          </p>
-          <Button 
-            className="w-full border-2 border-primary text-primary bg-transparent hover:bg-primary-light"
-            onClick={() => setSelectedAction("pole")}
-          >
-            Je m'inscris !
-          </Button>
         </div>
       </section>
 
       {/* Proposer une activité */}
       <section className="py-4">
         <div className="container-section">
-          <h2 className="font-display font-bold text-base mb-3">Proposer une activité</h2>
-          <div className="flex gap-3 items-start mb-4">
-            <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
-              <Lightbulb className="w-5 h-5 text-amber-500" />
+          <div className="card-elevated p-4">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center">
+                <Lightbulb className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h2 className="font-display font-bold text-base">Proposer une activité</h2>
+                <p className="text-xs text-muted-foreground">
+                  Partage tes idées d'événements
+                </p>
+              </div>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Nous pes bureau saur the Cloits free muerique bonimes cerras eau prie im mante. Oe tusqriés!
+            <p className="text-sm text-muted-foreground mb-4">
+              Tu as une idée d'événement ? Soumets-la au Gouvernement UIE !
             </p>
+            <Button 
+              variant="outline"
+              className="w-full border-2 border-primary text-primary"
+              onClick={() => setSelectedAction("idea")}
+            >
+              Je propose !
+            </Button>
           </div>
-          <Button 
-            className="w-full border-2 border-primary text-primary bg-transparent hover:bg-primary-light"
-            onClick={() => setSelectedAction("idea")}
-          >
-            Je propose !
-          </Button>
         </div>
       </section>
 
       {/* Devenir bénévole */}
       <section className="py-4">
         <div className="container-section">
-          <h2 className="font-display font-bold text-base mb-3">Devenir bénévole</h2>
-          <div className="h-32 rounded-xl gradient-hero mb-4 flex items-center justify-center">
-            <span className="text-primary-foreground/60 text-sm">Image bénévoles</span>
+          <div className="card-elevated p-4">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-12 h-12 rounded-xl bg-red-500 flex items-center justify-center">
+                <HandHeart className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h2 className="font-display font-bold text-base">Devenir bénévole</h2>
+                <p className="text-xs text-muted-foreground">
+                  Aide ponctuelle lors des événements
+                </p>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4">
+              Rejoins notre équipe de bénévoles et aide à organiser les événements du campus.
+            </p>
+            <Button 
+              variant="outline"
+              className="w-full border-2 border-primary text-primary"
+              onClick={() => setSelectedAction("volunteer")}
+            >
+              Je m'engage !
+            </Button>
           </div>
-          <Button 
-            className="w-full border-2 border-primary text-primary bg-transparent hover:bg-primary-light"
-            onClick={() => setSelectedAction("volunteer")}
-          >
-            Je m'engage !
-          </Button>
         </div>
       </section>
 
@@ -162,13 +210,14 @@ const ParticiperPage = () => {
                   Merci !
                 </h3>
                 <p className="text-muted-foreground">
-                  Votre demande a été envoyée.
+                  Votre demande a été envoyée avec succès.
                 </p>
               </div>
             ) : (
               <>
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="font-display font-semibold text-foreground">
+                    {selectedAction === "candidature" && "Candidater à un poste"}
                     {selectedAction === "pole" && "Rejoindre un pôle"}
                     {selectedAction === "idea" && "Proposer une activité"}
                     {selectedAction === "volunteer" && "Devenir bénévole"}
@@ -199,8 +248,40 @@ const ParticiperPage = () => {
 
                   <div>
                     <label className="text-sm font-medium text-foreground mb-1 block">Téléphone</label>
-                    <Input type="tel" placeholder="+221 XX XXX XX XX" />
+                    <Input type="tel" placeholder="+223 XX XX XX XX" />
                   </div>
+
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Niveau d'études</label>
+                    <Select required>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Votre niveau" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="L1">Licence 1</SelectItem>
+                        <SelectItem value="L2">Licence 2</SelectItem>
+                        <SelectItem value="L3">Licence 3</SelectItem>
+                        <SelectItem value="M1">Master 1</SelectItem>
+                        <SelectItem value="M2">Master 2</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {selectedAction === "candidature" && (
+                    <div>
+                      <label className="text-sm font-medium text-foreground mb-1 block">Poste souhaité</label>
+                      <Select required>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Choisir un poste" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {postes.map((poste) => (
+                            <SelectItem key={poste} value={poste}>{poste}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
 
                   {(selectedAction === "pole" || selectedAction === "volunteer") && (
                     <div>
@@ -218,16 +299,25 @@ const ParticiperPage = () => {
                     </div>
                   )}
 
-                  {selectedAction === "idea" && (
+                  {(selectedAction === "candidature" || selectedAction === "idea") && (
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-1 block">Votre idée</label>
-                      <Textarea placeholder="Décrivez votre idée d'activité..." rows={4} required />
+                      <label className="text-sm font-medium text-foreground mb-1 block">
+                        {selectedAction === "candidature" ? "Motivation" : "Votre idée"}
+                      </label>
+                      <Textarea 
+                        placeholder={selectedAction === "candidature" 
+                          ? "Décrivez vos motivations et ce que vous apporterez..." 
+                          : "Décrivez votre idée d'activité..."
+                        } 
+                        rows={4} 
+                        required 
+                      />
                     </div>
                   )}
 
                   <Button type="submit" className="w-full btn-primary">
                     <Send className="w-4 h-4 mr-2" />
-                    Envoyer
+                    Envoyer ma candidature
                   </Button>
                 </form>
               </>

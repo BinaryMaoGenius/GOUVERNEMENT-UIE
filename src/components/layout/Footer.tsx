@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, Mail, MapPin, Phone, Facebook, Instagram, Twitter } from "lucide-react";
+import { Shield, Mail, MapPin, Phone, Facebook, Instagram, Twitter } from "lucide-react";
 
 export function Footer() {
   return (
@@ -10,21 +10,21 @@ export function Footer() {
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-xl bg-primary-foreground/10 flex items-center justify-center">
-                <GraduationCap className="w-5 h-5 text-primary-foreground" />
+                <Shield className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
                 <span className="font-display font-bold text-lg block leading-tight">
-                  BDE Excellence
+                  Gouvernement UIE
                 </span>
                 <span className="text-xs text-primary-foreground/70">
-                  Université Internationale Excellence
+                  Union • Implication • Excellence
                 </span>
               </div>
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed max-w-md">
-              Le Bureau des Étudiants œuvre pour améliorer la vie étudiante, 
-              organiser des activités enrichissantes et représenter les intérêts 
-              de tous les étudiants de l'Université Internationale Excellence.
+              Le Gouvernement des Étudiants de l'Université Internationale d'Excellence 
+              œuvre pour animer la vie estudiantine, développer le leadership 
+              et promouvoir les valeurs d'engagement et de solidarité.
             </p>
           </div>
 
@@ -34,7 +34,7 @@ export function Footer() {
             <ul className="space-y-2">
               {[
                 { label: "Accueil", href: "/" },
-                { label: "Le BDE", href: "/bde" },
+                { label: "Gouvernement", href: "/gouvernement" },
                 { label: "Activités", href: "/activites" },
                 { label: "Programme", href: "/programme" },
                 { label: "Participer", href: "/participer" },
@@ -57,15 +57,15 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-primary-foreground/70">
                 <Mail className="w-4 h-4" />
-                <span>bde@uie.edu</span>
+                <span>contact@uiemali.ac</span>
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/70">
                 <Phone className="w-4 h-4" />
-                <span>+221 XX XXX XX XX</span>
+                <span>+223 78 28 28 42</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-primary-foreground/70">
                 <MapPin className="w-4 h-4 mt-0.5" />
-                <span>Campus UIE, Dakar</span>
+                <span>Badalabougou, Colline du Savoir</span>
               </li>
             </ul>
 
@@ -91,7 +91,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-primary-foreground/10 mt-8 pt-8 text-center text-sm text-primary-foreground/50">
-          <p>© {new Date().getFullYear()} BDE - Université Internationale Excellence. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} Gouvernement UIE - Université Internationale d'Excellence. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

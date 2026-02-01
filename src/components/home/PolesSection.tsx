@@ -1,35 +1,30 @@
 import { Link } from "react-router-dom";
 import { 
-  Shield, 
-  Megaphone, 
-  Users, 
-  Palette, 
+  MessageSquare, 
+  UsersRound, 
+  Music, 
   Heart, 
   Briefcase, 
   Languages, 
-  Laptop
+  Monitor,
+  Scale
 } from "lucide-react";
 
 const poles = [
   {
-    icon: Shield,
-    name: "Gouvernance",
+    icon: MessageSquare,
+    name: "Communication",
     color: "bg-blue-500",
   },
   {
-    icon: Palette,
-    name: "Culture & Sport",
-    color: "bg-orange-500",
-  },
-  {
-    icon: Megaphone,
-    name: "Communication",
-    color: "bg-purple-500",
-  },
-  {
-    icon: Users,
+    icon: UsersRound,
     name: "Organisation",
     color: "bg-green-500",
+  },
+  {
+    icon: Music,
+    name: "Culture & Sport",
+    color: "bg-orange-500",
   },
   {
     icon: Heart,
@@ -39,7 +34,7 @@ const poles = [
   {
     icon: Briefcase,
     name: "Entrepreneuriat",
-    color: "bg-amber-600",
+    color: "bg-purple-500",
   },
   {
     icon: Languages,
@@ -47,9 +42,14 @@ const poles = [
     color: "bg-teal-500",
   },
   {
-    icon: Laptop,
-    name: "Numérique",
+    icon: Monitor,
+    name: "Informatique",
     color: "bg-indigo-500",
+  },
+  {
+    icon: Scale,
+    name: "Droit",
+    color: "bg-amber-600",
   },
 ];
 
@@ -57,11 +57,14 @@ export function PolesSection() {
   return (
     <section className="py-8">
       <div className="container-section">
+        <h2 className="font-display font-bold text-lg text-foreground mb-4">
+          Nos 8 Pôles
+        </h2>
         <div className="grid grid-cols-4 gap-3">
           {poles.map((pole) => (
             <Link
               key={pole.name}
-              to="/programme"
+              to="/gouvernement"
               className="flex flex-col items-center text-center group"
             >
               <div className={`w-14 h-14 rounded-xl ${pole.color} flex items-center justify-center mb-2 group-hover:scale-110 transition-transform`}>
