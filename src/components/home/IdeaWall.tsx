@@ -20,7 +20,7 @@ export function IdeaWall() {
         : ideas.filter(idea => idea.category === activeCategory);
 
     return (
-        <section className="py-20 relative overflow-hidden bg-background">
+        <section id="mur-des-idees" className="py-20 relative overflow-hidden bg-background">
             <div className="container-section relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
                     <div className="max-w-xl text-center md:text-left">
@@ -41,8 +41,8 @@ export function IdeaWall() {
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
                             className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 border ${activeCategory === cat
-                                    ? "bg-accent text-black border-accent shadow-lg shadow-accent/20"
-                                    : "bg-white/5 text-muted-foreground border-white/10 hover:border-accent/50"
+                                ? "bg-accent text-black border-accent shadow-lg shadow-accent/20"
+                                : "bg-white/5 text-muted-foreground border-white/10 hover:border-accent/50"
                                 }`}
                         >
                             {cat}

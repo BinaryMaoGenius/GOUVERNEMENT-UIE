@@ -16,10 +16,10 @@ const Index = () => {
       <NextActivitySection />
       <PolesSection />
       <PresidentMessage />
+      <IdeaWall />
       <TimelineSection />
       <CultureSection />
       <OrganigrammeSection />
-      <IdeaWall />
       <CTASection />
     </Layout>
   );

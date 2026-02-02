@@ -124,6 +124,8 @@ const ParticiperPage = () => {
         </div>
       </section>
 
+      <IdeaWall />
+
       {/* Candidater à un poste */}
       <section className="py-6">
         <div className="container-section">
@@ -366,7 +368,6 @@ const ParticiperPage = () => {
           </div>
         </section>
       )}
-      <IdeaWall />
     </Layout>
   );
 };

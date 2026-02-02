@@ -9,6 +9,7 @@ const navItems = [
   { label: "Gouvernement", href: "/gouvernement" },
   { label: "Activités", href: "/activites" },
   { label: "Programme", href: "/programme" },
+  { label: "Mur des idées", href: "/#mur-des-idees" },
   { label: "Participer", href: "/participer" },
 ];
 
