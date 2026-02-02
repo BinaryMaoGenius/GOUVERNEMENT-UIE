@@ -35,7 +35,6 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground dark">
-      <div className="bg-red-600 text-white text-[10px] text-center py-0.5 font-bold z-[100]">VÉRIFICATION MISE À JOUR : OK</div>
       <Header />
       <main className={`flex-1 pb-20 md:pb-0 relative ${transitionStage}`}>
         {children}
