@@ -12,6 +12,7 @@ const initialIdeas = [
 const categories = ["Tous", "Gouvernance", "Numérique", "Mobilisation", "Culture", "Sport"];
 
 export function IdeaWall() {
+    console.log("Mur des idées rendu !");
     const [ideas, setIdeas] = useState(initialIdeas);
     const [activeCategory, setActiveCategory] = useState("Tous");
 

@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Shield, Calendar, FileText, HandHeart } from "lucide-react";
+import { Home, Shield, Calendar, FileText, HandHeart, Lightbulb } from "lucide-react";
 
 const navItems = [
   { label: "Accueil", href: "/", icon: Home },
-  { label: "Gouv", href: "/gouvernement", icon: Shield },
   { label: "Activités", href: "/activites", icon: Calendar },
   { label: "Programme", href: "/programme", icon: FileText },
+  { label: "Idées", href: "/#mur-des-idees", icon: Lightbulb },
   { label: "Participer", href: "/participer", icon: HandHeart },
 ];
 
@@ -21,11 +21,10 @@ export function BottomNav() {
             <Link
               key={item.href}
               to={item.href}
-              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition-colors ${
-                isActive
+              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition-colors ${isActive
                   ? "text-primary"
                   : "text-muted-foreground"
-              }`}
+                }`}
             >
               <item.icon className={`w-5 h-5 ${isActive ? "text-primary" : ""}`} />
               <span className="text-[10px] font-medium">{item.label}</span>
