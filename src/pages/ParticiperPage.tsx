@@ -9,7 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Shield, Lightbulb, HandHeart, ArrowLeft, CheckCircle, Send, Crown } from "lucide-react";
+import { Shield, Lightbulb, HandHeart, ArrowLeft, CheckCircle, Send, Crown, Star } from "lucide-react";
+import { IdeaWall } from "@/components/home/IdeaWall";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -365,6 +366,7 @@ const ParticiperPage = () => {
           </div>
         </section>
       )}
+      <IdeaWall />
     </Layout>
   );
 };
