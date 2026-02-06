@@ -9,11 +9,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Shield, Lightbulb, HandHeart, ArrowLeft, CheckCircle, Send, Crown, Star } from "lucide-react";
+import { Shield, Lightbulb, HandHeart, ArrowLeft, CheckCircle, Send, Crown, Star, X } from "lucide-react";
 import { IdeaWall } from "@/components/home/IdeaWall";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { BottomNav } from "@/components/layout/BottomNav";
 
 const postes = [
   "Président(e)",
@@ -47,6 +48,18 @@ const ParticiperPage = () => {
   const [selectedAction, setSelectedAction] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedAction) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedAction]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -239,10 +252,13 @@ const ParticiperPage = () => {
         </div>
       </section>
 
+      {/* Bottom Nav - Hidden when modal is open */}
+      <BottomNav hidden={selectedAction !== null} />
+
       {/* Form Modal */}
       {selectedAction && (
-        <section className="fixed inset-0 bg-background/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="glass-dark w-full max-w-2xl rounded-[3rem] p-8 md:p-12 max-h-[90vh] overflow-auto border-accent/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] animate-scale-in">
+        <section className="fixed inset-0 bg-background/95 backdrop-blur-md z-[60] flex items-center justify-center p-4 overflow-y-auto">
+          <div className="glass-dark w-full max-w-2xl rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 my-4 border-accent/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] animate-scale-in relative">
             {submitted ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-4">
@@ -257,8 +273,8 @@ const ParticiperPage = () => {
               </div>
             ) : (
               <>
-                <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-6">
-                  <h3 className="font-display font-bold text-2xl text-foreground italic">
+                <div className="flex justify-between items-center mb-6 md:mb-8 border-b border-white/5 pb-4 md:pb-6">
+                  <h3 className="font-display font-bold text-xl md:text-2xl text-foreground italic">
                     {selectedAction === "candidature" && "Dossier de Candidature"}
                     {selectedAction === "pole" && "Intégration d'un Pôle"}
                     {selectedAction === "idea" && "Proposition d'Activité"}
@@ -266,9 +282,10 @@ const ParticiperPage = () => {
                   </h3>
                   <button
                     onClick={() => setSelectedAction(null)}
-                    className="w-10 h-10 rounded-full glass-dark border-white/10 flex items-center justify-center text-muted-foreground hover:text-white transition-colors"
+                    className="w-10 h-10 rounded-full glass-dark border-white/10 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all"
+                    aria-label="Fermer"
                   >
-                    ✕
+                    <X className="w-5 h-5" />
                   </button>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -358,10 +375,13 @@ const ParticiperPage = () => {
                     </div>
                   )}
 
-                  <Button type="submit" className="w-full btn-primary">
-                    <Send className="w-4 h-4 mr-2" />
-                    Envoyer ma candidature
-                  </Button>
+                  {/* Submit button - sticky on mobile */}
+                  <div className="pt-6 sticky bottom-0 bg-gradient-to-t from-black/80 to-transparent pb-4 -mx-6 px-6 md:static md:bg-none md:pb-0 md:mx-0 md:px-0">
+                    <Button type="submit" className="w-full btn-primary h-14 md:h-12 shadow-xl text-base font-bold">
+                      <Send className="w-4 h-4 mr-2" />
+                      Envoyer ma candidature
+                    </Button>
+                  </div>
                 </form>
               </>
             )}

@@ -1,5 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { OrganigrammeSection } from "@/components/gouvernement/OrganigrammeSection";
+import { OrganigramTree } from "@/components/gouvernement/OrganigramTree";
+import { VicePresidentMessage } from "@/components/gouvernement/VicePresidentMessage";
 import {
   Accordion,
   AccordionContent,
@@ -13,9 +15,12 @@ import {
   ArrowLeft,
   CheckCircle2,
   Users,
-  Star
+  Star,
+  Network,
+  List
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const missions = [
   "Contribuer à l'animation de la vie estudiantine au sein de l'UIE",
@@ -33,6 +38,8 @@ const engagements = [
 ];
 
 const GouvernementPage = () => {
+  const [viewMode, setViewMode] = useState<"list" | "tree">("tree");
+
   return (
     <Layout>
       {/* Header */}
@@ -135,8 +142,40 @@ const GouvernementPage = () => {
         </div>
       </section>
 
-      {/* Organigramme complet */}
-      <OrganigrammeSection />
+      {/* Organigramme avec toggle */}
+      <section className="py-12 bg-background">
+        <div className="container-section">
+          {/* Toggle buttons */}
+          <div className="flex justify-center gap-2 mb-8">
+            <button
+              onClick={() => setViewMode("tree")}
+              className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 flex items-center gap-2 ${viewMode === "tree"
+                  ? "bg-primary text-white shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                  : "bg-white/5 text-muted-foreground hover:bg-white/10"
+                }`}
+            >
+              <Network className="w-4 h-4" />
+              Vue Hiérarchique
+            </button>
+            <button
+              onClick={() => setViewMode("list")}
+              className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 flex items-center gap-2 ${viewMode === "list"
+                  ? "bg-primary text-white shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                  : "bg-white/5 text-muted-foreground hover:bg-white/10"
+                }`}
+            >
+              <List className="w-4 h-4" />
+              Vue Détaillée
+            </button>
+          </div>
+
+          {/* Conditional rendering based on view mode */}
+          {viewMode === "tree" ? <OrganigramTree /> : <OrganigrammeSection />}
+        </div>
+      </section>
+
+      {/* Message du Vice-Président */}
+      <VicePresidentMessage />
 
       {/* CTA */}
       <section className="py-6">
