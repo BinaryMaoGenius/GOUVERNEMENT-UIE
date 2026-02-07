@@ -6,67 +6,74 @@
 
 @layer base {
   :root {
-    /* Main Colors - UIE Institutional (Lighter Palette) */
-    --background: 210 20% 98%;
-    --foreground: 220 25% 12%;
+    /* Main Colors - UIE Institutional (Pure Blue & White Identity) */
+    --background: 0 0% 100%;
+    /* Pure White */
+    --foreground: 222 47% 11%;
+    /* Deep Blue-Black */
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 12%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 12%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 215 80% 45%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 215 80% 95%;
+    /* Primary: The Original UIE Blue */
+    --primary: 221 83% 53%;
+    /* Bright Royal Blue */
+    --primary-foreground: 210 40% 98%;
+    --primary-light: 221 83% 96%;
 
-    --secondary: 220 15% 96%;
-    --secondary-foreground: 220 20% 25%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11.2%;
 
-    --accent: 38 92% 52%;
-    /* Slightly more vibrant gold */
-    --accent-foreground: 220 25% 10%;
+    /* Accent: Sky Blue / Cyan (Monochromatic Complement) */
+    --accent: 199 89% 48%;
+    /* Vivid Sky Blue */
+    --accent-foreground: 0 0% 100%;
 
-    --muted: 220 15% 94%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 92%;
-    --input: 220 20% 92%;
-    --ring: 215 80% 45%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
 
-    --radius: 1rem;
+    --radius: 0.5rem;
+    /* Returned to slightly sharper corners for professional look */
 
-    /* Gradients - Polished & Lighter */
-    --gradient-hero: linear-gradient(135deg, hsl(215 80% 45%) 0%, hsl(260 70% 55%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(38 92% 52%) 0%, hsl(30 90% 45%) 100%);
-    --gradient-light: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+    /* Gradients - Pure Blue Scale */
+    --gradient-hero: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(199 89% 48%) 100%);
+    /* Blue to Sky */
+    --gradient-accent: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(221 83% 53%) 100%);
+    --gradient-light: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
   }
 
   .dark {
-    --background: 230 25% 4%;
-    --foreground: 210 20% 98%;
-    --card: 230 25% 6%;
-    --card-foreground: 210 20% 98%;
-    --popover: 230 25% 6%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 215 80% 64%;
-    --primary-foreground: 220 20% 10%;
-    --primary-light: 215 50% 15%;
-    --secondary: 220 15% 12%;
-    --secondary-foreground: 210 20% 95%;
-    --accent: 43 96% 58%;
-    --accent-foreground: 220 20% 10%;
-    --muted: 220 15% 12%;
-    --muted-foreground: 220 10% 65%;
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 215 80% 64%;
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47.4% 11.2%;
+    --primary-light: 217 50% 15%;
+    --secondary: 217 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 40% 98%;
+    --muted: 217 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32.6% 17.5%;
+    --input: 217 32.6% 17.5%;
+    --ring: 224 76.3% 48%;
   }
 
   * {
@@ -87,7 +94,7 @@
   h4,
   h5,
   h6 {
-    @apply font-display font-bold tracking-tight text-foreground/90;
+    @apply font-display font-bold tracking-tight text-foreground;
   }
 }
 
@@ -97,50 +104,50 @@
   }
 
   .card-elevated {
-    @apply bg-white rounded-[2rem] border border-border shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-all duration-500;
+    @apply bg-white rounded-xl border border-slate-100 shadow-sm transition-all duration-300;
 
     &:hover {
-      @apply shadow-[0_12px_48px_rgba(0,0,0,0.08)] -translate-y-2;
+      @apply shadow-md -translate-y-1 border-primary/20;
     }
   }
 
   .glass {
-    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.02)];
+    @apply bg-white/80 backdrop-blur-md border border-white/60 shadow-sm;
   }
 
   .glass-dark {
-    /* Kept for specialty but updated to be less oppressive */
-    @apply bg-slate-900/80 backdrop-blur-2xl border border-slate-800/50 shadow-[0_24px_64px_rgba(0,0,0,0.2)];
+    /* Reverted to a simpler dark overlay for specific needs */
+    @apply bg-slate-900/90 backdrop-blur-md border border-slate-700/50 shadow-xl;
   }
 
   .glass-light {
-    @apply bg-white/40 backdrop-blur-md border border-white/60 shadow-sm;
+    @apply bg-white/60 backdrop-blur-sm border border-white/80;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-primary to-primary/80;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
   }
 
   .section-title {
-    @apply text-4xl sm:text-5xl lg:text-5xl font-bold text-foreground mb-6 leading-tight font-display italic tracking-tight;
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight font-display;
   }
 
   .section-subtitle {
-    @apply text-muted-foreground text-lg sm:text-xl font-light tracking-wide max-w-3xl font-body leading-relaxed;
+    @apply text-muted-foreground text-lg sm:text-xlg font-light tracking-wide max-w-3xl font-body leading-relaxed;
   }
 
   .idea-card {
-    @apply bg-white rounded-3xl p-8 border border-border/60 shadow-[0_8px_32px_rgba(0,0,0,0.03)] transition-all duration-500 hover:scale-[1.02] hover:border-accent/40;
+    @apply bg-white rounded-2xl p-6 border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/30;
   }
 }
 
 @layer utilities {
   .animate-fade-in {
-    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeIn 0.6s ease-out forwards;
   }
 
   .animate-slide-up {
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slideUp 0.6s ease-out forwards;
   }
 
   @keyframes fadeIn {
@@ -156,7 +163,7 @@
   @keyframes slideUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
     }
 
     to {
