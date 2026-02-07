@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Calendar, MapPin, Users, ArrowLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ActivityCard, Activity } from "@/components/home/ActivityCard";
 
-const activities = [
+const activities: Activity[] = [
   {
     id: 1,
-    title: "Sortie beach party",
-    description: "Soirée entante 2024. Trem pous des dosion casle, u pas des seuvermaine sat coventsprovdiomater, tit tav arite irestipe past ans pole a coretallent a edi acces.",
+    title: "Beach Party 2024",
+    description: "La soirée détente incontournable de l'année. Rejoignez-nous pour un moment de partage, de musique et de convivialité sur la plage.",
     date: "5 Mai 2024",
     location: "Plage de Ngor",
     participants: 120,
@@ -18,19 +18,19 @@ const activities = [
   },
   {
     id: 2,
-    title: "Tournoi de football",
-    description: "Compétition sportive inter-facultés ouverte à tous les étudiants.",
+    title: "Tournoi de Football",
+    description: "La compétition sportive inter-facultés tant attendue. Venez défendre vos couleurs et montrer vos talents sur le terrain universitaire.",
     date: "20 Avril 2024",
     location: "Terrain universitaire",
     participants: 128,
     pole: "Culture & Sport",
     status: "upcoming",
-    image: false,
+    image: true,
   },
   {
     id: 3,
-    title: "Don de sang",
-    description: "Collecte de sang en partenariat avec la Croix-Rouge.",
+    title: "Don de Sang",
+    description: "Une action humanitaire cruciale en partenariat avec la Croix-Rouge d'excellence. Donnez un peu de votre temps pour sauver des vies.",
     date: "10 Janvier 2024",
     location: "Centre médical",
     participants: 80,
@@ -40,8 +40,8 @@ const activities = [
   },
   {
     id: 4,
-    title: "Atelier entreprex",
-    description: "Ateliers de préparation aux entretiens d'embauche.",
+    title: "Atelier Entrepreneuriat",
+    description: "Des ateliers pratiques de préparation aux entretiens d'embauche et de coaching professionnel pour booster votre future carrière.",
     date: "5 Janvier 2024",
     location: "Salle de conférence",
     participants: 75,
@@ -51,7 +51,7 @@ const activities = [
   },
 ];
 
-const filters = ["À venir", "Réalisées", "Réalisees"];
+const filters = ["À venir", "Réalisées"];
 
 const ActivitesPage = () => {
   const [activeFilter, setActiveFilter] = useState("À venir");
@@ -64,67 +64,48 @@ const ActivitesPage = () => {
   return (
     <Layout>
       {/* Header */}
-      <section className="py-4">
+      <section className="py-12">
         <div className="container-section">
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent mb-8 group">
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent mb-12 group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span className="font-display font-bold text-2xl text-foreground italic tracking-tight">Le Journal des Actions</span>
           </Link>
 
-          {/* Filters */}
-          <div className="flex gap-2 overflow-x-auto pb-2">
-            {filters.slice(0, 2).map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${activeFilter === filter
-                    ? "bg-accent text-black shadow-[0_0_15px_rgba(255,191,0,0.3)]"
-                    : "glass-dark text-muted-foreground hover:text-white border-white/5"
-                  }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Activities List */}
-      <section className="py-4">
-        <div className="container-section space-y-4">
-          {filteredActivities.map((activity) => (
-            <div key={activity.id} className="glass-dark rounded-[2.5rem] overflow-hidden border-white/5 hover:border-accent/20 transition-all duration-300 group">
-              {activity.image && (
-                <div className="h-48 gradient-hero relative overflow-hidden">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity">
-                    <Calendar size={64} className="text-white" />
-                  </div>
-                </div>
-              )}
-              <div className="p-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-6 h-6 text-accent" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-display font-bold text-xl text-foreground leading-tight">{activity.title}</h3>
-                      <span className="text-[10px] font-bold text-accent glass-dark px-3 py-1 rounded-full border-accent/20 uppercase tracking-[0.2em]">{activity.pole}</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground/60 mb-4 font-body uppercase tracking-widest font-bold">{activity.date} • {activity.location}</p>
-                    <p className="text-sm text-muted-foreground font-body leading-relaxed">{activity.description}</p>
-                  </div>
-                </div>
-
-                {activity.status === "upcoming" && (
-                  <Button className="w-full h-12 rounded-2xl bg-white text-black hover:bg-white/90 font-bold mt-8 shadow-lg">
-                    Réserver ma place
-                  </Button>
-                )}
-              </div>
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+            <div>
+              <h1 className="text-4xl font-display font-bold mb-2">Activités & Événements</h1>
+              <p className="text-muted-foreground">Suivez les initiatives du Gouvernement UIE au fil de l'année.</p>
             </div>
-          ))}
+
+            {/* Filters */}
+            <div className="flex gap-3 bg-white/5 p-1.5 rounded-2xl w-fit border border-white/5">
+              {filters.map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`px-8 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ${activeFilter === filter
+                    ? "bg-accent text-black shadow-lg shadow-accent/20"
+                    : "text-muted-foreground hover:text-white"
+                    }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Activities List */}
+          <div className="grid lg:grid-cols-2 gap-8 animate-fade-in">
+            {filteredActivities.length > 0 ? (
+              filteredActivities.map((activity) => (
+                <ActivityCard key={activity.id} activity={activity} />
+              ))
+            ) : (
+              <div className="lg:col-span-2 glass-dark p-20 text-center rounded-[3rem] border border-white/5">
+                <p className="text-xl text-muted-foreground italic">Aucune activité prévue pour le moment.</p>
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </Layout>
