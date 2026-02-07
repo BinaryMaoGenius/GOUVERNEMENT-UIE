@@ -133,7 +133,7 @@
   }
 
   .section-subtitle {
-    @apply text-muted-foreground text-lg sm:text-xlg font-light tracking-wide max-w-3xl font-body leading-relaxed;
+    @apply text-muted-foreground text-lg sm:text-xl font-light tracking-wide max-w-3xl font-body leading-relaxed;
   }
 
   .idea-card {
