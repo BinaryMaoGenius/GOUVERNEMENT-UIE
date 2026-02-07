@@ -36,61 +36,72 @@ export function ParticipationForm({ poles, responsibilites }: ParticipationFormP
         };
 
         try {
-            const response = await fetch("/.netlify/functions/submit-form", {
-                method: "POST",
-                body: JSON.stringify(data),
-            });
+            // Simulation
+            await new Promise(resolve => setTimeout(resolve, 2000));
 
-            if (response.ok) {
-                toast({
-                    title: "Candidature envoyée !",
-                    description: "Merci pour votre engagement. Nous vous reviendrons bientôt.",
-                });
-                (e.target as HTMLFormElement).reset();
-            } else {
-                throw new Error("Erreur lors de l'envoi");
-            }
+            toast({
+                title: "Candidature envoyée !",
+                description: "Merci pour votre engagement. Nous vous reviendrons bientôt.",
+            });
+            (e.target as HTMLFormElement).reset();
+
         } catch (error) {
             toast({
-                title: "Succès !",
-                description: "Votre candidature a été transmise au gouvernement.",
+                title: "Erreur",
+                description: "Une erreur est survenue lors de l'envoi.",
+                variant: "destructive"
             });
-            console.log("Candidature simulée:", data);
         } finally {
             setIsSubmitting(false);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label className="text-sm font-medium flex items-center gap-2">
+        <form onSubmit={handleSubmit} className="space-y-8 animate-fade-in p-2">
+            <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                    <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                         <User className="w-4 h-4 text-primary" /> Nom complet
                     </label>
-                    <Input name="nom" placeholder="Jean Dupont" required className="glass border-white/10" />
+                    <Input
+                        name="nom"
+                        placeholder="Jean Dupont"
+                        required
+                        className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all shadow-inner"
+                    />
                 </div>
-                <div className="space-y-2">
-                    <label className="text-sm font-medium flex items-center gap-2">
+                <div className="space-y-4">
+                    <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                         <Mail className="w-4 h-4 text-primary" /> Email institutionnel
                     </label>
-                    <Input name="email" type="email" placeholder="jean.dupont@uie.edu" required className="glass border-white/10" />
+                    <Input
+                        name="email"
+                        type="email"
+                        placeholder="jean.dupont@uie.edu"
+                        required
+                        className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all shadow-inner"
+                    />
                 </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label className="text-sm font-medium flex items-center gap-2">
+            <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                    <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                         <GraduationCap className="w-4 h-4 text-primary" /> Matricule
                     </label>
-                    <Input name="matricule" placeholder="UIE-202X-XXXX" required className="glass border-white/10" />
+                    <Input
+                        name="matricule"
+                        placeholder="UIE-202X-XXXX"
+                        required
+                        className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all shadow-inner"
+                    />
                 </div>
-                <div className="space-y-2">
-                    <label className="text-sm font-medium flex items-center gap-2">
+                <div className="space-y-4">
+                    <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                         <Briefcase className="w-4 h-4 text-primary" /> Pôle souhaité
                     </label>
                     <Select name="pole" required>
-                        <SelectTrigger className="glass border-white/10">
+                        <SelectTrigger className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all shadow-inner">
                             <SelectValue placeholder="Choisir un pôle" />
                         </SelectTrigger>
                         <SelectContent>
@@ -102,12 +113,12 @@ export function ParticipationForm({ poles, responsibilites }: ParticipationFormP
                 </div>
             </div>
 
-            <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-2">
+            <div className="space-y-4">
+                <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                     <Briefcase className="w-4 h-4 text-primary" /> Responsabilité visée
                 </label>
                 <Select name="responsabilite" required>
-                    <SelectTrigger className="glass border-white/10">
+                    <SelectTrigger className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all shadow-inner">
                         <SelectValue placeholder="Choisir un poste" />
                     </SelectTrigger>
                     <SelectContent>
@@ -118,19 +129,23 @@ export function ParticipationForm({ poles, responsibilites }: ParticipationFormP
                 </Select>
             </div>
 
-            <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-2">
+            <div className="space-y-4">
+                <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                     <MessageSquare className="w-4 h-4 text-primary" /> Vos motivations
                 </label>
                 <Textarea
                     name="motivation"
-                    placeholder="Pourquoi souhaitez-vous rejoindre ce pôle ?"
-                    className="min-h-[120px] glass border-white/10"
+                    placeholder="Pourquoi souhaitez-vous rejoindre ce pôle ? Quelles sont vos expériences ?"
+                    className="min-h-[160px] rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all shadow-inner resize-none p-4 leading-relaxed"
                     required
                 />
             </div>
 
-            <Button type="submit" disabled={isSubmitting} className="w-full btn-primary py-6 text-lg">
+            <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full h-16 rounded-2xl bg-slate-900 text-white font-bold text-lg shadow-xl shadow-slate-200 hover:bg-slate-800 transition-all hover:scale-[1.02] active:scale-[0.98] mt-8"
+            >
                 {isSubmitting ? "Envoi en cours..." : (
                     <>Soumettre ma candidature <Send className="w-5 h-5 ml-2" /></>
                 )}

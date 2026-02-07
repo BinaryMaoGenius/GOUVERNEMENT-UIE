@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-import { Car, Package, UtensilsCrossed, ArrowRight, Clock, MapPin } from "lucide-react";
+import { Car, Package, UtensilsCrossed, ArrowRight, Clock, MapPin, CheckCircle2 } from "lucide-react";
 
 const services = [
     {
@@ -10,6 +10,7 @@ const services = [
         icon: Car,
         href: "/services/moov",
         color: "from-blue-500 to-cyan-500",
+        shadow: "shadow-blue-200",
         features: ["Rapide et sûr", "Tarifs étudiants", "Disponible 24/7"],
     },
     {
@@ -19,6 +20,7 @@ const services = [
         icon: Package,
         href: "/services/telimani",
         color: "from-purple-500 to-pink-500",
+        shadow: "shadow-purple-200",
         features: ["Livraison express", "Suivi en temps réel", "Prix abordables"],
     },
     {
@@ -28,6 +30,7 @@ const services = [
         icon: UtensilsCrossed,
         href: "/services/restaurant",
         color: "from-orange-500 to-red-500",
+        shadow: "shadow-orange-200",
         features: ["Large choix", "Livraison rapide", "Paiement flexible"],
     },
 ];
@@ -36,23 +39,27 @@ const ServicesPage = () => {
     return (
         <Layout>
             {/* Hero Section */}
-            <section className="relative py-20 overflow-hidden">
-                <div className="absolute inset-0 gradient-hero opacity-10"></div>
+            <section className="relative py-20 overflow-hidden bg-slate-50">
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-white opacity-50"></div>
                 <div className="container-section relative">
                     <div className="max-w-3xl mx-auto text-center">
-                        <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 gradient-text">
-                            Services UIE
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+                            <CheckCircle2 className="w-3 h-3" />
+                            <span>Campus Connecté</span>
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-slate-900">
+                            Services <span className="text-primary">UIE</span>
                         </h1>
-                        <p className="text-xl text-muted-foreground mb-8">
+                        <p className="text-xl text-muted-foreground font-body leading-relaxed">
                             Profitez de nos services de transport, livraison et restauration
-                            directement depuis votre campus
+                            directement depuis votre campus. Une expérience unifiée pour simplifier votre vie étudiante.
                         </p>
                     </div>
                 </div>
             </section>
 
             {/* Services Grid */}
-            <section className="py-16">
+            <section className="py-24">
                 <div className="container-section">
                     <div className="grid md:grid-cols-3 gap-8">
                         {services.map((service) => {
@@ -61,39 +68,38 @@ const ServicesPage = () => {
                                 <Link
                                     key={service.id}
                                     to={service.href}
-                                    className="group relative overflow-hidden rounded-3xl glass-dark border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                                    className="group relative overflow-hidden rounded-[2.5rem] bg-white border border-slate-200 hover:border-slate-300 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
                                 >
-                                    {/* Gradient Background */}
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-
-                                    <div className="relative p-8">
+                                    <div className="relative p-10 h-full flex flex-col">
                                         {/* Icon */}
-                                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                                            <Icon className="w-8 h-8 text-white" />
+                                        <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-8 shadow-lg ${service.shadow} group-hover:scale-110 transition-transform duration-500`}>
+                                            <Icon className="w-10 h-10 text-white" />
                                         </div>
 
                                         {/* Content */}
-                                        <h3 className="text-2xl font-display font-bold mb-3 text-foreground">
+                                        <h3 className="text-2xl font-display font-bold mb-4 text-slate-900 group-hover:text-primary transition-colors">
                                             {service.title}
                                         </h3>
-                                        <p className="text-muted-foreground mb-6">
+                                        <p className="text-muted-foreground mb-8 line-clamp-2">
                                             {service.description}
                                         </p>
 
                                         {/* Features */}
-                                        <ul className="space-y-2 mb-6">
-                                            {service.features.map((feature, idx) => (
-                                                <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                    <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color}`}></div>
-                                                    {feature}
-                                                </li>
-                                            ))}
-                                        </ul>
+                                        <div className="mt-auto space-y-4">
+                                            <div className="space-y-3 mb-8">
+                                                {service.features.map((feature, idx) => (
+                                                    <div key={idx} className="flex items-center gap-3 text-sm font-medium text-slate-600">
+                                                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color}`}></div>
+                                                        {feature}
+                                                    </div>
+                                                ))}
+                                            </div>
 
-                                        {/* CTA */}
-                                        <div className="flex items-center gap-2 text-primary font-medium group-hover:gap-4 transition-all duration-300">
-                                            Commander maintenant
-                                            <ArrowRight className="w-4 h-4" />
+                                            {/* CTA */}
+                                            <div className="flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all duration-300">
+                                                Commander maintenant
+                                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1" />
+                                            </div>
                                         </div>
                                     </div>
                                 </Link>
@@ -104,38 +110,45 @@ const ServicesPage = () => {
             </section>
 
             {/* Info Section */}
-            <section className="py-16 glass-dark">
+            <section className="py-24 bg-slate-50 border-y border-slate-200">
                 <div className="container-section">
                     <div className="max-w-4xl mx-auto">
-                        <h2 className="text-3xl font-display font-bold mb-8 text-center">
-                            Comment ça marche ?
-                        </h2>
-                        <div className="grid md:grid-cols-3 gap-8">
-                            <div className="text-center">
-                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                                    <span className="text-2xl font-bold text-primary">1</span>
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-display font-bold mb-4 text-slate-900">
+                                Comment ça marche ?
+                            </h2>
+                            <p className="text-muted-foreground">Une expérience fluide en 3 étapes simples</p>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-12 relative">
+                            {/* Connector Line (Desktop) */}
+                            <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-slate-200 -z-10"></div>
+
+                            <div className="text-center group">
+                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-500 z-10 relative">
+                                    <span className="text-3xl font-display font-bold text-primary">1</span>
                                 </div>
-                                <h3 className="font-bold mb-2">Choisissez votre service</h3>
-                                <p className="text-sm text-muted-foreground">
-                                    Sélectionnez Moov, Telimani ou Restaurant selon vos besoins
+                                <h3 className="font-bold text-lg mb-3">Choisissez votre service</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    Sélectionnez Moov, Telimani ou Restaurant selon vos besoins immédiats.
                                 </p>
                             </div>
-                            <div className="text-center">
-                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                                    <span className="text-2xl font-bold text-primary">2</span>
+                            <div className="text-center group">
+                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-500 z-10 relative">
+                                    <span className="text-3xl font-display font-bold text-primary">2</span>
                                 </div>
-                                <h3 className="font-bold mb-2">Passez votre commande</h3>
-                                <p className="text-sm text-muted-foreground">
-                                    Remplissez le formulaire avec vos informations
+                                <h3 className="font-bold text-lg mb-3">Passez votre commande</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    Remplissez le formulaire intuitif avec vos informations en quelques secondes.
                                 </p>
                             </div>
-                            <div className="text-center">
-                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                                    <span className="text-2xl font-bold text-primary">3</span>
+                            <div className="text-center group">
+                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-500 z-10 relative">
+                                    <span className="text-3xl font-display font-bold text-primary">3</span>
                                 </div>
-                                <h3 className="font-bold mb-2">Recevez votre service</h3>
-                                <p className="text-sm text-muted-foreground">
-                                    Suivez votre commande en temps réel jusqu'à la livraison
+                                <h3 className="font-bold text-lg mb-3">Recevez votre service</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    Suivez votre commande ou trajet en temps réel jusqu'à la finalisation.
                                 </p>
                             </div>
                         </div>
@@ -144,24 +157,24 @@ const ServicesPage = () => {
             </section>
 
             {/* Stats Section */}
-            <section className="py-16">
+            <section className="py-24 bg-white">
                 <div className="container-section">
-                    <div className="grid md:grid-cols-4 gap-8 text-center">
-                        <div>
-                            <div className="text-4xl font-bold gradient-text mb-2">500+</div>
-                            <div className="text-muted-foreground">Commandes par jour</div>
+                    <div className="grid md:grid-cols-4 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                        <div className="pt-8 md:pt-0">
+                            <div className="text-5xl font-display font-bold text-slate-900 mb-2">500+</div>
+                            <div className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Commandes / jour</div>
                         </div>
-                        <div>
-                            <div className="text-4xl font-bold gradient-text mb-2">15min</div>
-                            <div className="text-muted-foreground">Temps moyen</div>
+                        <div className="pt-8 md:pt-0 pl-0 md:pl-12">
+                            <div className="text-5xl font-display font-bold text-slate-900 mb-2">15<span className="text-2xl">min</span></div>
+                            <div className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Temps moyen</div>
                         </div>
-                        <div>
-                            <div className="text-4xl font-bold gradient-text mb-2">4.8/5</div>
-                            <div className="text-muted-foreground">Satisfaction client</div>
+                        <div className="pt-8 md:pt-0 pl-0 md:pl-12">
+                            <div className="text-5xl font-display font-bold text-slate-900 mb-2">4.8</div>
+                            <div className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Note moyenne</div>
                         </div>
-                        <div>
-                            <div className="text-4xl font-bold gradient-text mb-2">24/7</div>
-                            <div className="text-muted-foreground">Disponibilité</div>
+                        <div className="pt-8 md:pt-0 pl-0 md:pl-12">
+                            <div className="text-5xl font-display font-bold text-slate-900 mb-2">24/7</div>
+                            <div className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Disponibilité</div>
                         </div>
                     </div>
                 </div>

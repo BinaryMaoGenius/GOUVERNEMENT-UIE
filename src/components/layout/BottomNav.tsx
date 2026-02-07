@@ -19,7 +19,7 @@ export function BottomNav({ hidden = false }: BottomNavProps) {
   if (hidden) return null;
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-lg border-t border-border safe-area-bottom transition-transform duration-300">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-t border-slate-200 safe-area-bottom transition-transform duration-300 shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
       <div className="flex items-center justify-around py-2 px-2">
         {navItems.map((item) => {
           const isActive = location.pathname === item.href;
@@ -27,13 +27,13 @@ export function BottomNav({ hidden = false }: BottomNavProps) {
             <Link
               key={item.href}
               to={item.href}
-              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition-all duration-200 ${isActive
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground hover:text-foreground"
+              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${isActive
+                ? "text-blue-600 bg-blue-50"
+                : "text-slate-400 hover:text-slate-900"
                 }`}
             >
-              <item.icon className={`w-5 h-5 ${isActive ? "text-primary" : ""}`} />
-              <span className="text-[10px] font-medium">{item.label}</span>
+              <item.icon className={`w-5 h-5 ${isActive ? "text-blue-600 fill-blue-600/20" : ""}`} />
+              <span className={`text-[10px] ${isActive ? "font-bold" : "font-medium"}`}>{item.label}</span>
             </Link>
           );
         })}

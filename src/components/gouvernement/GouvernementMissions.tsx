@@ -17,7 +17,7 @@ const missionsData: ItemSection[] = [
     {
         title: "Notre Mission",
         icon: Target,
-        color: "text-primary",
+        color: "text-blue-600",
         items: [
             "Contribuer à l'animation de la vie estudiantine au sein de l'UIE",
             "Favoriser le développement de l'autonomie, de l'initiative et du leadership",
@@ -29,7 +29,7 @@ const missionsData: ItemSection[] = [
     {
         title: "L'Appel à l'Engagement",
         icon: Users,
-        color: "text-accent",
+        color: "text-blue-600",
         items: [
             "Participer activement à l'organisation d'évènements académiques, culturels et sportifs",
             "Acquérir des compétences en gestion, organisation et leadership",
@@ -46,12 +46,12 @@ export function GouvernementMissions() {
                 <AccordionItem
                     key={section.title}
                     value={section.title}
-                    className="glass-dark px-6 border-white/5 rounded-3xl overflow-hidden hover:border-primary/20 transition-all"
+                    className="bg-white px-6 border border-slate-200 rounded-3xl overflow-hidden hover:border-blue-200 hover:shadow-lg transition-all"
                 >
                     <AccordionTrigger className="hover:no-underline py-5 group">
                         <div className="flex items-center gap-3">
                             <section.icon className={`w-5 h-5 ${section.color} group-hover:scale-110 transition-transform`} />
-                            <span className="font-display font-bold text-foreground text-lg italic">
+                            <span className="font-display font-bold text-slate-900 text-lg italic">
                                 {section.title}
                             </span>
                         </div>
@@ -59,9 +59,9 @@ export function GouvernementMissions() {
                     <AccordionContent className="pb-6">
                         <div className="space-y-4">
                             {section.items.map((item, index) => (
-                                <div key={index} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">
+                                <div key={index} className="flex items-start gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-100">
                                     <CheckCircle2 className={`w-4 h-4 ${section.color} mt-0.5 flex-shrink-0`} />
-                                    <p className="text-sm text-muted-foreground font-body leading-relaxed">{item}</p>
+                                    <p className="text-sm text-slate-600 font-body leading-relaxed">{item}</p>
                                 </div>
                             ))}
                         </div>
@@ -69,20 +69,20 @@ export function GouvernementMissions() {
                 </AccordionItem>
             ))}
 
-            <AccordionItem value="fonctionnement" className="glass-dark px-6 border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all">
+            <AccordionItem value="fonctionnement" className="bg-white px-6 border border-slate-200 rounded-3xl overflow-hidden hover:border-blue-200 hover:shadow-lg transition-all">
                 <AccordionTrigger className="hover:no-underline py-5 group">
                     <div className="flex items-center gap-3">
-                        <BookOpen className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                        <span className="font-display font-bold text-foreground text-lg italic">
+                        <BookOpen className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform" />
+                        <span className="font-display font-bold text-slate-900 text-lg italic">
                             Principes Fondamentaux
                         </span>
                     </div>
                 </AccordionTrigger>
-                <AccordionContent className="pb-6 text-sm text-muted-foreground font-body space-y-4 leading-relaxed p-4">
+                <AccordionContent className="pb-6 text-sm text-slate-600 font-body space-y-4 leading-relaxed p-4">
                     <p>
                         Le Gouvernement UIE est une institution apolitique et fraternelle, dédiée au bien-être de chaque étudiant.
                     </p>
-                    <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 italic text-primary">
+                    <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 italic text-blue-700">
                         "L'alternance et la continuité sont les piliers de notre gouvernance."
                     </div>
                 </AccordionContent>

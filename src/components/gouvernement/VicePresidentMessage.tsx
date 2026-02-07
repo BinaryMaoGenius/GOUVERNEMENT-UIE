@@ -2,23 +2,23 @@ import { Users, Quote } from "lucide-react";
 
 export function VicePresidentMessage() {
     return (
-        <section className="py-12 md:py-16 relative overflow-hidden">
+        <section className="py-12 md:py-16 relative overflow-hidden bg-white">
             <div className="container-section">
-                <div className="glass-dark rounded-[2.5rem] p-8 md:p-12 border-white/5 relative overflow-hidden group hover:border-primary/20 transition-all duration-500">
+                <div className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-200 relative overflow-hidden group hover:border-blue-200 transition-all duration-500 shadow-xl shadow-slate-100">
                     {/* Background decoration */}
-                    <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity text-blue-600">
                         <Quote size={120} />
                     </div>
 
                     <div className="relative z-10">
                         {/* Header */}
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="w-1 h-12 bg-gradient-to-b from-primary to-accent rounded-full" />
+                            <div className="w-1 h-12 bg-gradient-to-b from-blue-600 to-indigo-600 rounded-full" />
                             <div>
-                                <p className="text-primary font-body text-xs uppercase tracking-[0.3em] font-bold">
+                                <p className="text-blue-600 font-body text-xs uppercase tracking-[0.3em] font-bold">
                                     Message du Vice-Président
                                 </p>
-                                <h3 className="font-display font-bold text-xl md:text-2xl text-foreground italic">
+                                <h3 className="font-display font-bold text-xl md:text-2xl text-slate-900 italic">
                                     Un Mot d'Ibrahim Traoré
                                 </h3>
                             </div>
@@ -27,9 +27,9 @@ export function VicePresidentMessage() {
                         <div className="flex flex-col md:flex-row gap-8 items-start">
                             {/* Avatar */}
                             <div className="flex-shrink-0 mx-auto md:mx-0">
-                                <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl gradient-hero p-1 shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                                    <div className="w-full h-full rounded-2xl bg-black flex items-center justify-center overflow-hidden">
-                                        <Users className="w-12 h-12 md:w-16 md:h-16 text-primary" />
+                                <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-slate-100 p-1 shadow-lg group-hover:scale-105 transition-transform duration-500 ring-4 ring-slate-50">
+                                    <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center overflow-hidden border border-slate-200">
+                                        <Users className="w-12 h-12 md:w-16 md:h-16 text-blue-600" />
                                     </div>
                                 </div>
                             </div>
@@ -37,8 +37,8 @@ export function VicePresidentMessage() {
                             {/* Message */}
                             <div className="flex-1">
                                 <div className="relative">
-                                    <Quote className="absolute -top-2 -left-2 w-8 h-8 text-accent/20" />
-                                    <blockquote className="text-base md:text-lg text-muted-foreground font-body leading-relaxed italic pl-6 md:pl-8">
+                                    <Quote className="absolute -top-2 -left-2 w-8 h-8 text-blue-200" />
+                                    <blockquote className="text-base md:text-lg text-slate-600 font-body leading-relaxed italic pl-6 md:pl-8">
                                         <p className="mb-4">
                                             Chers étudiants, notre force réside dans notre unité et notre détermination à bâtir ensemble une université d'excellence.
                                         </p>
@@ -49,18 +49,18 @@ export function VicePresidentMessage() {
                                 </div>
 
                                 {/* Signature */}
-                                <div className="mt-6 pt-6 border-t border-white/5">
+                                <div className="mt-6 pt-6 border-t border-slate-100">
                                     <div className="flex items-center gap-3">
                                         <div className="flex-1">
-                                            <p className="font-display font-bold text-lg text-foreground">
+                                            <p className="font-display font-bold text-lg text-slate-900">
                                                 Ibrahim Traoré
                                             </p>
-                                            <p className="text-sm text-primary font-medium">
+                                            <p className="text-sm text-blue-600 font-medium">
                                                 Vice-Président du Gouvernement UIE
                                             </p>
                                         </div>
-                                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                                            <Users className="w-6 h-6 text-primary" />
+                                        <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center border border-blue-100">
+                                            <Users className="w-6 h-6 text-blue-600" />
                                         </div>
                                     </div>
                                 </div>

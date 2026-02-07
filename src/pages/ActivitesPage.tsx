@@ -64,28 +64,28 @@ const ActivitesPage = () => {
   return (
     <Layout>
       {/* Header */}
-      <section className="py-12">
+      <section className="py-12 bg-slate-50 min-h-screen">
         <div className="container-section">
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent mb-12 group">
+          <Link to="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 mb-12 group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="font-display font-bold text-2xl text-foreground italic tracking-tight">Le Journal des Actions</span>
+            <span className="font-display font-bold text-2xl text-slate-900 italic tracking-tight">Le Journal des Actions</span>
           </Link>
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
             <div>
-              <h1 className="text-4xl font-display font-bold mb-2">Activités & Événements</h1>
-              <p className="text-muted-foreground">Suivez les initiatives du Gouvernement UIE au fil de l'année.</p>
+              <h1 className="text-4xl font-display font-bold mb-2 text-slate-900">Activités & Événements</h1>
+              <p className="text-slate-500">Suivez les initiatives du Gouvernement UIE au fil de l'année.</p>
             </div>
 
             {/* Filters */}
-            <div className="flex gap-3 bg-white/5 p-1.5 rounded-2xl w-fit border border-white/5">
+            <div className="flex gap-3 bg-white p-1.5 rounded-2xl w-fit border border-slate-200 shadow-sm">
               {filters.map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
                   className={`px-8 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ${activeFilter === filter
-                    ? "bg-accent text-black shadow-lg shadow-accent/20"
-                    : "text-muted-foreground hover:text-white"
+                    ? "bg-blue-600 text-white shadow-lg shadow-blue-200"
+                    : "text-slate-400 hover:text-slate-900 hover:bg-slate-50"
                     }`}
                 >
                   {filter}
@@ -101,8 +101,8 @@ const ActivitesPage = () => {
                 <ActivityCard key={activity.id} activity={activity} />
               ))
             ) : (
-              <div className="lg:col-span-2 glass-dark p-20 text-center rounded-[3rem] border border-white/5">
-                <p className="text-xl text-muted-foreground italic">Aucune activité prévue pour le moment.</p>
+              <div className="lg:col-span-2 bg-white p-20 text-center rounded-[3rem] border border-slate-200 shadow-sm">
+                <p className="text-xl text-slate-400 italic">Aucune activité prévue pour le moment.</p>
               </div>
             )}
           </div>
