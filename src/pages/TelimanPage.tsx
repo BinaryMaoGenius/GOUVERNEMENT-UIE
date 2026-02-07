@@ -1,253 +1,208 @@
 import { Layout } from "@/components/layout/Layout";
 import { useState } from "react";
-import { Package, MapPin, User, Phone, FileText, DollarSign, ArrowRight } from "lucide-react";
+import { Package, MapPin, Truck, Phone, ArrowRight, User, Weight, AlertCircle, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const TelimanPage = () => {
     const { toast } = useToast();
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: "",
-        description: "",
-        pickupAddress: "",
-        deliveryAddress: "",
-    });
+    const [loading, setLoading] = useState(false);
+    const [step, setStep] = useState(1); // 1: Info Colis, 2: Info Livraison, 3: Confirmation
 
-    const estimatedPrice = 1000; // Prix de base pour Telimani
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-
-        if (!formData.name || !formData.phone || !formData.description || !formData.pickupAddress || !formData.deliveryAddress) {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+            setStep(3);
             toast({
-                title: "Erreur",
-                description: "Veuillez remplir tous les champs",
-                variant: "destructive",
+                title: "Livraison programmée !",
+                description: "Un coursier Telimani va prendre en charge votre colis.",
             });
-            return;
-        }
-
-        // Simuler l'envoi de la commande
-        toast({
-            title: "Commande Telimani envoyée !",
-            description: `Votre livreur arrive dans 10 minutes pour récupérer votre colis. Prix: ${estimatedPrice} FCFA`,
-        });
-
-        // Réinitialiser le formulaire
-        setFormData({
-            name: "",
-            phone: "",
-            description: "",
-            pickupAddress: "",
-            deliveryAddress: "",
-        });
+        }, 1500);
     };
 
     return (
         <Layout>
-            {/* Hero Section */}
-            <section className="relative py-16 overflow-hidden">
-                <div className="absolute inset-0">
-                    <img
-                        src="/images/telimani.jpeg"
-                        alt="Telimani Livraison"
-                        className="w-full h-full object-cover opacity-20"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 opacity-20"></div>
-                </div>
-                <div className="container-section relative">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-6 shadow-xl relative overflow-hidden group">
-                            <img
-                                src="/images/telimani.jpeg"
-                                alt="Telimani"
-                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
-                            <div className="absolute inset-0 bg-purple-500/20 group-hover:bg-purple-500/10 transition-colors duration-500"></div>
-                            <Package className="w-10 h-10 text-white relative z-10" />
+            {/* Header Section */}
+            <section className="pt-24 pb-12 bg-white border-b border-gray-100">
+                <div className="container-section">
+                    <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
+                        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest">
+                            <ArrowRight className="w-4 h-4 rotate-180" />
+                            Retour
+                        </Link>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+                        <div className="max-w-xl text-center md:text-left">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 mb-6">
+                                <Package className="w-4 h-4" />
+                                <span className="text-xs font-bold uppercase tracking-wider">Logistique Campus</span>
+                            </div>
+                            <h1 className="text-4xl md:text-6xl font-display font-bold text-foreground mb-6 leading-tight">
+                                Telimani <span className="text-primary italic">Livraison</span>
+                            </h1>
+                            <p className="text-lg text-muted-foreground leading-relaxed">
+                                Envoyez et recevez vos colis en un clin d'œil. Un service de coursier interne fiable pour vos documents et paquets.
+                            </p>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 gradient-text">
-                            Telimani Livraison
-                        </h1>
-                        <p className="text-xl text-muted-foreground">
-                            Faites livrer vos colis et documents partout dans l'université
-                        </p>
+
+                        <div className="relative group w-full max-w-sm hidden md:block">
+                            <div className="absolute inset-0 bg-indigo-500/10 rounded-full blur-3xl transform scale-90" />
+                            <div className="relative bg-white rounded-[2rem] p-8 border border-indigo-100 shadow-xl shadow-indigo-100/50">
+                                <Truck className="w-24 h-24 text-indigo-600 mx-auto mb-4" />
+                                <div className="text-center font-bold text-indigo-900">Suivi en temps réel</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Order Form */}
-            <section className="py-16">
+            <section className="py-20 bg-slate-50">
                 <div className="container-section">
-                    <div className="max-w-2xl mx-auto">
-                        <div className="glass-dark rounded-3xl p-8 border border-white/10">
-                            <h2 className="text-2xl font-display font-bold mb-6">
-                                Commander une livraison
-                            </h2>
+                    <div className="max-w-4xl mx-auto">
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                {/* Personal Info */}
-                                <div className="space-y-4">
-                                    <div className="space-y-2">
-                                        <Label htmlFor="name" className="flex items-center gap-2">
-                                            <User className="w-4 h-4" />
-                                            Nom complet
-                                        </Label>
-                                        <Input
-                                            id="name"
-                                            name="name"
-                                            type="text"
-                                            placeholder="Votre nom"
-                                            value={formData.name}
-                                            onChange={handleChange}
-                                            required
-                                        />
-                                    </div>
+                        {/* Stepper */}
+                        <div className="flex items-center justify-center mb-12">
+                            <div className={`flex items-center gap-2 ${step >= 1 ? "text-primary" : "text-muted-foreground"}`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border-2 ${step >= 1 ? "border-primary bg-primary text-white" : "border-muted text-muted-foreground"}`}>1</div>
+                                <span className="text-sm font-medium hidden sm:block">Colis</span>
+                            </div>
+                            <div className={`w-16 h-0.5 mx-4 ${step >= 2 ? "bg-primary" : "bg-muted"}`} />
+                            <div className={`flex items-center gap-2 ${step >= 2 ? "text-primary" : "text-muted-foreground"}`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border-2 ${step >= 2 ? "border-primary bg-primary text-white" : "border-muted text-muted-foreground"}`}>2</div>
+                                <span className="text-sm font-medium hidden sm:block">Livraison</span>
+                            </div>
+                            <div className={`w-16 h-0.5 mx-4 ${step >= 3 ? "bg-primary" : "bg-muted"}`} />
+                            <div className={`flex items-center gap-2 ${step >= 3 ? "text-primary" : "text-muted-foreground"}`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border-2 ${step >= 3 ? "border-primary bg-primary text-white" : "border-muted text-muted-foreground"}`}>3</div>
+                                <span className="text-sm font-medium hidden sm:block">Confirmation</span>
+                            </div>
+                        </div>
 
-                                    <div className="space-y-2">
-                                        <Label htmlFor="phone" className="flex items-center gap-2">
-                                            <Phone className="w-4 h-4" />
-                                            Téléphone
-                                        </Label>
-                                        <Input
-                                            id="phone"
-                                            name="phone"
-                                            type="tel"
-                                            placeholder="+225 XX XX XX XX XX"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                            required
-                                        />
-                                    </div>
+                        {step === 3 ? (
+                            <div className="bg-white rounded-[2.5rem] p-12 text-center shadow-lg border border-slate-100 animate-slide-up">
+                                <div className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-8 text-green-500">
+                                    <CheckCircle className="w-12 h-12" />
                                 </div>
-
-                                {/* Package Description */}
-                                <div className="space-y-2">
-                                    <Label htmlFor="description" className="flex items-center gap-2">
-                                        <FileText className="w-4 h-4 text-purple-500" />
-                                        Description du colis
-                                    </Label>
-                                    <Textarea
-                                        id="description"
-                                        name="description"
-                                        placeholder="Décrivez ce que vous souhaitez faire livrer (documents, nourriture, vêtements, etc.)"
-                                        value={formData.description}
-                                        onChange={handleChange}
-                                        rows={4}
-                                        required
-                                    />
-                                </div>
-
-                                {/* Addresses */}
-                                <div className="space-y-4 pt-4 border-t border-white/10">
-                                    <div className="space-y-2">
-                                        <Label htmlFor="pickupAddress" className="flex items-center gap-2">
-                                            <MapPin className="w-4 h-4 text-purple-500" />
-                                            Adresse de récupération
-                                        </Label>
-                                        <Input
-                                            id="pickupAddress"
-                                            name="pickupAddress"
-                                            type="text"
-                                            placeholder="Où récupérer le colis ? (ex: Résidence A, Chambre 205)"
-                                            value={formData.pickupAddress}
-                                            onChange={handleChange}
-                                            required
-                                        />
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <Label htmlFor="deliveryAddress" className="flex items-center gap-2">
-                                            <MapPin className="w-4 h-4 text-pink-500" />
-                                            Adresse de livraison
-                                        </Label>
-                                        <Input
-                                            id="deliveryAddress"
-                                            name="deliveryAddress"
-                                            type="text"
-                                            placeholder="Où livrer le colis ? (ex: Bibliothèque, Bureau 12)"
-                                            value={formData.deliveryAddress}
-                                            onChange={handleChange}
-                                            required
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Price Info */}
-                                <div className="p-4 rounded-xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <DollarSign className="w-5 h-5 text-purple-500" />
-                                            <span className="font-medium">Prix de livraison</span>
-                                        </div>
-                                        <span className="text-2xl font-bold text-purple-500">
-                                            {estimatedPrice} FCFA
-                                        </span>
-                                    </div>
-                                    <p className="text-sm text-muted-foreground mt-2">
-                                        Livraison express en 15-20 minutes
-                                    </p>
-                                </div>
-
-                                {/* Submit Button */}
-                                <Button
-                                    type="submit"
-                                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-6 text-lg"
-                                >
-                                    Commander la livraison
-                                    <ArrowRight className="w-5 h-5 ml-2" />
+                                <h2 className="text-3xl font-display font-bold mb-4">Commande Confirmée !</h2>
+                                <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+                                    Votre demande de livraison a été prise en compte. Un coursier va vous contacter dans quelques instants.
+                                </p>
+                                <Button onClick={() => setStep(1)} className="bg-primary text-white rounded-xl px-8 py-6 font-bold hover:shadow-lg transition-all">
+                                    Nouvelle Livraison
                                 </Button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                            </div>
+                        ) : (
+                            <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-in relative overflow-hidden">
+                                {/* Decorative Top Line */}
+                                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-indigo-500" />
 
-            {/* Features */}
-            <section className="py-16 glass-dark">
-                <div className="container-section">
-                    <h2 className="text-3xl font-display font-bold mb-12 text-center">
-                        Pourquoi choisir Telimani ?
-                    </h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4">
-                                <Package className="w-8 h-8 text-white" />
+                                <form onSubmit={handleSubmit} className="space-y-8">
+                                    {step === 1 && (
+                                        <div className="space-y-6 animate-fade-in">
+                                            <h3 className="text-2xl font-display font-bold mb-6 flex items-center gap-3">
+                                                <Package className="text-primary" /> Informations sur le Colis
+                                            </h3>
+
+                                            <div className="space-y-4">
+                                                <div className="space-y-2">
+                                                    <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Description</Label>
+                                                    <Input placeholder="Ex: Documents administratifs, Clés..." className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all" />
+                                                </div>
+
+                                                <div className="grid md:grid-cols-2 gap-6">
+                                                    <div className="space-y-2">
+                                                        <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Poids (kg est.)</Label>
+                                                        <div className="relative">
+                                                            <Weight className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                                                            <Input type="number" placeholder="0.5" className="pl-11 h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Fragile ?</Label>
+                                                        <Select>
+                                                            <SelectTrigger className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all">
+                                                                <SelectValue placeholder="Non" />
+                                                            </SelectTrigger>
+                                                            <SelectContent>
+                                                                <SelectItem value="no">Non</SelectItem>
+                                                                <SelectItem value="yes">Oui</SelectItem>
+                                                            </SelectContent>
+                                                        </Select>
+                                                    </div>
+                                                </div>
+
+                                                <div className="space-y-2">
+                                                    <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Instructions Spéciales</Label>
+                                                    <Textarea placeholder="Code porte, étage, personne à contacter..." className="min-h-[100px] rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all p-4 resize-none" />
+                                                </div>
+                                            </div>
+
+                                            <div className="pt-4 flex justify-end">
+                                                <Button type="button" onClick={() => setStep(2)} className="bg-primary text-white rounded-xl h-14 px-8 font-bold hover:bg-blue-700 transition-all flex items-center gap-2">
+                                                    Suivant <ArrowRight className="w-5 h-5" />
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {step === 2 && (
+                                        <div className="space-y-6 animate-fade-in">
+                                            <h3 className="text-2xl font-display font-bold mb-6 flex items-center gap-3">
+                                                <MapPin className="text-primary" /> Détails de Livraison
+                                            </h3>
+
+                                            <div className="grid md:grid-cols-2 gap-8">
+                                                <div className="space-y-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                                                    <div className="flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-wider mb-2">
+                                                        <div className="w-2 h-2 rounded-full bg-primary" /> Départ (Ramassage)
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <Input placeholder="Lieu de ramassage" className="bg-white border-slate-200 h-12 rounded-lg" />
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <Input placeholder="Nom du contact" className="bg-white border-slate-200 h-12 rounded-lg" />
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <Input placeholder="Téléphone" className="bg-white border-slate-200 h-12 rounded-lg" />
+                                                    </div>
+                                                </div>
+
+                                                <div className="space-y-4 p-6 bg-indigo-50/50 rounded-2xl border border-indigo-100">
+                                                    <div className="flex items-center gap-2 text-indigo-600 font-bold uppercase text-xs tracking-wider mb-2">
+                                                        <div className="w-2 h-2 rounded-full bg-indigo-600" /> Arrivée (Destinataire)
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <Input placeholder="Lieu de livraison" className="bg-white border-indigo-100 h-12 rounded-lg focus:ring-indigo-200" />
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <Input placeholder="Nom du destinataire" className="bg-white border-indigo-100 h-12 rounded-lg focus:ring-indigo-200" />
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <Input placeholder="Téléphone" className="bg-white border-indigo-100 h-12 rounded-lg focus:ring-indigo-200" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="pt-8 flex justify-between">
+                                                <Button type="button" variant="ghost" onClick={() => setStep(1)} className="text-muted-foreground font-bold hover:text-foreground">
+                                                    Retour
+                                                </Button>
+                                                <Button type="submit" disabled={loading} className="bg-primary text-white rounded-xl h-14 px-8 font-bold hover:bg-blue-700 transition-all shadow-xl shadow-primary/20">
+                                                    {loading ? "Traitement..." : "Confirmer la Livraison"}
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    )}
+                                </form>
                             </div>
-                            <h3 className="font-bold mb-2">Livraison express</h3>
-                            <p className="text-sm text-muted-foreground">
-                                Vos colis livrés en moins de 20 minutes
-                            </p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4">
-                                <MapPin className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="font-bold mb-2">Suivi en temps réel</h3>
-                            <p className="text-sm text-muted-foreground">
-                                Suivez votre colis à chaque étape
-                            </p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4">
-                                <DollarSign className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="font-bold mb-2">Prix abordables</h3>
-                            <p className="text-sm text-muted-foreground">
-                                Tarifs étudiants très compétitifs
-                            </p>
-                        </div>
+                        )}
                     </div>
                 </div>
             </section>

@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { useState } from "react";
-import { Car, MapPin, Clock, DollarSign, User, Phone, ArrowRight } from "lucide-react";
+import { Car, MapPin, Clock, DollarSign, User, Phone, ArrowRight, Shield, Star } from "lucide-react";
 import { moovLocations, basePrice, basePricePerKm } from "@/data/moov-locations";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -13,6 +13,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const MoovPage = () => {
     const { toast } = useToast();
@@ -21,13 +22,14 @@ const MoovPage = () => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [estimatedPrice, setEstimatedPrice] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const calculatePrice = (pickupId: string, destId: string) => {
         if (!pickupId || !destId || pickupId === destId) {
             setEstimatedPrice(0);
             return;
         }
-        // Simulation simple du prix (dans une vraie app, on utiliserait les coordonnées GPS)
+        // Simulation simple du prix
         const distance = Math.abs(parseInt(pickupId.split("-")[1]) - parseInt(destId.split("-")[1]));
         const price = basePrice + distance * basePricePerKm;
         setEstimatedPrice(price);
@@ -45,233 +47,243 @@ const MoovPage = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
 
         if (!pickup || !destination || !name || !phone) {
             toast({
-                title: "Erreur",
-                description: "Veuillez remplir tous les champs",
+                title: "Information manquante",
+                description: "Veuillez remplir tous les champs du formulaire.",
                 variant: "destructive",
             });
+            setLoading(false);
             return;
         }
 
         if (pickup === destination) {
             toast({
-                title: "Erreur",
-                description: "Le point de départ et la destination doivent être différents",
+                title: "Trajet invalide",
+                description: "Le point de départ et la destination doivent être différents.",
                 variant: "destructive",
             });
+            setLoading(false);
             return;
         }
 
-        // Simuler l'envoi de la commande
-        toast({
-            title: "Commande envoyée !",
-            description: `Votre chauffeur Moov arrive dans 5 minutes. Prix estimé: ${estimatedPrice} FCFA`,
-        });
-
-        // Réinitialiser le formulaire
-        setPickup("");
-        setDestination("");
-        setName("");
-        setPhone("");
-        setEstimatedPrice(0);
+        // Simulation d'attente réseau
+        setTimeout(() => {
+            toast({
+                title: "Commande confirmée !",
+                description: `Un chauffeur arrive dans 5 min. Prix estimé: ${estimatedPrice} FCFA`,
+            });
+            setLoading(false);
+            // Reset
+            setPickup("");
+            setDestination("");
+            setName("");
+            setPhone("");
+            setEstimatedPrice(0);
+        }, 1500);
     };
 
     return (
         <Layout>
-            {/* Hero Section */}
-            <section className="relative py-16 overflow-hidden">
-                <div className="absolute inset-0">
-                    <img
-                        src="/images/moov2.jpeg"
-                        alt="Moov Transport"
-                        className="w-full h-full object-cover opacity-20"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 opacity-20"></div>
-                </div>
-                <div className="container-section relative">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-6 shadow-xl relative overflow-hidden group">
-                            <img
-                                src="/images/moov2.jpeg"
-                                alt="Moov"
-                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
-                            <div className="absolute inset-0 bg-blue-500/20 group-hover:bg-blue-500/10 transition-colors duration-500"></div>
-                            <Car className="w-10 h-10 text-white relative z-10" />
+            {/* Header Section - Modern White/Blue */}
+            <section className="pt-24 pb-12 bg-white border-b border-gray-100">
+                <div className="container-section">
+                    <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
+                        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest">
+                            <ArrowRight className="w-4 h-4 rotate-180" />
+                            Retour
+                        </Link>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+                        <div className="max-w-xl text-center md:text-left">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 mb-6">
+                                <Car className="w-4 h-4" />
+                                <span className="text-xs font-bold uppercase tracking-wider">Mobilité Campus</span>
+                            </div>
+                            <h1 className="text-4xl md:text-6xl font-display font-bold text-foreground mb-6 leading-tight">
+                                Moov <span className="text-primary italic">Transport</span>
+                            </h1>
+                            <p className="text-lg text-muted-foreground leading-relaxed">
+                                Déplacez-vous en toute sérénité au sein de l'université. Un service rapide, sûr et économique pour tous les étudiants.
+                            </p>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 gradient-text">
-                            Moov Transport
-                        </h1>
-                        <p className="text-xl text-muted-foreground">
-                            Déplacez-vous facilement dans le campus avec nos voitures Moov
-                        </p>
+
+                        {/* Decorative Image Card */}
+                        <div className="relative group w-full max-w-md hidden md:block">
+                            <div className="absolute inset-0 bg-primary/20 rounded-[2.5rem] rotate-6 scale-95 transition-transform group-hover:rotate-3" />
+                            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
+                                <img src="/images/moov2.jpeg" alt="Moov Car" className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Booking Form */}
-            <section className="py-16">
-                <div className="container-section">
-                    <div className="max-w-2xl mx-auto">
-                        <div className="glass-dark rounded-3xl p-8 border border-white/10">
-                            <h2 className="text-2xl font-display font-bold mb-6">
-                                Réserver un trajet
-                            </h2>
+            {/* Main Content Area */}
+            <section className="py-20 bg-slate-50 relative overflow-hidden">
+                {/* Background Shapes */}
+                <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+                    <div className="absolute top-20 left-20 w-64 h-64 bg-blue-100/50 rounded-full blur-3xl" />
+                    <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+                </div>
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                {/* Pickup Location */}
-                                <div className="space-y-2">
-                                    <Label htmlFor="pickup" className="flex items-center gap-2">
-                                        <MapPin className="w-4 h-4 text-blue-500" />
-                                        Point de départ
-                                    </Label>
-                                    <Select value={pickup} onValueChange={handlePickupChange}>
-                                        <SelectTrigger id="pickup">
-                                            <SelectValue placeholder="Sélectionnez votre position" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            {moovLocations.map((location) => (
-                                                <SelectItem key={location.id} value={location.id}>
-                                                    {location.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
-                                    {pickup && (
-                                        <p className="text-sm text-muted-foreground">
-                                            {moovLocations.find((l) => l.id === pickup)?.description}
-                                        </p>
-                                    )}
+                <div className="container-section relative z-10">
+                    <div className="grid lg:grid-cols-12 gap-12 items-start">
+
+                        {/* Booking Form - Card Elevated */}
+                        <div className="lg:col-span-7">
+                            <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-xl shadow-slate-200/50 border border-slate-100">
+                                <div className="flex items-center gap-4 mb-8">
+                                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                                        <MapPin className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-2xl font-display font-bold">Réserver un trajet</h2>
+                                        <p className="text-muted-foreground text-sm">Complétez les informations ci-dessous</p>
+                                    </div>
                                 </div>
 
-                                {/* Destination */}
-                                <div className="space-y-2">
-                                    <Label htmlFor="destination" className="flex items-center gap-2">
-                                        <MapPin className="w-4 h-4 text-cyan-500" />
-                                        Destination
-                                    </Label>
-                                    <Select value={destination} onValueChange={handleDestinationChange}>
-                                        <SelectTrigger id="destination">
-                                            <SelectValue placeholder="Où allez-vous ?" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            {moovLocations.map((location) => (
-                                                <SelectItem key={location.id} value={location.id}>
-                                                    {location.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
-                                    {destination && (
-                                        <p className="text-sm text-muted-foreground">
-                                            {moovLocations.find((l) => l.id === destination)?.description}
-                                        </p>
-                                    )}
-                                </div>
+                                <form onSubmit={handleSubmit} className="space-y-8">
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <div className="space-y-3">
+                                            <Label htmlFor="pickup" className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">Départ</Label>
+                                            <Select value={pickup} onValueChange={handlePickupChange}>
+                                                <SelectTrigger id="pickup" className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all text-base">
+                                                    <SelectValue placeholder="Choisir le point de départ" />
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    {moovLocations.map((location: any) => (
+                                                        <SelectItem key={location.id} value={location.id}>{location.name}</SelectItem>
+                                                    ))}
+                                                </SelectContent>
+                                            </Select>
+                                        </div>
 
-                                {/* Price Estimate */}
-                                {estimatedPrice > 0 && (
-                                    <div className="p-4 rounded-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <DollarSign className="w-5 h-5 text-blue-500" />
-                                                <span className="font-medium">Prix estimé</span>
+                                        <div className="space-y-3">
+                                            <Label htmlFor="destination" className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">Arrivée</Label>
+                                            <Select value={destination} onValueChange={handleDestinationChange}>
+                                                <SelectTrigger id="destination" className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all text-base">
+                                                    <SelectValue placeholder="Choisir la destination" />
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    {moovLocations.map((location: any) => (
+                                                        <SelectItem key={location.id} value={location.id}>{location.name}</SelectItem>
+                                                    ))}
+                                                </SelectContent>
+                                            </Select>
+                                        </div>
+                                    </div>
+
+                                    {estimatedPrice > 0 && (
+                                        <div className="p-6 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-between animate-fade-in">
+                                            <div className="flex flex-col">
+                                                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">Estimation</span>
+                                                <span className="text-3xl font-display font-bold text-primary">{estimatedPrice} FCFA</span>
                                             </div>
-                                            <span className="text-2xl font-bold text-blue-500">
-                                                {estimatedPrice} FCFA
-                                            </span>
+                                            <div className="flex items-center gap-2 text-sm font-medium text-blue-700 bg-white px-4 py-2 rounded-xl shadow-sm">
+                                                <Clock className="w-4 h-4" />
+                                                ~ 5-10 min
+                                            </div>
                                         </div>
-                                        <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
-                                            <Clock className="w-4 h-4" />
-                                            <span>Temps estimé: 5-10 minutes</span>
+                                    )}
+
+                                    <div className="space-y-4 pt-4 border-t border-slate-100">
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            <div className="space-y-3">
+                                                <Label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">Passager</Label>
+                                                <div className="relative">
+                                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                                                    <Input
+                                                        id="name"
+                                                        value={name}
+                                                        onChange={(e) => setName(e.target.value)}
+                                                        placeholder="Votre nom complet"
+                                                        className="pl-11 h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="space-y-3">
+                                                <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">Contact</Label>
+                                                <div className="relative">
+                                                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                                                    <Input
+                                                        id="phone"
+                                                        value={phone}
+                                                        onChange={(e) => setPhone(e.target.value)}
+                                                        placeholder="+221 ..."
+                                                        type="tel"
+                                                        className="pl-11 h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all"
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                )}
 
-                                {/* Personal Info */}
-                                <div className="space-y-4 pt-4 border-t border-white/10">
-                                    <div className="space-y-2">
-                                        <Label htmlFor="name" className="flex items-center gap-2">
-                                            <User className="w-4 h-4" />
-                                            Nom complet
-                                        </Label>
-                                        <Input
-                                            id="name"
-                                            type="text"
-                                            placeholder="Votre nom"
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}
-                                            required
-                                        />
+                                    <Button
+                                        type="submit"
+                                        disabled={loading || estimatedPrice === 0}
+                                        className="w-full h-16 rounded-xl bg-primary text-white font-bold text-lg hover:bg-blue-700 shadow-xl shadow-primary/20 transition-all hover:-translate-y-1"
+                                    >
+                                        {loading ? "Recherche d'un chauffeur..." : "Commander mon Moov"}
+                                    </Button>
+                                </form>
+                            </div>
+                        </div>
+
+                        {/* Info / Benefits Column */}
+                        <div className="lg:col-span-5 space-y-6">
+                            <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl -mr-10 -mt-10" />
+                                <h3 className="font-display font-bold text-xl mb-6">Pourquoi choisir Moov ?</h3>
+                                <div className="space-y-6">
+                                    <div className="flex gap-4">
+                                        <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                            <Clock className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-foreground">Rapidité éclair</h4>
+                                            <p className="text-sm text-muted-foreground">Un chauffeur disponible en moins de 5 minutes sur tout le campus.</p>
+                                        </div>
                                     </div>
-
-                                    <div className="space-y-2">
-                                        <Label htmlFor="phone" className="flex items-center gap-2">
-                                            <Phone className="w-4 h-4" />
-                                            Téléphone
-                                        </Label>
-                                        <Input
-                                            id="phone"
-                                            type="tel"
-                                            placeholder="+225 XX XX XX XX XX"
-                                            value={phone}
-                                            onChange={(e) => setPhone(e.target.value)}
-                                            required
-                                        />
+                                    <div className="flex gap-4">
+                                        <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                            <DollarSign className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-foreground">Tarif Étudiant</h4>
+                                            <p className="text-sm text-muted-foreground">Des prix fixes et subventionnés, sans surprise à l'arrivée.</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                            <Shield className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-foreground">Sécurité Totale</h4>
+                                            <p className="text-sm text-muted-foreground">Tous nos chauffeurs sont certifiés et les trajets sont suivis.</p>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                {/* Submit Button */}
-                                <Button
-                                    type="submit"
-                                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium py-6 text-lg"
-                                    disabled={!pickup || !destination || !name || !phone || estimatedPrice === 0}
-                                >
-                                    Réserver maintenant
-                                    <ArrowRight className="w-5 h-5 ml-2" />
-                                </Button>
-                            </form>
+                            <div className="bg-gradient-to-br from-primary to-blue-600 p-8 rounded-[2rem] text-white shadow-xl shadow-primary/20">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Star className="w-6 h-6 fill-accent text-accent" />
+                                    <span className="font-bold uppercase tracking-widest text-xs">Avis Étudiants</span>
+                                </div>
+                                <p className="text-lg font-display italic mb-4">"Moov a changé ma vie sur le campus. Je ne suis plus jamais en retard aux amphis le matin !"</p>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                                        <User className="w-4 h-4" />
+                                    </div>
+                                    <span className="text-sm font-medium">Sarah M., L3 Droit</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Features */}
-            <section className="py-16 glass-dark">
-                <div className="container-section">
-                    <h2 className="text-3xl font-display font-bold mb-12 text-center">
-                        Pourquoi choisir Moov ?
-                    </h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-                                <Clock className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="font-bold mb-2">Rapide et efficace</h3>
-                            <p className="text-sm text-muted-foreground">
-                                Arrivée en moins de 5 minutes partout dans le campus
-                            </p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-                                <DollarSign className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="font-bold mb-2">Tarifs étudiants</h3>
-                            <p className="text-sm text-muted-foreground">
-                                Prix abordables spécialement conçus pour les étudiants
-                            </p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-                                <Car className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="font-bold mb-2">Sûr et confortable</h3>
-                            <p className="text-sm text-muted-foreground">
-                                Chauffeurs vérifiés et véhicules bien entretenus
-                            </p>
-                        </div>
                     </div>
                 </div>
             </section>
