@@ -8,7 +8,8 @@ import {
   ArrowLeft,
   Star,
   Network,
-  List
+  List,
+  ChevronRight
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -18,106 +19,128 @@ const GouvernementPage = () => {
 
   return (
     <Layout>
-      {/* Header */}
-      <section className="py-8">
+      {/* Institutional Header - Clean White/Slate */}
+      <section className="pt-24 pb-16 bg-white border-b border-border">
         <div className="container-section">
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 group">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="text-sm">Retour à l'accueil</span>
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-12 group transition-colors">
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-sm font-bold uppercase tracking-widest">Retour</span>
           </Link>
 
-          {/* Hero */}
-          <div className="glass-dark rounded-[2.5rem] p-12 mb-12 border border-accent/20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-5">
-              <Shield size={180} />
-            </div>
-            <div className="relative z-10">
-              <div className="flex items-center gap-6 mb-8">
-                <div className="w-20 h-20 rounded-3xl gradient-hero flex items-center justify-center shadow-2xl">
-                  <Shield className="w-10 h-10 text-white" />
-                </div>
-                <div>
-                  <h1 className="font-display font-bold text-4xl md:text-5xl text-foreground tracking-tight mb-2">
-                    Le Gouvernement <span className="text-accent italic">UIE</span>
-                  </h1>
-                  <p className="text-sm md:text-base text-muted-foreground font-body uppercase tracking-[0.4em] font-bold">
-                    Mandat de Prestige 2025-2026
-                  </p>
-                </div>
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-4 text-primary bg-primary/5 w-fit px-5 py-2 rounded-full border border-primary/10 mb-8">
+                <Star className="w-4 h-4 animate-pulse" />
+                <p className="text-xs font-bold uppercase tracking-[0.2em]">Excellence Institutionnelle</p>
               </div>
-              <div className="flex items-center gap-3 text-accent bg-accent/10 w-fit px-5 py-2.5 rounded-full border border-accent/20">
-                <Star className="w-5 h-5 animate-pulse" />
-                <p className="text-sm font-bold uppercase tracking-widest">Union • Implication • Excellence</p>
+              <h1 className="text-5xl md:text-7xl font-display font-bold text-foreground tracking-tight mb-8">
+                Le Gouvernement <span className="text-primary italic">UIE</span>
+              </h1>
+              <p className="text-xl text-muted-foreground font-body leading-relaxed max-w-2xl">
+                Porteur d'une vision unifiée et résolument tournée vers l'avenir, le bureau 2025-2026 s'engage pour chaque étudiant.
+              </p>
+            </div>
+
+            <div className="relative group perspective-1000 hidden lg:block">
+              <div className="w-32 h-32 rounded-[2.5rem] bg-slate-50 border border-border flex items-center justify-center shadow-xl group-hover:rotate-y-12 transition-transform duration-700">
+                <Shield className="w-14 h-14 text-primary" />
               </div>
             </div>
           </div>
-
-          {/* Missions & Principles */}
-          <GouvernementMissions />
         </div>
       </section>
 
-      {/* Organigramme avec toggle */}
-      <section className="py-20 bg-background/50">
+      {/* Missions & Principles - Light Accordions */}
+      <section className="py-24 bg-slate-50/50">
         <div className="container-section">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-display font-bold mb-4">Structure de Gouvernance</h2>
-            <p className="text-muted-foreground">Découvrez l'équipe dévouée qui travaille quotidiennement pour vous.</p>
+          <div className="grid lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-5">
+              <h2 className="text-3xl font-display font-bold mb-6 italic">Notre Engagement</h2>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Découvrez les piliers de notre gouvernance et les missions qui animent notre quotidien au service de la communauté.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 p-4 bg-white border border-border rounded-2xl shadow-sm text-sm font-bold text-foreground/80">
+                  <ChevronRight className="w-4 h-4 text-primary" />
+                  Transparence budgétaire
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-white border border-border rounded-2xl shadow-sm text-sm font-bold text-foreground/80">
+                  <ChevronRight className="w-4 h-4 text-primary" />
+                  Inclusion et parité
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <GouvernementMissions />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Structure Section - Polished Toggle */}
+      <section className="py-24 bg-white">
+        <div className="container-section text-center">
+          <div className="max-w-2xl mx-auto mb-20">
+            <h2 className="text-4xl font-display font-bold mb-6 leading-tight">Architecture du <span className="text-primary">Pouvoir Étudiant</span></h2>
+            <div className="h-1.5 w-24 bg-primary/20 mx-auto rounded-full mb-8" />
+            <p className="text-muted-foreground text-lg italic">
+              Une organisation structurée en pôles d'excellence pour une efficacité maximale.
+            </p>
           </div>
 
-          {/* Toggle buttons */}
-          <div className="flex justify-center gap-4 mb-16">
+          {/* New Polished Toggle Switch */}
+          <div className="inline-flex p-2 bg-slate-100/50 rounded-3xl border border-slate-200 mb-20">
             <button
               onClick={() => setViewMode("tree")}
-              className={`px-8 py-4 rounded-2xl font-bold text-sm transition-all duration-500 flex items-center gap-3 ${viewMode === "tree"
-                ? "bg-primary text-white shadow-2xl shadow-primary/20 scale-105"
-                : "glass-dark text-muted-foreground hover:bg-white/5"
+              className={`px-10 py-4 rounded-2xl font-bold text-sm transition-all duration-500 flex items-center gap-3 ${viewMode === "tree"
+                ? "bg-white text-primary shadow-xl scale-105"
+                : "text-muted-foreground hover:text-foreground"
                 }`}
             >
               <Network className="w-5 h-5" />
-              Vue Hiérarchique
+              Hiérarchie
             </button>
             <button
               onClick={() => setViewMode("list")}
-              className={`px-8 py-4 rounded-2xl font-bold text-sm transition-all duration-500 flex items-center gap-3 ${viewMode === "list"
-                ? "bg-primary text-white shadow-2xl shadow-primary/20 scale-105"
-                : "glass-dark text-muted-foreground hover:bg-white/5"
+              className={`px-10 py-4 rounded-2xl font-bold text-sm transition-all duration-500 flex items-center gap-3 ${viewMode === "list"
+                ? "bg-white text-primary shadow-xl scale-105"
+                : "text-muted-foreground hover:text-foreground"
                 }`}
             >
               <List className="w-5 h-5" />
-              Vue Détaillée
+              Répertoire
             </button>
           </div>
 
-          {/* Conditional rendering based on view mode */}
-          <div className="animate-fade-in">
+          <div className="animate-fade-in py-8">
             {viewMode === "tree" ? <OrganigramTree /> : <OrganigrammeSection />}
           </div>
         </div>
       </section>
 
-      {/* Message du Vice-Président */}
-      <VicePresidentMessage />
+      {/* Vice-President Section (Already handled for light version) */}
+      <div className="bg-slate-50/50">
+        <VicePresidentMessage />
+      </div>
 
-      {/* CTA Final */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5 -z-10"></div>
-        <div className="container-section">
-          <div className="glass-dark rounded-[3rem] p-12 md:p-20 text-center border border-primary/20 relative overflow-hidden">
-            <div className="absolute -top-24 -left-24 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div>
-            <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-accent/10 rounded-full blur-[100px]"></div>
+      {/* Final Recruitment - Clean & Impactful */}
+      <section className="py-32 relative overflow-hidden">
+        <div className="container-section text-center relative z-10">
+          <div className="bg-white p-16 md:p-24 rounded-[4rem] border border-border shadow-[0_32px_96px_rgba(0,0,0,0.06)] relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -mr-32 -mt-32 group-hover:bg-primary/10 transition-colors" />
 
-            <h3 className="font-display font-bold text-3xl md:text-5xl mb-6">
-              Votre voix <span className="text-accent underline decoration-primary/20 underline-offset-8">compte</span>
+            <h3 className="text-4xl md:text-6xl font-display font-bold mb-8 leading-tight">
+              Rejoignez le <span className="text-primary">Cercle de l'UIE</span>
             </h3>
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Le gouvernement est ouvert à tous. Que vous souhaitiez diriger ou simplement aider, votre place vous attend.
+            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+              Le gouvernement n'attend pas d'être prêt, il attend d'être agi. Votre ambition est notre moteur.
             </p>
             <Link
               to="/participer"
-              className="inline-flex items-center gap-3 bg-primary text-white px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition-transform shadow-2xl shadow-primary/20"
+              className="inline-flex h-20 items-center gap-4 bg-primary text-white px-14 py-6 rounded-3xl font-bold text-xl hover:scale-105 transition-all shadow-2xl shadow-primary/20 active:scale-95"
             >
-              Rejoindre l'équipe
+              Soumettre ma candidature
+              <ChevronRight className="w-6 h-6" />
             </Link>
           </div>
         </div>

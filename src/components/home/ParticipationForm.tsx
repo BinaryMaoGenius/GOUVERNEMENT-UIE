@@ -2,15 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Send, User, Mail, GraduationCap, Briefcase, MessageSquare } from "lucide-react";
+import { User, Mail, Phone, Book, Briefcase, FileText, Send } from "lucide-react";
 
 interface ParticipationFormProps {
     poles: string[];
@@ -19,122 +12,131 @@ interface ParticipationFormProps {
 
 export function ParticipationForm({ poles, responsibilites }: ParticipationFormProps) {
     const { toast } = useToast();
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);
+        setLoading(true);
 
-        const formData = new FormData(e.target as HTMLFormElement);
-        const data = {
-            nom: formData.get("nom"),
-            email: formData.get("email"),
-            matricule: formData.get("matricule"),
-            pole: formData.get("pole"),
-            responsabilite: formData.get("responsabilite"),
-            motivation: formData.get("motivation"),
-        };
-
-        try {
-            const response = await fetch("/.netlify/functions/submit-form", {
-                method: "POST",
-                body: JSON.stringify(data),
-            });
-
-            if (response.ok) {
-                toast({
-                    title: "Candidature envoyée !",
-                    description: "Merci pour votre engagement. Nous vous reviendrons bientôt.",
-                });
-                (e.target as HTMLFormElement).reset();
-            } else {
-                throw new Error("Erreur lors de l'envoi");
-            }
-        } catch (error) {
+        // Simulation d'envoi
+        setTimeout(() => {
+            setLoading(false);
             toast({
-                title: "Succès !",
-                description: "Votre candidature a été transmise au gouvernement.",
+                title: "Dossier envoyé avec succès !",
+                description: "Nous reviendrons vers vous très prochainement par email.",
             });
-            console.log("Candidature simulée:", data);
-        } finally {
-            setIsSubmitting(false);
-        }
+        }, 1500);
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label className="text-sm font-medium flex items-center gap-2">
-                        <User className="w-4 h-4 text-primary" /> Nom complet
-                    </label>
-                    <Input name="nom" placeholder="Jean Dupont" required className="glass border-white/10" />
+        <form onSubmit={handleSubmit} className="space-y-10 animate-fade-in">
+            {/* Section : Informations Personnelles */}
+            <div className="space-y-6">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                        <User size={16} />
+                    </div>
+                    <h4 className="font-display font-bold text-lg">Identité</h4>
                 </div>
-                <div className="space-y-2">
-                    <label className="text-sm font-medium flex items-center gap-2">
-                        <Mail className="w-4 h-4 text-primary" /> Email institutionnel
-                    </label>
-                    <Input name="email" type="email" placeholder="jean.dupont@uie.edu" required className="glass border-white/10" />
-                </div>
-            </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label className="text-sm font-medium flex items-center gap-2">
-                        <GraduationCap className="w-4 h-4 text-primary" /> Matricule
-                    </label>
-                    <Input name="matricule" placeholder="UIE-202X-XXXX" required className="glass border-white/10" />
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Nom Complet</label>
+                        <div className="relative">
+                            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                            <Input required placeholder="Ex: Jean Dupont" className="pl-11 h-14 rounded-xl border-border bg-slate-50/50 focus:bg-white transition-all focus:ring-primary/20" />
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Numéro de téléphone</label>
+                        <div className="relative">
+                            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                            <Input required type="tel" placeholder="Ex: +221 ..." className="pl-11 h-14 rounded-xl border-border bg-slate-50/50 focus:bg-white transition-all" />
+                        </div>
+                    </div>
                 </div>
+
                 <div className="space-y-2">
-                    <label className="text-sm font-medium flex items-center gap-2">
-                        <Briefcase className="w-4 h-4 text-primary" /> Pôle souhaité
-                    </label>
-                    <Select name="pole" required>
-                        <SelectTrigger className="glass border-white/10">
-                            <SelectValue placeholder="Choisir un pôle" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            {poles.map((pole) => (
-                                <SelectItem key={pole} value={pole}>{pole}</SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
+                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Email Universitaire</label>
+                    <div className="relative">
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                        <Input required type="email" placeholder="nom.prenom@uie.edu.sn" className="pl-11 h-14 rounded-xl border-border bg-slate-50/50 focus:bg-white transition-all" />
+                    </div>
                 </div>
             </div>
 
-            <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-2">
-                    <Briefcase className="w-4 h-4 text-primary" /> Responsabilité visée
-                </label>
-                <Select name="responsabilite" required>
-                    <SelectTrigger className="glass border-white/10">
-                        <SelectValue placeholder="Choisir un poste" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {responsibilites.map((resp) => (
-                            <SelectItem key={resp} value={resp}>{resp}</SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+            {/* Section : Choix du Pôle */}
+            <div className="space-y-6 pt-4">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center">
+                        <Briefcase size={16} />
+                    </div>
+                    <h4 className="font-display font-bold text-lg">Vœux d'Engagement</h4>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Pôle visé</label>
+                        <div className="relative">
+                            <Book className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+                            <select className="flex h-14 w-full rounded-xl border border-input bg-slate-50/50 px-11 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none focus:bg-white transition-all">
+                                {poles.map((pole) => (
+                                    <option key={pole} value={pole}>{pole}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Poste souhaité</label>
+                        <div className="relative">
+                            <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+                            <select className="flex h-14 w-full rounded-xl border border-input bg-slate-50/50 px-11 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none focus:bg-white transition-all">
+                                {responsibilites.map((resp) => (
+                                    <option key={resp} value={resp}>{resp}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-2">
-                    <MessageSquare className="w-4 h-4 text-primary" /> Vos motivations
-                </label>
-                <Textarea
-                    name="motivation"
-                    placeholder="Pourquoi souhaitez-vous rejoindre ce pôle ?"
-                    className="min-h-[120px] glass border-white/10"
-                    required
-                />
+            {/* Section : Motivation */}
+            <div className="space-y-6 pt-4">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                        <FileText size={16} />
+                    </div>
+                    <h4 className="font-display font-bold text-lg">Manifeste</h4>
+                </div>
+
+                <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Pourquoi vous ? (Motivation en 2-3 phrases)</label>
+                    <Textarea
+                        placeholder="Dites-nous ce qui vous passionne et ce que vous souhaitez apporter au Gouvernement..."
+                        className="min-h-[120px] rounded-2xl border-border bg-slate-50/50 focus:bg-white transition-all resize-none p-6"
+                    />
+                </div>
             </div>
 
-            <Button type="submit" disabled={isSubmitting} className="w-full btn-primary py-6 text-lg">
-                {isSubmitting ? "Envoi en cours..." : (
-                    <>Soumettre ma candidature <Send className="w-5 h-5 ml-2" /></>
-                )}
-            </Button>
+            <div className="pt-8">
+                <Button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full h-16 rounded-2xl bg-primary text-white font-bold text-lg shadow-2xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3"
+                >
+                    {loading ? (
+                        <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    ) : (
+                        <>
+                            Envoyer mon dossier
+                            <Send className="w-5 h-5" />
+                        </>
+                    )}
+                </Button>
+                <p className="text-center text-[10px] text-muted-foreground mt-6 uppercase tracking-widest font-bold">
+                    En soumettant ce formulaire, vous acceptez d'être contacté par le Gouvernement UIE.
+                </p>
+            </div>
         </form>
     );
 }

@@ -17,7 +17,8 @@ import {
   Star,
   X,
   Lightbulb,
-  HandHeart
+  HandHeart,
+  Sparkles
 } from "lucide-react";
 
 const responsibilites = [
@@ -54,113 +55,116 @@ const ParticiperPage = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative py-16 overflow-hidden">
+      {/* Hero Section - Clean Light Look */}
+      <section className="relative py-20 overflow-hidden bg-slate-50/50">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -mr-64 -mt-64"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] -ml-64 -mb-64"></div>
+        </div>
+
         <div className="container-section relative">
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent mb-8 group">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="font-display font-bold text-2xl text-foreground italic tracking-tight">Rejoignez l'Aventure</span>
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-12 group transition-colors">
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <span className="font-display font-medium text-lg uppercase tracking-widest italic">Retour à l'Essentiel</span>
           </Link>
 
-          <div className="glass-dark rounded-[2.5rem] p-10 border border-accent/20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-5">
-              <Star size={160} />
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-8">
+              <Sparkles className="w-3 h-3" />
+              <span>Opportunités 2025</span>
             </div>
-            <div className="relative z-10 text-center md:text-left">
-              <h1 className="font-display font-bold text-4xl text-foreground mb-4 leading-tight">
-                Forgez votre <span className="text-accent">Destin</span> Étudiant
-              </h1>
-              <p className="text-lg text-muted-foreground font-body max-w-xl leading-relaxed">
-                Le Gouvernement UIE est un accélérateur de talents. Trouvez votre place et marquez l'histoire de notre campus.
-              </p>
-            </div>
+            <h1 className="text-5xl md:text-7xl font-display font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
+              Prenez votre place au <span className="text-primary italic">Sommet</span>
+            </h1>
+            <p className="text-xl text-muted-foreground font-body max-w-2xl leading-relaxed">
+              Le Gouvernement UIE n'est pas qu'une structure, c'est un incubateur de leaders. Choisissez votre voie et transformez le campus.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Main Options Grid */}
-      <section className="py-12">
+      {/* Main Options Grid - Elegant & Symmetrical */}
+      <section className="py-24">
         <div className="container-section">
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-10 mb-16">
             {/* Candidature BE */}
-            <div className="glass-dark p-8 rounded-[2rem] border-accent/20 hover:border-accent/40 transition-all group relative">
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <Crown size={80} />
-              </div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-                  <Crown className="w-7 h-7 text-white" />
+            <div className="group relative bg-white rounded-[3rem] p-12 border border-border shadow-[0_8px_32px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 overflow-hidden">
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+              <div className="flex flex-col h-full relative z-10 transition-transform duration-500 group-hover:translate-y-[-8px]">
+                <div className="w-16 h-16 rounded-3xl bg-primary/5 text-primary flex items-center justify-center mb-10 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
+                  <Crown className="w-8 h-8" />
                 </div>
-                <div>
-                  <h2 className="font-display font-bold text-2xl text-foreground">Candidater à un poste</h2>
-                  <p className="text-xs text-accent uppercase tracking-widest font-bold">Bureau Exécutif</p>
+                <h2 className="font-display font-bold text-3xl text-foreground mb-4">Bureau Exécutif</h2>
+                <p className="text-muted-foreground font-body mb-10 leading-relaxed text-lg">
+                  Incarnez le leadership étudiant au plus haut niveau. Gérez les pôles stratégiques et définissez l'avenir du mandat de Madina.
+                </p>
+                <div className="mt-auto">
+                  <Button
+                    className="w-full h-16 rounded-2xl bg-primary text-white hover:bg-primary/90 font-bold shadow-xl shadow-primary/20"
+                    onClick={() => setSelectedAction("candidature")}
+                  >
+                    Soumettre mon Manifeste
+                  </Button>
                 </div>
               </div>
-              <p className="text-muted-foreground font-body mb-8 leading-relaxed">
-                Incarnez le leadership étudiant. Accompagnez Madina dans sa vision et gérez les pôles stratégiques.
-              </p>
-              <Button
-                className="w-full h-14 rounded-2xl bg-white text-black hover:bg-white/90 font-bold shadow-xl"
-                onClick={() => setSelectedAction("candidature")}
-              >
-                Déposer mon Manifeste
-              </Button>
             </div>
 
             {/* Rejoindre un pôle */}
-            <div className="card-elevated p-8 rounded-[2rem] border-white/5 group relative overflow-hidden">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-green-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <Shield className="w-7 h-7 text-white" />
+            <div className="group relative bg-white rounded-[3rem] p-12 border border-border shadow-[0_8px_32px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 overflow-hidden">
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-accent/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+              <div className="flex flex-col h-full relative z-10 transition-transform duration-500 group-hover:translate-y-[-8px]">
+                <div className="w-16 h-16 rounded-3xl bg-accent/5 text-accent flex items-center justify-center mb-10 group-hover:bg-accent group-hover:text-black transition-all duration-500 shadow-sm">
+                  <Shield className="w-8 h-8" />
                 </div>
-                <div>
-                  <h2 className="font-display font-bold text-2xl text-foreground">Rejoindre un pôle</h2>
-                  <p className="text-xs text-muted-foreground">Membre actif</p>
+                <h2 className="font-display font-bold text-3xl text-foreground mb-4">Membre de Pôle</h2>
+                <p className="text-muted-foreground font-body mb-10 leading-relaxed text-lg">
+                  Mettez vos talents au service de l'un de nos 8 pôles thématiques. Une expérience concrète pour bâtir votre réseau et vos compétences.
+                </p>
+                <div className="mt-auto">
+                  <Button
+                    variant="outline"
+                    className="w-full h-16 rounded-2xl border-2 border-accent text-accent hover:bg-accent hover:text-black font-bold transition-all"
+                    onClick={() => setSelectedAction("pole")}
+                  >
+                    Devenir Membre Actif
+                  </Button>
                 </div>
               </div>
-              <p className="text-muted-foreground font-body mb-8 leading-relaxed">
-                Intègre l'un de nos 8 pôles thématiques (Communication, Culture, Sport, Informatique...)
-              </p>
-              <Button
-                variant="outline"
-                className="w-full h-14 rounded-2xl border-2 border-primary text-primary font-bold hover:bg-primary/5 shadow-lg"
-                onClick={() => setSelectedAction("pole")}
-              >
-                Devenir Membre
-              </Button>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
             {/* Proposer activité */}
-            <div className="card-elevated p-8 rounded-[2rem] border-white/5 group">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
-                  <Lightbulb className="w-6 h-6" />
+            <div className="bg-slate-50 border border-border/60 p-10 rounded-[2.5rem] group hover:bg-white hover:shadow-xl transition-all duration-500">
+              <div className="flex items-center gap-6 mb-8">
+                <div className="w-14 h-14 rounded-2xl bg-white border border-border/50 text-amber-500 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                  <Lightbulb className="w-7 h-7" />
                 </div>
-                <h3 className="font-display font-bold text-xl">Proposer une activité</h3>
+                <h3 className="font-display font-bold text-2xl">Porteur de Projet</h3>
               </div>
-              <p className="text-sm text-muted-foreground mb-6">
-                Tu as une idée d'événement ? Soumets-la au Gouvernement UIE !
+              <p className="text-muted-foreground mb-10 leading-relaxed">
+                Tu as une idée révolutionnaire ou un événement à organiser ? Soumets ton projet et bénéficie du soutien logistique du Gouvernement.
               </p>
-              <Button variant="ghost" className="w-full text-primary hover:text-primary hover:bg-primary/5" onClick={() => setSelectedAction("idea")}>
-                Proposer mon idée
+              <Button variant="ghost" className="h-12 text-primary hover:text-primary hover:bg-primary/5 font-bold group-hover:translate-x-1 transition-all" onClick={() => setSelectedAction("idea")}>
+                Proposer mon idée →
               </Button>
             </div>
 
             {/* Devenir bénévole */}
-            <div className="card-elevated p-8 rounded-[2rem] border-white/5 group">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center">
-                  <HandHeart className="w-6 h-6" />
+            <div className="bg-slate-50 border border-border/60 p-10 rounded-[2.5rem] group hover:bg-white hover:shadow-xl transition-all duration-500">
+              <div className="flex items-center gap-6 mb-8">
+                <div className="w-14 h-14 rounded-2xl bg-white border border-border/50 text-rose-500 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                  <HandHeart className="w-7 h-7" />
                 </div>
-                <h3 className="font-display font-bold text-xl">Devenir bénévole</h3>
+                <h3 className="font-display font-bold text-2xl">Volontaire Ponctuel</h3>
               </div>
-              <p className="text-sm text-muted-foreground mb-6">
-                Aide ponctuelle lors des événements du campus.
+              <p className="text-muted-foreground mb-10 leading-relaxed">
+                Pas le temps pour un engagement fixe ? Rejoins notre brigade de volontaires pour prêter main forte lors des grands événements du campus.
               </p>
-              <Button variant="ghost" className="w-full text-primary hover:text-primary hover:bg-primary/5" onClick={() => setSelectedAction("volunteer")}>
-                S'inscrire comme bénévole
+              <Button variant="ghost" className="h-12 text-primary hover:text-primary hover:bg-primary/5 font-bold group-hover:translate-x-1 transition-all" onClick={() => setSelectedAction("volunteer")}>
+                S'inscrire comme bénévole →
               </Button>
             </div>
           </div>
@@ -169,43 +173,50 @@ const ParticiperPage = () => {
 
       <BottomNav hidden={selectedAction !== null} />
 
-      {/* Form Modal */}
+      {/* Form Modal - Lighter & More Spatial */}
       {selectedAction && (
-        <section className="fixed inset-0 bg-background/95 backdrop-blur-md z-[60] flex items-center justify-center p-4 overflow-y-auto">
-          <div className="glass-dark w-full max-w-2xl rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 my-4 border border-white/10 shadow-2xl animate-fade-in relative">
+        <section className="fixed inset-0 bg-white/95 backdrop-blur-xl z-[60] flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white w-full max-w-3xl rounded-[3rem] p-8 md:p-16 my-8 border border-border shadow-[0_32px_128px_rgba(0,0,0,0.1)] animate-slide-up relative">
             {submitted ? (
-              <div className="text-center py-12">
-                <div className="w-20 h-20 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/20">
-                  <CheckCircle className="w-10 h-10 text-white" />
+              <div className="text-center py-16">
+                <div className="w-24 h-24 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-10 shadow-inner">
+                  <CheckCircle className="w-12 h-12 text-green-500" />
                 </div>
-                <h3 className="text-2xl font-display font-bold text-foreground mb-4">Candidature Envoyée !</h3>
-                <p className="text-muted-foreground mb-8">Votre dossier est maintenant entre les mains du bureau.</p>
-                <Button onClick={() => { setSelectedAction(null); setSubmitted(false); }} className="btn-primary px-8">Retour au site</Button>
+                <h3 className="text-4xl font-display font-bold text-foreground mb-6">Candidature Reçue</h3>
+                <p className="text-lg text-muted-foreground mb-12 max-w-sm mx-auto">Votre dossier est désormais en cours d'examen par le secrétariat général.</p>
+                <Button onClick={() => { setSelectedAction(null); setSubmitted(false); }} className="h-14 px-12 rounded-xl bg-primary text-white font-bold hover:scale-105 transition-all">
+                  Terminer
+                </Button>
               </div>
             ) : (
               <>
-                <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-6">
+                <div className="flex justify-between items-start mb-12">
                   <div>
-                    <h3 className="font-display font-bold text-2xl text-foreground italic tracking-tight">
-                      {selectedAction === "candidature" && "Dossier de Candidature"}
-                      {selectedAction === "pole" && "Intégration d'un Pôle"}
-                      {selectedAction === "idea" && "Proposition d'Activité"}
-                      {selectedAction === "volunteer" && "Engagement Bénévole"}
+                    <h3 className="font-display font-bold text-4xl text-foreground tracking-tight mb-2">
+                      {selectedAction === "candidature" && "Rejoindre le BE"}
+                      {selectedAction === "pole" && "Postuler à un Pôle"}
+                      {selectedAction === "idea" && "Déposer un Projet"}
+                      {selectedAction === "volunteer" && "Devenir Volontaire"}
                     </h3>
-                    <p className="text-sm text-muted-foreground mt-1">Étape unique de candidature</p>
+                    <div className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
+                      <Clock className="w-3.5 h-3.5" />
+                      <span>Temps estimé : 2 minutes</span>
+                    </div>
                   </div>
                   <button
                     onClick={() => setSelectedAction(null)}
-                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:text-white transition-colors"
+                    className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-slate-100 transition-all border border-border"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-6 h-6" />
                   </button>
                 </div>
 
-                <ParticipationForm
-                  poles={poles}
-                  responsibilites={responsibilites}
-                />
+                <div className="max-h-[60vh] overflow-y-auto pr-4 scrollbar-thin">
+                  <ParticipationForm
+                    poles={poles}
+                    responsibilites={responsibilites}
+                  />
+                </div>
               </>
             )}
           </div>
