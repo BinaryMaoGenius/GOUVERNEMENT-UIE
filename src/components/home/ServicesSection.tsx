@@ -8,7 +8,8 @@ export function ServicesSection() {
             description: "Des voitures Moov à votre service pour vous déplacer sur le campus.",
             icon: Car,
             href: "/services/moov",
-            color: "blue",
+            color: "text-blue-600",
+            bgColor: "bg-blue-100",
             image: "/images/moov2.jpeg"
         },
         {
@@ -16,7 +17,8 @@ export function ServicesSection() {
             description: "Besoin de livrer un colis ? Nos coursiers Telimani sont là.",
             icon: Package,
             href: "/services/telimani",
-            color: "purple",
+            color: "text-indigo-600",
+            bgColor: "bg-indigo-100",
             image: "/images/telimani.jpeg"
         },
         {
@@ -24,20 +26,22 @@ export function ServicesSection() {
             description: "Commandez vos plats préférés et recevez-les via Telimani.",
             icon: UtensilsCrossed,
             href: "/services/restaurant",
-            color: "orange",
+            color: "text-orange-600",
+            bgColor: "bg-orange-100",
             image: "/images/images.jpeg"
         }
     ];
 
     return (
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-24 bg-slate-50 relative">
             <div className="container-section relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 gradient-text">
+                    <span className="text-primary font-bold tracking-widest uppercase text-sm mb-2 block">Vie Étudiante</span>
+                    <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-foreground">
                         Services Connectés
                     </h2>
-                    <p className="text-lg text-muted-foreground">
-                        Simplifiez votre vie sur le campus avec nos services intégrés de transport, livraison et restauration.
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                        Simplifiez votre quotidien sur le campus avec nos solutions intégrées.
                     </p>
                 </div>
 
@@ -46,33 +50,32 @@ export function ServicesSection() {
                         <Link
                             key={index}
                             to={service.href}
-                            className="group relative overflow-hidden rounded-3xl glass-dark border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.02]"
+                            className="group bg-white rounded-[2rem] overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
                         >
-                            <div className="aspect-[16/10] overflow-hidden relative">
+                            <div className="h-48 overflow-hidden relative">
                                 <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                 />
-                                <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent`} />
-                                <div className="absolute bottom-4 left-6 flex items-center gap-3">
-                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg ${service.color === "blue" ? "bg-blue-500" :
-                                            service.color === "purple" ? "bg-purple-500" :
-                                                "bg-orange-500"
-                                        }`}>
-                                        <service.icon className="w-6 h-6 text-white" />
-                                    </div>
-                                    <h3 className="text-xl font-display font-bold text-white shadow-sm">
-                                        {service.title}
-                                    </h3>
-                                </div>
+                                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                             </div>
-                            <div className="p-6">
-                                <p className="text-muted-foreground text-sm mb-6 line-clamp-2">
+
+                            <div className="p-8">
+                                <div className={`w-14 h-14 rounded-2xl ${service.bgColor} ${service.color} flex items-center justify-center mb-6 shadow-sm`}>
+                                    <service.icon className="w-7 h-7" />
+                                </div>
+
+                                <h3 className="text-2xl font-display font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                    {service.title}
+                                </h3>
+                                <p className="text-muted-foreground mb-6 leading-relaxed">
                                     {service.description}
                                 </p>
-                                <div className="flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-4 transition-all">
-                                    Accéder au service <ArrowRight className="w-4 h-4" />
+
+                                <div className="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wide group-hover:gap-3 transition-all">
+                                    Découvrir
+                                    <ArrowRight className="w-4 h-4" />
                                 </div>
                             </div>
                         </Link>

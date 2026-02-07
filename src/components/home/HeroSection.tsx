@@ -1,112 +1,61 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Shield, Star, Users, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Users, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 md:pt-24 md:pb-32 bg-background">
-      {/* Background elements with Stellar Particles */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Stellar Background */}
-        <div className="absolute inset-0 opacity-20">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="star-particle"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                '--duration': `${Math.random() * 3 + 2}s`,
-                animationDelay: `${Math.random() * 5}s`
-              } as React.CSSProperties}
-            />
-          ))}
-        </div>
-
-        <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-accent/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "2s" }} />
+    <section className="relative overflow-hidden pt-20 pb-24 md:pt-32 md:pb-40 bg-white">
+      {/* Abstract Background Shapes - Clean & Institutional */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -mr-80 -mt-80 opacity-60" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl -ml-60 -mb-60 opacity-60" />
       </div>
 
       <div className="container-section relative z-10">
-        <div className="max-w-3xl mx-auto text-center md:text-left md:mx-0">
-          {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full mb-8 animate-fade-in"
-          >
-            <Shield className="w-4 h-4 text-accent animate-pulse" />
-            <span className="text-xs font-semibold tracking-widest uppercase text-accent/90">Gouvernement Étudiant 2025-2026</span>
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Badge Institutionnel */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-primary border border-blue-100 mb-8 animate-fade-in shadow-sm">
+            <Shield className="w-4 h-4 fill-primary/10" />
+            <span className="text-xs font-bold uppercase tracking-widest">Gouvernement UIE 2025-2026</span>
           </div>
 
-          <h1
-            className="section-title mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}
-          >
-            Bâtir l'Université de <br className="hidden md:block" />
-            <span className="text-gradient drop-shadow-sm italic">Demain</span>, Aujourd'hui.
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-foreground mb-8 leading-[1.1] tracking-tight animate-slide-up" style={{ animationDelay: "0.1s" }}>
+            L'Excellence au Service <br />
+            de l' <span className="text-primary italic relative inline-block">
+              Étudiant
+              <svg className="absolute w-full h-3 -bottom-1 left-0 text-blue-200 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0 5 Q 50 10 100 5 L 100 10 L 0 10 Z" fill="currentColor" />
+              </svg>
+            </span>
           </h1>
 
-          <p
-            className="section-subtitle mb-8 animate-slide-up" style={{ animationDelay: "0.2s" }}
-          >
-            L'Université Internationale d'Excellence s'engage pour une gouvernance étudiante audacieuse, inclusive et résolument tournée vers l'avenir.
+          <p className="text-xl md:text-2xl text-muted-foreground font-body leading-relaxed max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+            Une gouvernance transparente et engagée pour bâtir ensemble l'avenir de notre université.
           </p>
 
-          {/* Devise */}
-          <div
-            className="flex items-center justify-center md:justify-start gap-4 mb-10 text-muted-foreground animate-fade-in" style={{ animationDelay: "0.4s" }}
-          >
-            <span className="h-[1px] w-8 bg-white/10 hidden md:block"></span>
-            <div className="flex items-center gap-3 font-body text-sm tracking-[0.2em] font-light">
-              <span>UNION</span>
-              <span className="text-accent">•</span>
-              <span>IMPLICATION</span>
-              <span className="text-accent">•</span>
-              <span>EXCELLENCE</span>
-            </div>
-          </div>
-
-          {/* CTA Buttons */}
-          <div
-            className="flex flex-wrap justify-center md:justify-start gap-4 animate-slide-up" style={{ animationDelay: "0.6s" }}
-          >
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
             <Link to="/participer">
-              <Button className="h-14 px-8 rounded-full bg-primary hover:bg-primary/90 text-white font-semibold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-                Devenir Acteur du Changement
+              <Button className="h-14 px-8 rounded-full bg-primary text-white font-bold text-lg hover:bg-blue-700 hover:shadow-lg hover:shadow-primary/20 transition-all hover:-translate-y-1 w-full sm:w-auto">
+                Rejoindre le Mouvement
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
             <Link to="/gouvernement">
-              <Button variant="outline" className="h-14 px-8 rounded-full border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-foreground transition-all">
-                <Users className="w-5 h-5 mr-2 text-accent" />
-                Découvrir l'Équipe
+              <Button variant="outline" className="h-14 px-8 rounded-full border-2 border-slate-200 text-slate-600 font-bold text-lg hover:border-primary hover:text-primary hover:bg-blue-50 transition-all w-full sm:w-auto">
+                <Users className="w-5 h-5 mr-2" />
+                Notre Équipe
               </Button>
             </Link>
-          </div>
-
-          {/* Stats contextuelles */}
-          <div
-            className="mt-16 pt-8 border-t border-white/5 flex gap-12 justify-center md:justify-start animate-fade-in" style={{ animationDelay: "0.8s" }}
-          >
-            <div className="group cursor-default">
-              <p className="text-3xl font-display font-light text-foreground group-hover:text-accent transition-colors">22</p>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Visionnaires</p>
-            </div>
-            <div className="group cursor-default">
-              <p className="text-3xl font-display font-light text-foreground group-hover:text-accent transition-colors">8</p>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Pôles d'Action</p>
-            </div>
-            <div className="group cursor-default">
-              <p className="text-3xl font-display font-light text-foreground group-hover:text-accent transition-colors">1</p>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Université d'Excellence</p>
-            </div>
           </div>
         </div>
       </div>
 
-      {/* Ornament - Bottom gradient line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+      {/* Decorative Bottom Curve */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+        <svg className="relative block w-full h-12 md:h-24 text-slate-50" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-current"></path>
+        </svg>
+      </div>
     </section>
   );
 }
