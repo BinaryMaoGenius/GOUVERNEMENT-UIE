@@ -56,7 +56,10 @@ export function ServicesSection() {
                                 />
                                 <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent`} />
                                 <div className="absolute bottom-4 left-6 flex items-center gap-3">
-                                    <div className={`w-12 h-12 rounded-xl bg-${service.color}-500 flex items-center justify-center shadow-lg`}>
+                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg ${service.color === "blue" ? "bg-blue-500" :
+                                            service.color === "purple" ? "bg-purple-500" :
+                                                "bg-orange-500"
+                                        }`}>
                                         <service.icon className="w-6 h-6 text-white" />
                                     </div>
                                     <h3 className="text-xl font-display font-bold text-white shadow-sm">
