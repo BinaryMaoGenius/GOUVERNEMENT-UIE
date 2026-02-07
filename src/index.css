@@ -108,7 +108,7 @@
   }
 
   .glass-dark {
-    @apply bg-black/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0, 0, 0, 0.8)];
+    @apply bg-black/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
   }
 
   .text-gradient {
