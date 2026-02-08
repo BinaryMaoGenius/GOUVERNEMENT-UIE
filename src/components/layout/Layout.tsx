@@ -10,9 +10,6 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const location = useLocation();
-  const [displayLocation, setDisplayLocation] = useState(location);
-  const [transitionStage, setTransitionStage] = useState("page-transition-enter-active");
-
   useEffect(() => {
     if (location.hash) {
       setTimeout(() => {
@@ -24,19 +21,14 @@ export function Layout({ children }: LayoutProps) {
       }, 100);
     }
 
-    if (location !== displayLocation) {
-      setTransitionStage("page-transition-enter");
-      setTimeout(() => {
-        setDisplayLocation(location);
-        setTransitionStage("page-transition-enter-active");
-      }, 150);
-    }
-  }, [location, displayLocation]);
+    // Reset scroll to top on page change
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans antialiased selection:bg-primary/10 selection:text-primary">
       <Header />
-      <main className={`flex-1 pb-20 md:pb-0 relative ${transitionStage}`}>
+      <main className="flex-1 pb-20 md:pb-0 relative animate-fade-in">
         {children}
       </main>
       <Footer />

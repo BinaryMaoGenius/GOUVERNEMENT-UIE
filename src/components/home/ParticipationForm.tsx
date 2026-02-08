@@ -36,14 +36,31 @@ export function ParticipationForm({ poles, responsibilites }: ParticipationFormP
         };
 
         try {
-            // Simulation
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            toast({
-                title: "Candidature envoyée !",
-                description: "Merci pour votre engagement. Nous vous reviendrons bientôt.",
+            // Envoi réel à la DB via Netlify Function
+            const response = await fetch('/.netlify/functions/submit-form', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: data.responsabilite ? 'candidate' : 'volunteer',
+                    nom: data.nom,
+                    prenom: 'Prénom', // Placeholder
+                    email: data.email,
+                    niveau: 'L1', // Placeholder
+                    message: data.motivation,
+                    pole: data.pole,
+                    poste: data.responsabilite
+                }),
             });
-            (e.target as HTMLFormElement).reset();
+
+            if (response.ok) {
+                toast({
+                    title: "Candidature envoyée !",
+                    description: "Merci pour votre engagement. Nous vous reviendrons bientôt.",
+                });
+                (e.target as HTMLFormElement).reset();
+            } else {
+                throw new Error('Erreur serveur');
+            }
 
         } catch (error) {
             toast({
