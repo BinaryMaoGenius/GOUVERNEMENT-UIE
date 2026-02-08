@@ -8,11 +8,11 @@ export function HeroSection() {
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-24 md:pb-32 bg-white">
       {/* Background elements with Stellar Particles */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-indigo-900/40 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/70 via-blue-900/50 to-indigo-950/70 z-10 backdrop-blur-[2px]"></div>
         <img
-          src="/images/UIE_banniere.jpeg"
+          src="/images/UIE_banniere2.jpeg"
           alt="Campus UIE"
-          className="absolute inset-0 w-full h-full object-cover scale-105 animate-slow-zoom"
+          className="absolute inset-0 w-full h-full object-cover animate-slow-zoom brightness-[0.8] contrast-[1.1]"
         />
         {/* Stellar Background */}
         <div className="absolute inset-0 opacity-20">

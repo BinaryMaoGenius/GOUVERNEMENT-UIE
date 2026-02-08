@@ -23,7 +23,7 @@ export function PresidentMessage() {
               <div className="relative p-1.5 rounded-full bg-gradient-to-tr from-accent to-primary animate-spin-slow" style={{ animationDuration: '8s' }}>
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-primary-foreground bg-white shadow-inner overflow-hidden border-2 border-white">
                   <img
-                    src="/images/Madina_Mohamed.jpeg"
+                    src="/images/Madina.jpeg"
                     alt="Madina Ali Touré"
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                     loading="lazy"
