@@ -23,172 +23,130 @@ import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip as RechartsTooltip } 
 
 const poles = [
   {
-    icon: Shield,
-    name: "Gouvernance & Administration",
-    color: "bg-blue-500",
+    icon: Users,
+    name: "Axe 1 : Intégration & Cohésion",
+    color: "bg-blue-600",
     objectives: [
-      "Assurer une gestion transparente du BDE",
-      "Maintenir une communication constante avec l'administration",
-      "Organiser des assemblées générales régulières",
+      "Assurer une meilleure intégration des nouveaux étudiants",
+      "Renforcer l'esprit de communauté UIE",
+      "Valoriser les talents étudiants dès la rentrée"
     ],
     activities: [
-      "Réunions hebdomadaires du bureau",
-      "Bilans trimestriels publics",
-      "Permanences étudiantes",
+      "Journées d'intégration sportive (Vendredi/Samedi)",
+      "Soirée culturelle (Miss, Spectacles, Artistes)",
+      "Concours de débat pour les nouveaux arrivants"
     ],
     results: [
-      "100% de transparence financière",
-      "4 assemblées générales par an",
-      "Présence continue au bureau",
+      "100% des nouveaux étudiants intégrés",
+      "Détection des talents dès le premier semestre",
+      "Solidarité inter-promotions accrue"
     ],
-    progress: 75,
+    progress: 0,
   },
   {
     icon: Megaphone,
-    name: "Communication & Relations",
-    color: "bg-purple-500",
+    name: "Axe 2 : Expression & Dialogue",
+    color: "bg-indigo-600",
     objectives: [
-      "Améliorer la visibilité du BDE",
-      "Créer des partenariats durables",
-      "Tenir les étudiants informés",
+      "Recueillir les préoccupations réelles des étudiants",
+      "Servir de pont entre l'administration et les étudiants",
+      "Garantir la transparence des actions du gouvernement"
     ],
     activities: [
-      "Gestion des réseaux sociaux",
-      "Newsletter mensuelle",
-      "Rencontres avec les partenaires",
+      "Journée 'La Voix des Étudiants'",
+      "Mise en place de la Semaine de Solutions",
+      "Présentation des bilans semestriels publics"
     ],
     results: [
-      "5000+ abonnés sur les réseaux",
-      "10 partenariats signés",
-      "Communication hebdomadaire",
+      "Amélioration du climat universitaire",
+      "Prise en compte de 100% des doléances valides",
+      "Transparence totale sur la gestion du mandat"
     ],
-    progress: 60,
-  },
-  {
-    icon: Users,
-    name: "Organisation & Mobilisation",
-    color: "bg-green-500",
-    objectives: [
-      "Fédérer la communauté étudiante",
-      "Organiser des événements majeurs",
-      "Renforcer la vie de campus",
-    ],
-    activities: [
-      "Journée d'intégration",
-      "Soirées thématiques",
-      "Événements inter-universitaires",
-    ],
-    results: [
-      "1000+ étudiants mobilisés",
-      "15 événements organisés",
-      "Participation record",
-    ],
-    progress: 90,
-  },
-  {
-    icon: Palette,
-    name: "Culture & Sport",
-    color: "bg-orange-500",
-    objectives: [
-      "Promouvoir les activités culturelles",
-      "Développer la pratique sportive",
-      "Valoriser les talents étudiants",
-    ],
-    activities: [
-      "Tournois sportifs",
-      "Concerts et spectacles",
-      "Ateliers artistiques",
-    ],
-    results: [
-      "6 tournois organisés",
-      "3 concerts par semestre",
-      "Club de talents créé",
-    ],
-    progress: 45,
-  },
-  {
-    icon: Heart,
-    name: "Actions humanitaires",
-    color: "bg-red-500",
-    objectives: [
-      "Développer la solidarité étudiante",
-      "Soutenir les causes sociales",
-      "Sensibiliser aux enjeux humanitaires",
-    ],
-    activities: [
-      "Collectes de dons",
-      "Journées de sensibilisation",
-      "Partenariats avec des ONG",
-    ],
-    results: [
-      "2 collectes par semestre",
-      "500+ personnes aidées",
-      "3 partenariats ONG",
-    ],
-    progress: 70,
+    progress: 0,
   },
   {
     icon: Briefcase,
-    name: "Entrepreneuriat & Employabilité",
-    color: "bg-amber-600",
+    name: "Axe 3 : Développement & Entrepreneuriat",
+    color: "bg-purple-600",
     objectives: [
-      "Faciliter l'insertion professionnelle",
-      "Encourager l'entrepreneuriat étudiant",
-      "Créer des ponts avec le monde du travail",
+      "Promouvoir l'esprit entrepreneurial sur le campus",
+      "Accompagner les porteurs de projets étudiants",
+      "Améliorer l'employabilité des futurs diplômés"
     ],
     activities: [
-      "Forums de l'emploi",
-      "Ateliers CV et entretien",
-      "Rencontres avec des entrepreneurs",
+      "Semaine de l'Entrepreneuriat (pendant les pauses)",
+      "Mise en relation avec des réseaux d'entrepreneurs",
+      "Sessions de formations pratiques et workshops"
     ],
     results: [
-      "2 forums par an",
-      "200 CV relus",
-      "50 stages facilités",
+      "Augmentation du nombre de projets étudiants lancés",
+      "Meilleure préparation au monde professionnel",
+      "Création d'un écosystème d'innovation UIE"
     ],
-    progress: 55,
+    progress: 0,
   },
   {
-    icon: Languages,
-    name: "Langues & Identité",
-    color: "bg-teal-500",
+    icon: Heart,
+    name: "Axe 4 : Sport & Bien-être",
+    color: "bg-red-600",
     objectives: [
-      "Valoriser la diversité culturelle",
-      "Promouvoir les langues locales",
-      "Renforcer l'identité étudiante",
+      "Améliorer le bien-être physique et mental des étudiants",
+      "Renforcer la fraternité par le sport",
+      "Célébrer les moments de partage spirituel"
     ],
     activities: [
-      "Cours de langues locales",
-      "Journées culturelles",
-      "Échanges interculturels",
+      "Matchs de football inter-filières chaque vendredi",
+      "Rupture collective pendant le mois de Ramadan",
+      "Challenges sportifs inter-universitaires"
     ],
     results: [
-      "3 langues enseignées",
-      "4 journées culturelles",
-      "100+ participants",
+      "Participation active de toutes les filières",
+      "Cohésion sociale renforcée par les événements",
+      "Réduction du stress académique par le sport"
     ],
-    progress: 80,
+    progress: 0,
   },
   {
-    icon: Laptop,
-    name: "Numérique & Droits",
-    color: "bg-indigo-500",
+    icon: Palette,
+    name: "Axe 5 : Culture & Solidarité",
+    color: "bg-orange-600",
     objectives: [
-      "Défendre les droits étudiants",
-      "Améliorer les outils numériques",
-      "Former aux compétences digitales",
+      "Célébrer la diversité et les valeurs humaines",
+      "Inculquer le sens de la citoyenneté et du don",
+      "Améliorer le niveau linguistique des étudiants"
     ],
     activities: [
-      "Permanences juridiques",
-      "Formations numériques",
-      "Développement d'outils",
+      "Journée Culturelle 'Célébrer l'Homme'",
+      "Campagne de collecte et dons pour l'orphelinat",
+      "Création de clubs d'anglais et symposiums"
     ],
     results: [
-      "Site BDE opérationnel",
-      "50+ étudiants formés",
-      "Guide des droits publié",
+      "Engagement social accru de la communauté",
+      "Amélioration des compétences linguistiques",
+      "Rayonnement culturel de l'université"
     ],
-    progress: 100,
+    progress: 0,
+  },
+  {
+    icon: Target,
+    name: "Axe 6 : Communication & Organisation",
+    color: "bg-teal-600",
+    objectives: [
+      "Fluidifier la circulation de l'information",
+      "Assurer une organisation rigoureuse des événements",
+      "Accroître l'engagement numérique des étudiants"
+    ],
+    activities: [
+      "Structuration des canaux d'information officiels",
+      "Digitilisation du suivi des activités",
+      "Communication dynamique en temps réel"
+    ],
+    results: [
+      "Zéro perte d'information majeure",
+      "Participation record aux événements planifiés",
+      "Satisfaction étudiante sur la communication"
+    ],
+    progress: 0,
   },
 ];
 

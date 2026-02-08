@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 
 export function NextActivitySection() {
   const nextActivity = {
-    title: "Le Gala de l'Excellence",
-    description: "Une soirée mémorable pour célébrer l'unité et le talent de notre université.",
-    date: "15 Juin 2025",
-    time: "19h00 - Minuit",
-    location: "Palais de la Culture",
-    participants: 250,
-    pole: "Culture & Sport",
+    title: "Journées d'Intégration UIE",
+    description: "Deux jours d'intégration sportive et culturelle pour accueillir nos nouveaux talents et renforcer l'esprit de communauté.",
+    date: "Prochainement",
+    time: "Vendredi & Samedi",
+    location: "Campus UIE & Terrains Sportifs",
+    participants: 500,
+    pole: "Organisation & Culture",
   };
 
   return (

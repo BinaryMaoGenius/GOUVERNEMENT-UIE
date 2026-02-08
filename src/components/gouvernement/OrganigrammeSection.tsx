@@ -24,14 +24,14 @@ const bureauExecutif: Member[] = [
 ];
 
 const poles: Pole[] = [
-  { title: "Communication", icon: MessageSquare, color: "bg-blue-500", responsable: "Djénèba Sidibé", adjoint: "Aliou Traoré" },
-  { title: "Organisation", icon: UsersRound, color: "bg-green-500", responsable: "Bakary Keïta", adjoint: "Saran Bagayoko" },
-  { title: "Culture & Sport", icon: Music, color: "bg-orange-500", responsable: "Mariam Doumbia", adjoint: "Cheick O. Koné" },
-  { title: "Humanitaire", icon: Heart, color: "bg-red-500", responsable: "Kadidia Sylla", adjoint: "Abdoulaye Maïga" },
-  { title: "Entrepreneuriat", icon: Briefcase, color: "bg-purple-500", responsable: "Seydou Kouyaté", adjoint: "Fanta Diarra" },
-  { title: "Langues", icon: Languages, color: "bg-teal-500", responsable: "Hawa Touré", adjoint: "Modibo Sidibé" },
-  { title: "Informatique", icon: Monitor, color: "bg-indigo-500", responsable: "Drissa Keïta", adjoint: "Salimata Barry" },
-  { title: "Droit & Éthique", icon: Scale, color: "bg-amber-600", responsable: "Boubacar Sow", adjoint: "Awa Diakité" },
+  { title: "Communication", icon: MessageSquare, color: "bg-blue-500", responsable: "À élire", adjoint: "À élire" },
+  { title: "Organisation", icon: UsersRound, color: "bg-green-500", responsable: "À élire", adjoint: "À élire" },
+  { title: "Culture & Sport", icon: Music, color: "bg-orange-500", responsable: "À élire", adjoint: "À élire" },
+  { title: "Humanitaire", icon: Heart, color: "bg-red-500", responsable: "À élire", adjoint: "À élire" },
+  { title: "Entrepreneuriat", icon: Briefcase, color: "bg-purple-500", responsable: "À élire", adjoint: "À élire" },
+  { title: "Langues", icon: Languages, color: "bg-teal-500", responsable: "À élire", adjoint: "À élire" },
+  { title: "Informatique", icon: Monitor, color: "bg-indigo-500", responsable: "À élire", adjoint: "À élire" },
+  { title: "Droit & Éthique", icon: Scale, color: "bg-amber-600", responsable: "À élire", adjoint: "À élire" },
 ];
 
 export function OrganigrammeSection() {

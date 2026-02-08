@@ -27,14 +27,14 @@ const orgData = {
         { role: "Trésorier Adj.", name: "Mah Mallé", level: 1, icon: Wallet },
     ],
     poles: [
-        { title: "Communication", icon: MessageSquare, color: "bg-blue-500", responsable: "Djénèba S.", level: 2 },
-        { title: "Organisation", icon: UsersRound, color: "bg-green-500", responsable: "Bakary K.", level: 2 },
-        { title: "Culture & Sport", icon: Music, color: "bg-orange-500", responsable: "Mariam D.", level: 2 },
-        { title: "Humanitaire", icon: Heart, color: "bg-red-500", responsable: "Kadidia S.", level: 2 },
-        { title: "Entrepreneuriat", icon: Briefcase, color: "bg-purple-500", responsable: "Seydou K.", level: 2 },
-        { title: "Langues", icon: Languages, color: "bg-teal-500", responsable: "Hawa T.", level: 2 },
-        { title: "Informatique", icon: Monitor, color: "bg-indigo-500", responsable: "Drissa K.", level: 2 },
-        { title: "Droit & Éthique", icon: Scale, color: "bg-amber-600", responsable: "Boubacar S.", level: 2 },
+        { title: "Communication", icon: MessageSquare, color: "bg-blue-500", responsable: "À élire", level: 2 },
+        { title: "Organisation", icon: UsersRound, color: "bg-green-500", responsable: "À élire", level: 2 },
+        { title: "Culture & Sport", icon: Music, color: "bg-orange-500", responsable: "À élire", level: 2 },
+        { title: "Humanitaire", icon: Heart, color: "bg-red-500", responsable: "À élire", level: 2 },
+        { title: "Entrepreneuriat", icon: Briefcase, color: "bg-purple-500", responsable: "À élire", level: 2 },
+        { title: "Langues", icon: Languages, color: "bg-teal-500", responsable: "À élire", level: 2 },
+        { title: "Informatique", icon: Monitor, color: "bg-indigo-500", responsable: "À élire", level: 2 },
+        { title: "Droit & Éthique", icon: Scale, color: "bg-amber-600", responsable: "À élire", level: 2 },
     ],
 };
 
