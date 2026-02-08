@@ -32,7 +32,7 @@ export function VicePresidentMessage() {
                                         <img
                                             src="/images/Madina_Mohamed.jpeg"
                                             alt="Madina & Mohamed"
-                                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                                            className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-110"
                                             loading="lazy"
                                         />
                                     </div>
