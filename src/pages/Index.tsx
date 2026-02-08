@@ -19,7 +19,6 @@ const Index = () => {
       <ServicesSection />
       <PresidentMessage />
       <IdeaWall />
-      <TimelineSection />
       <CultureSection />
       <OrganigrammeSection />
       <CTASection />

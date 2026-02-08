@@ -14,7 +14,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Cohésion",
     status: "upcoming",
-    image: true,
+    image: "/images/integration_sport.png",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Culture",
     status: "upcoming",
-    image: true,
+    image: "/images/integration_culture.png",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Dialogue",
     status: "upcoming",
-    image: true,
+    image: "/images/voix_etudiants.png",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Entrepreneuriat",
     status: "upcoming",
-    image: true,
+    image: "/images/entrepreneuriat.png",
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Sport",
     status: "upcoming",
-    image: true,
+    image: "/images/integration_sport.png",
   }
 ];
 

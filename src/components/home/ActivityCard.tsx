@@ -10,7 +10,7 @@ export interface Activity {
     participants: number;
     pole: string;
     status: string;
-    image: boolean;
+    image: string | boolean;
 }
 
 interface ActivityCardProps {
@@ -22,10 +22,18 @@ export function ActivityCard({ activity }: ActivityCardProps) {
         <div className="glass-dark rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-accent/20 transition-all duration-300 group">
             {activity.image && (
                 <div className="h-48 gradient-hero relative overflow-hidden">
+                    {typeof activity.image === 'string' ? (
+                        <img
+                            src={activity.image}
+                            alt={activity.title}
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                    ) : (
+                        <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity">
+                            <Calendar size={64} className="text-white" />
+                        </div>
+                    )}
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity">
-                        <Calendar size={64} className="text-white" />
-                    </div>
                     <div className="absolute top-4 right-4 bg-accent text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
                         {activity.pole}
                     </div>

@@ -65,19 +65,25 @@ const ServicesPage = () => {
                         {services.map((service) => {
                             const Icon = service.icon;
                             return (
-                                <Link
+                                <div
                                     key={service.id}
-                                    to={service.href}
-                                    className="group relative overflow-hidden rounded-[2.5rem] bg-white border border-slate-200 hover:border-slate-300 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+                                    className="group relative overflow-hidden rounded-[2.5rem] bg-white border border-slate-200 opacity-80 cursor-not-allowed transition-all duration-500"
                                 >
                                     <div className="relative p-10 h-full flex flex-col">
-                                        {/* Icon */}
-                                        <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-8 shadow-lg ${service.shadow} group-hover:scale-110 transition-transform duration-500`}>
-                                            <Icon className="w-10 h-10 text-white" />
+                                        {/* Badge A Venir */}
+                                        <div className="absolute top-6 right-6">
+                                            <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                                                À venir
+                                            </span>
+                                        </div>
+
+                                        {/* Icon (Grayscale) */}
+                                        <div className={`w-20 h-20 rounded-3xl bg-slate-100 flex items-center justify-center mb-8 shadow-inner`}>
+                                            <Icon className="w-10 h-10 text-slate-400" />
                                         </div>
 
                                         {/* Content */}
-                                        <h3 className="text-2xl font-display font-bold mb-4 text-slate-900 group-hover:text-primary transition-colors">
+                                        <h3 className="text-2xl font-display font-bold mb-4 text-slate-900">
                                             {service.title}
                                         </h3>
                                         <p className="text-muted-foreground mb-8 line-clamp-2">
@@ -85,24 +91,24 @@ const ServicesPage = () => {
                                         </p>
 
                                         {/* Features */}
-                                        <div className="mt-auto space-y-4">
+                                        <div className="mt-auto space-y-4 text-slate-400">
                                             <div className="space-y-3 mb-8">
                                                 {service.features.map((feature, idx) => (
-                                                    <div key={idx} className="flex items-center gap-3 text-sm font-medium text-slate-600">
-                                                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color}`}></div>
+                                                    <div key={idx} className="flex items-center gap-3 text-sm font-medium">
+                                                        <div className={`w-2 h-2 rounded-full bg-slate-300`}></div>
                                                         {feature}
                                                     </div>
                                                 ))}
                                             </div>
 
-                                            {/* CTA */}
-                                            <div className="flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all duration-300">
-                                                Commander maintenant
-                                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1" />
+                                            {/* CTA Disabled */}
+                                            <div className="flex items-center gap-2 font-bold opacity-50">
+                                                Bientôt disponible
+                                                <Clock className="w-5 h-5" />
                                             </div>
                                         </div>
                                     </div>
-                                </Link>
+                                </div>
                             );
                         })}
                     </div>

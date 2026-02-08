@@ -49,18 +49,21 @@ export function ServicesSection() {
 
                 <div className="grid md:grid-cols-3 gap-8">
                     {services.map((service, index) => (
-                        <Link
+                        <div
                             key={index}
-                            to={service.href}
-                            className="group relative overflow-hidden rounded-[2rem] bg-slate-50 border border-slate-200 hover:border-slate-300 hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
+                            className="group relative overflow-hidden rounded-[2rem] bg-slate-50 border border-slate-200 opacity-80 cursor-not-allowed transition-all duration-500"
                         >
-                            <div className="aspect-[16/10] overflow-hidden relative">
+                            <div className="aspect-[16/10] overflow-hidden relative grayscale">
                                 <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                    className="w-full h-full object-cover"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent flex items-center justify-center">
+                                    <span className="bg-blue-600 text-white px-4 py-2 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg">
+                                        À venir
+                                    </span>
+                                </div>
                                 <div className="absolute bottom-4 left-6 right-6">
                                     <h3 className="text-xl font-display font-bold text-white mb-2">
                                         {service.title}
@@ -74,11 +77,11 @@ export function ServicesSection() {
                                 <p className="text-muted-foreground text-sm mb-6 line-clamp-2 leading-relaxed">
                                     {service.description}
                                 </p>
-                                <div className="flex items-center gap-2 text-slate-900 font-bold text-sm group-hover:gap-4 transition-all">
-                                    Accéder au service <ArrowRight className="w-4 h-4 text-primary" />
+                                <div className="flex items-center gap-2 text-slate-400 font-bold text-sm">
+                                    Service en attente
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </div>
             </div>
