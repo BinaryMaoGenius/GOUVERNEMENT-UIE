@@ -59,8 +59,13 @@ export function NextActivitySection() {
               </div>
 
               {/* Côté Visuel (Image/Gradient) */}
-              <div className="relative min-h-[300px] gradient-hero flex items-center justify-center p-12">
-                <div className="absolute inset-0 bg-black/40 mix-blend-overlay" />
+              <div className="relative min-h-[300px] flex items-center justify-center p-12 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1541339907198-e08759dfc3f3?q=80&w=1000"
+                  alt="Campus UIE"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-blue-900/60 backdrop-blur-[2px]" />
                 <div className="relative z-10 text-center">
                   <div className="w-24 h-24 rounded-full border-2 border-white/20 flex items-center justify-center mx-auto mb-6 backdrop-blur-md">
                     <span className="text-white font-display text-4xl italic">G</span>

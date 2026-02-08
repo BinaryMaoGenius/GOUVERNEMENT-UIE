@@ -14,7 +14,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Cohésion",
     status: "upcoming",
-    image: "/images/integration_sport.png",
+    image: "https://images.unsplash.com/photo-1546519638-68e1084f289a?q=80&w=1000",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Culture",
     status: "upcoming",
-    image: "/images/integration_culture.png",
+    image: "https://images.unsplash.com/photo-1514525253361-bee8718a74a2?q=80&w=1000",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Dialogue",
     status: "upcoming",
-    image: "/images/voix_etudiants.png",
+    image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=1000",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Entrepreneuriat",
     status: "upcoming",
-    image: "/images/entrepreneuriat.png",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000",
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Sport",
     status: "upcoming",
-    image: "/images/integration_sport.png",
+    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000",
   }
 ];
 
