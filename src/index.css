@@ -175,4 +175,15 @@
   .animate-slow-zoom {
     animation: slowZoom 20s ease-in-out infinite alternate;
   }
+
+  .page-transition-enter {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  .page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 200ms ease-out, transform 200ms ease-out;
+  }
 }

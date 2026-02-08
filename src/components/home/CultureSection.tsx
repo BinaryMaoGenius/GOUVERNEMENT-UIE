@@ -2,8 +2,8 @@ import { Globe, BookOpen } from "lucide-react";
 
 const expressions = [
     { phrase: "An k'an bolo di n'gon ma", lang: "Bambara", meaning: "Donnons-nous la main", context: "Appel à l'union étudiante" },
-    { phrase: "I ni ce", lang: "Bambara", meaning: "Merci / Travail bien fait", context: "Reconnaissance du mérite" },
-    { phrase: "Hèrè", lang: "Bambara", meaning: "La Paix", context: "Climat social sur le campus" },
+    { phrase: "On mboɗi gollude kadi", lang: "Peulh", meaning: "Nous devons encore travailler", context: "Persévérance et excellence" },
+    { phrase: "A tché bomu", lang: "Bomu", meaning: "C'est notre identité", context: "Fierté culturelle" },
 ];
 
 export function CultureSection() {

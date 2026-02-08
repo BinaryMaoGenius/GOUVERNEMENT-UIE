@@ -29,7 +29,7 @@ export function Layout({ children }: LayoutProps) {
       setTimeout(() => {
         setDisplayLocation(location);
         setTransitionStage("page-transition-enter-active");
-      }, 500);
+      }, 150);
     }
   }, [location, displayLocation]);
 
