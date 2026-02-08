@@ -59,8 +59,8 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-slate-500 font-body">
               <li>Université Internationale d'Excellence</li>
               <li>Campus de Bamako, Mali</li>
-              <li>contact@gov-uie.edu</li>
-              <li>+223 78 28 28 42</li>
+              <li>user_id.binary@proton.me</li>
+              <li>+223 99998996 / 82393076</li>
             </ul>
           </div>
 

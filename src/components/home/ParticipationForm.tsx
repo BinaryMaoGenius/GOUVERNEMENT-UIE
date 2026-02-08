@@ -77,7 +77,7 @@ export function ParticipationForm({ poles, responsibilites }: ParticipationFormP
                     <Input
                         name="email"
                         type="email"
-                        placeholder="jean.dupont@uie.edu"
+                        placeholder="votre.email@etudiant.ml"
                         required
                         className="h-14 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all shadow-inner"
                     />
