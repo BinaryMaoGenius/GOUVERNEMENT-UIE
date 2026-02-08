@@ -8,7 +8,12 @@ export function HeroSection() {
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-24 md:pb-32 bg-white">
       {/* Background elements with Stellar Particles */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-indigo-900/40 z-10"></div>
+        <img
+          src="/images/UIE_banniere.jpeg"
+          alt="Campus UIE"
+          className="absolute inset-0 w-full h-full object-cover scale-105 animate-slow-zoom"
+        />
         {/* Stellar Background */}
         <div className="absolute inset-0 opacity-20">
           {[...Array(20)].map((_, i) => (
@@ -42,14 +47,14 @@ export function HeroSection() {
           </div>
 
           <h1
-            className="section-title mb-6 animate-slide-up text-slate-900" style={{ animationDelay: "0.1s" }}
+            className="section-title mb-6 animate-slide-up text-white" style={{ animationDelay: "0.1s" }}
           >
             Bâtir l'Université de <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 drop-shadow-sm italic">Demain</span>, Aujourd'hui.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 drop-shadow-sm italic">Demain</span>, Aujourd'hui.
           </h1>
 
           <p
-            className="section-subtitle mb-8 animate-slide-up text-slate-600" style={{ animationDelay: "0.2s" }}
+            className="section-subtitle mb-8 animate-slide-up text-blue-50" style={{ animationDelay: "0.2s" }}
           >
             L'Université Internationale d'Excellence s'engage pour une gouvernance étudiante audacieuse, inclusive et résolument tournée vers l'avenir.
           </p>
@@ -59,7 +64,7 @@ export function HeroSection() {
             className="flex items-center justify-center md:justify-start gap-4 mb-10 text-slate-400 animate-fade-in" style={{ animationDelay: "0.4s" }}
           >
             <span className="h-[1px] w-8 bg-slate-200 hidden md:block"></span>
-            <div className="flex items-center gap-3 font-body text-sm tracking-[0.2em] font-bold text-slate-500">
+            <div className="flex items-center gap-3 font-body text-sm tracking-[0.2em] font-bold text-blue-200">
               <span>UNION</span>
               <span className="text-blue-400">•</span>
               <span>IMPLICATION</span>
@@ -91,16 +96,16 @@ export function HeroSection() {
             className="mt-16 pt-8 border-t border-slate-100 flex gap-12 justify-center md:justify-start animate-fade-in" style={{ animationDelay: "0.8s" }}
           >
             <div className="group cursor-default">
-              <p className="text-3xl font-display font-light text-slate-900 group-hover:text-blue-600 transition-colors">22</p>
-              <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Visionnaires</p>
+              <p className="text-3xl font-display font-light text-white group-hover:text-blue-400 transition-colors">22</p>
+              <p className="text-[10px] uppercase tracking-widest text-blue-200 font-bold">Visionnaires</p>
             </div>
             <div className="group cursor-default">
-              <p className="text-3xl font-display font-light text-slate-900 group-hover:text-blue-600 transition-colors">8</p>
-              <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Pôles d'Action</p>
+              <p className="text-3xl font-display font-light text-white group-hover:text-blue-400 transition-colors">8</p>
+              <p className="text-[10px] uppercase tracking-widest text-blue-200 font-bold">Pôles d'Action</p>
             </div>
             <div className="group cursor-default">
-              <p className="text-3xl font-display font-light text-slate-900 group-hover:text-blue-600 transition-colors">1</p>
-              <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Université d'Excellence</p>
+              <p className="text-3xl font-display font-light text-white group-hover:text-blue-400 transition-colors">1</p>
+              <p className="text-[10px] uppercase tracking-widest text-blue-200 font-bold">Université d'Excellence</p>
             </div>
           </div>
         </div>

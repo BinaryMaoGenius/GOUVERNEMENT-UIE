@@ -16,11 +16,11 @@ interface Pole {
 
 const bureauExecutif: Member[] = [
   { role: "Présidente", name: "Madina Ali Touré" },
-  { role: "Vice-Président", name: "Ibrahim Traoré" },
-  { role: "Secrétaire Générale", name: "Fatoumata Daou" },
-  { role: "Secrétaire Général Adjoint", name: "Amadou Diallo", isAdjoint: true },
-  { role: "Trésorier", name: "Oumar Sidibé" },
-  { role: "Trésorière Adjointe", name: "Kadiatou Sow", isAdjoint: true },
+  { role: "Vice-Président", name: "Mohamed Sogodogo" },
+  { role: "Secrétaire Général", name: "Sidiki" },
+  { role: "Secrétaire Générale Adjointe", name: "Bintou Toumagnon", isAdjoint: true },
+  { role: "Trésorière", name: "Fatou Timbiné" },
+  { role: "Trésorier Adjoint", name: "Mah Mallé", isAdjoint: true },
 ];
 
 const poles: Pole[] = [
@@ -64,9 +64,14 @@ export function OrganigrammeSection() {
                 <Crown size={120} />
               </div>
               <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
-                <div className="w-24 h-24 rounded-full bg-slate-100 p-1 shadow-lg ring-4 ring-slate-50">
+                <div className="w-24 h-24 rounded-full bg-slate-100 p-1 shadow-lg ring-4 ring-slate-50 overflow-hidden">
                   <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden border border-slate-100">
-                    <Crown className="w-10 h-10 text-blue-600" />
+                    <img
+                      src="/images/Madina.jpeg"
+                      alt="Madina Ali Touré"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <div className="text-center md:text-left">
@@ -83,11 +88,16 @@ export function OrganigrammeSection() {
             {bureauExecutif.slice(1).map((member, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 border border-slate-200 hover:border-blue-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
                 <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${member.isAdjoint ? "bg-slate-50 text-slate-500" : "bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors overflow-hidden ${member.isAdjoint ? "bg-slate-50 text-slate-500" : "bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
                     }`}>
-                    {member.role.includes("Vice") && <Users className="w-5 h-5" />}
-                    {member.role.includes("Secrétaire") && <FileText className="w-5 h-5" />}
-                    {member.role.includes("Trésorier") && <Wallet className="w-5 h-5" />}
+                    {member.role === "Vice-Président" ? (
+                      <Users className="w-5 h-5" />
+                    ) : (
+                      <>
+                        {member.role.includes("Secrétaire") && <FileText className="w-5 h-5" />}
+                        {member.role.includes("Trésorier") && <Wallet className="w-5 h-5" />}
+                      </>
+                    )}
                   </div>
                   <div>
                     <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1">{member.role}</p>

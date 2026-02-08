@@ -19,7 +19,7 @@ export function VicePresidentMessage() {
                                     Message du Vice-Président
                                 </p>
                                 <h3 className="font-display font-bold text-xl md:text-2xl text-slate-900 italic">
-                                    Un Mot d'Ibrahim Traoré
+                                    Un Mot de Mohamed Sogodogo
                                 </h3>
                             </div>
                         </div>
@@ -27,9 +27,14 @@ export function VicePresidentMessage() {
                         <div className="flex flex-col md:flex-row gap-8 items-start">
                             {/* Avatar */}
                             <div className="flex-shrink-0 mx-auto md:mx-0">
-                                <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-slate-100 p-1 shadow-lg group-hover:scale-105 transition-transform duration-500 ring-4 ring-slate-50">
+                                <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-slate-100 p-1 shadow-lg group-hover:scale-105 transition-transform duration-500 ring-4 ring-slate-50 overflow-hidden">
                                     <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center overflow-hidden border border-slate-200">
-                                        <Users className="w-12 h-12 md:w-16 md:h-16 text-blue-600" />
+                                        <img
+                                            src="/images/Madina_Mohamed.jpeg"
+                                            alt="Madina & Mohamed"
+                                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                                            loading="lazy"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +58,7 @@ export function VicePresidentMessage() {
                                     <div className="flex items-center gap-3">
                                         <div className="flex-1">
                                             <p className="font-display font-bold text-lg text-slate-900">
-                                                Ibrahim Traoré
+                                                Mohamed Sogodogo
                                             </p>
                                             <p className="text-sm text-blue-600 font-medium">
                                                 Vice-Président du Gouvernement UIE

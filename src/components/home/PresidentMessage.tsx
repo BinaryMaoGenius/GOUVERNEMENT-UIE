@@ -22,8 +22,12 @@ export function PresidentMessage() {
             <div className="flex-shrink-0 flex flex-col items-center transition-all duration-500 hover:scale-105">
               <div className="relative p-1.5 rounded-full bg-gradient-to-tr from-accent to-primary animate-spin-slow" style={{ animationDuration: '8s' }}>
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-primary-foreground bg-white shadow-inner overflow-hidden border-2 border-white">
-                  <UserCircle size={64} className="text-muted-foreground/30" />
-                  {/* Replace icon with <img src="/path/to/photo.jpg" alt="Madina Ali Touré" className="w-full h-full object-cover" /> */}
+                  <img
+                    src="/images/Madina_Mohamed.jpeg"
+                    alt="Madina Ali Touré"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    loading="lazy"
+                  />
                 </div>
               </div>
               <div className="mt-6 text-center">

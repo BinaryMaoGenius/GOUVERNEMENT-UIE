@@ -20,11 +20,11 @@ const orgData = {
         level: 0,
     },
     bureau: [
-        { role: "Vice-Président", name: "Ibrahim Traoré", level: 1, icon: Users },
-        { role: "Secrétaire Générale", name: "Fatoumata Daou", level: 1, icon: FileText },
-        { role: "SG Adjoint", name: "Amadou Diallo", level: 1, icon: FileText },
-        { role: "Trésorier", name: "Oumar Sidibé", level: 1, icon: Wallet },
-        { role: "Trésorière Adj.", name: "Kadiatou Sow", level: 1, icon: Wallet },
+        { role: "Vice-Président", name: "Mohamed Sogodogo", level: 1, icon: Users },
+        { role: "Secrétaire Général", name: "Sidiki", level: 1, icon: FileText },
+        { role: "SG Adj.", name: "Bintou Toumagnon", level: 1, icon: FileText },
+        { role: "Trésorière", name: "Fatou Timbiné", level: 1, icon: Wallet },
+        { role: "Trésorier Adj.", name: "Mah Mallé", level: 1, icon: Wallet },
     ],
     poles: [
         { title: "Communication", icon: MessageSquare, color: "bg-blue-500", responsable: "Djénèba S.", level: 2 },
@@ -57,9 +57,14 @@ export function OrganigramTree() {
                         <div className="relative">
                             <div className="glass-dark p-6 md:p-8 rounded-3xl border-accent/30 shadow-[0_0_30px_rgba(255,191,0,0.15)] hover:scale-105 transition-all duration-300 max-w-xs">
                                 <div className="flex flex-col items-center gap-4">
-                                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full gradient-hero p-1 shadow-xl">
-                                        <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                                            <Crown className="w-8 h-8 md:w-10 md:h-10 text-accent" />
+                                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full gradient-hero p-1 shadow-xl overflow-hidden">
+                                        <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
+                                            <img
+                                                src="/images/Madina.jpeg"
+                                                alt="Madina Ali Touré"
+                                                className="w-full h-full object-cover"
+                                                loading="lazy"
+                                            />
                                         </div>
                                     </div>
                                     <div className="text-center">
@@ -90,8 +95,8 @@ export function OrganigramTree() {
 
                                     <div className="glass-dark p-4 rounded-2xl border-white/5 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 group">
                                         <div className="flex flex-col items-center gap-3">
-                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                                                <member.icon className="w-5 h-5 md:w-6 md:h-6" />
+                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors overflow-hidden">
+                                                <Users className="w-5 h-5 md:w-6 md:h-6" />
                                             </div>
                                             <div className="text-center">
                                                 <p className="text-[9px] md:text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
