@@ -14,7 +14,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Cohésion",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1546519638-68e1084f289a?q=80&w=1000",
+    image: "https://plus.unsplash.com/premium_photo-1664303228186-a61e7dc91597?q=80&w=1000",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Culture",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1514525253361-bee8718a74a2?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1502635618490-674ee613c79a?q=80&w=1000",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Dialogue",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1475721027785-f74ecd38916a?q=80&w=1000",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Entrepreneuriat",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000",
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Sport",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1550256038-72410a56821d?q=80&w=1000",
   }
 ];
 
