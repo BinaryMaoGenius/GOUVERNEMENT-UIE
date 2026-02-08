@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Search, Bell, Shield } from "lucide-react";
+import { Search, Shield } from "lucide-react";
 import { SearchDialog } from "./SearchDialog";
-import { NotificationsPopover } from "./NotificationsPopover";
 
 const navItems = [
   { label: "Accueil", href: "/" },
@@ -62,13 +61,6 @@ export function Header() {
             >
               <Search className="w-5 h-5" />
             </button>
-
-            <NotificationsPopover>
-              <button className="p-2.5 rounded-full hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all duration-300 relative" aria-label="Notifications">
-                <Bell className="w-5 h-5" />
-                <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
-              </button>
-            </NotificationsPopover>
           </div>
         </div>
       </div>

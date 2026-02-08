@@ -4,7 +4,7 @@ export function VicePresidentMessage() {
     return (
         <section className="py-12 md:py-16 relative overflow-hidden bg-white">
             <div className="container-section">
-                <div className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-200 relative overflow-hidden group hover:border-blue-200 transition-all duration-500 shadow-xl shadow-slate-100">
+                <div className="bg-white rounded-3xl p-5 md:p-12 border border-slate-200 relative overflow-hidden group hover:border-blue-200 transition-all duration-500 shadow-xl shadow-slate-100">
                     {/* Background decoration */}
                     <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity text-blue-600">
                         <Quote size={120} />

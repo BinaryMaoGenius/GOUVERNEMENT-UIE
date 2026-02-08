@@ -59,7 +59,7 @@ export function OrganigrammeSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* President Card */}
-            <div className="md:col-span-3 bg-white p-8 rounded-[2.5rem] border border-slate-200 relative overflow-hidden group hover:scale-[1.01] transition-all duration-500 shadow-xl shadow-slate-100">
+            <div className="md:col-span-3 bg-white p-5 md:p-8 rounded-3xl border border-slate-200 relative overflow-hidden group hover:scale-[1.01] transition-all duration-500 shadow-xl shadow-slate-100">
               <div className="absolute top-0 right-0 p-8 opacity-5 text-blue-600 group-hover:opacity-10 transition-opacity">
                 <Crown size={120} />
               </div>
