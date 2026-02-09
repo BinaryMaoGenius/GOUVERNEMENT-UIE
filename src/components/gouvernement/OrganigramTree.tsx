@@ -16,15 +16,15 @@ interface Pole {
 const orgData = {
     president: {
         role: "Présidente",
-        name: "Madina Ali Touré",
+        name: "MADINA ALI TOURÉ",
         level: 0,
     },
     bureau: [
-        { role: "Vice-Président", name: "Mohamed Sogodogo", level: 1, icon: Users },
-        { role: "Secrétaire Général", name: "Sidiki", level: 1, icon: FileText },
-        { role: "SG Adj.", name: "Bintou Toumagnon", level: 1, icon: FileText },
-        { role: "Trésorière", name: "Fatou Timbiné", level: 1, icon: Wallet },
-        { role: "Trésorier Adj.", name: "Mah Mallé", level: 1, icon: Wallet },
+        { role: "Vice-Président", name: "MOHAMED SOGODOGO", level: 1, icon: Users },
+        { role: "Secrétaire Général", name: "SIDIKI TRAORE", level: 1, icon: FileText },
+        { role: "SG Adj.", name: "BINTOU TOUMAGNON", level: 1, icon: FileText },
+        { role: "Trésorière", name: "FATOU TIMBINÉ", level: 1, icon: Wallet },
+        { role: "Trésorier Adj.", name: "MAH MALLÉ", level: 1, icon: Wallet },
     ],
     poles: [
         { title: "Communication", icon: MessageSquare, color: "bg-blue-500", responsable: "À élire", level: 2 },
@@ -61,7 +61,7 @@ export function OrganigramTree() {
                                         <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
                                             <img
                                                 src="/images/Madina.jpeg"
-                                                alt="Madina Ali Touré"
+                                                alt="MADINA ALI TOURÉ"
                                                 className="w-full h-full object-cover"
                                                 loading="lazy"
                                             />

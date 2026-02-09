@@ -14,7 +14,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Cohésion",
     status: "upcoming",
-    image: "https://plus.unsplash.com/premium_photo-1664303228186-a61e7dc91597?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1000",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Culture",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1502635618490-674ee613c79a?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Dialogue",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1475721027785-f74ecd38916a?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1000",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Entrepreneuriat",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000",
   },
   {
     id: 5,
@@ -58,8 +58,8 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Sport",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1550256038-72410a56821d?q=80&w=1000",
-  }
+    image: "https://images.unsplash.com/photo-1517466782571-8bc46960cf7c?q=80&w=1000",
+  },
 ];
 
 const filters = ["À venir", "Réalisées"];
@@ -118,6 +118,8 @@ const ActivitesPage = () => {
             )}
           </div>
         </div>
+        {/* Spacer for BottomNav on mobile */}
+        <div className="h-24 md:hidden"></div>
       </section>
     </Layout>
   );

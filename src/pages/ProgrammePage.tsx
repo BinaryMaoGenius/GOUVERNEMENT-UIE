@@ -284,6 +284,8 @@ const ProgrammePage = () => {
             ))}
           </Accordion>
         </div>
+        {/* Spacer for BottomNav on mobile */}
+        <div className="h-24 md:hidden"></div>
       </section>
     </Layout >
   );

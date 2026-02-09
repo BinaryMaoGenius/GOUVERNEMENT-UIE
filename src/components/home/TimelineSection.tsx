@@ -10,7 +10,7 @@ const events = [
     {
         year: "2022",
         title: "Engagement Associatif",
-        description: "Responsable de pôle, Madina a su fédérer les étudiants autour de projets culturels majeurs.",
+        description: "Responsable de pôle, MADINA a su fédérer les étudiants autour de projets culturels majeurs.",
         icon: Star,
     },
     {

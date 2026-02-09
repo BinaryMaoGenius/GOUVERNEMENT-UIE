@@ -53,7 +53,7 @@ export const searchIndex: SearchItem[] = [
     // Membres du Bureau Exécutif
     {
         id: "presidente",
-        title: "Madina Ali Touré - Présidente",
+        title: "MADINA ALI TOURÉ - Présidente",
         description: "Présidente du Gouvernement UIE",
         url: "/gouvernement",
         category: "member",
@@ -61,7 +61,7 @@ export const searchIndex: SearchItem[] = [
     },
     {
         id: "vice-president",
-        title: "Mohamed Sogodogo - Vice-Président",
+        title: "MOHAMED SOGODOGO - Vice-Président",
         description: "Vice-Président du Gouvernement UIE",
         url: "/gouvernement",
         category: "member",
@@ -69,15 +69,15 @@ export const searchIndex: SearchItem[] = [
     },
     {
         id: "secretaire-generale",
-        title: "Sidiki - Secrétaire Général",
+        title: "SIDIKI TRAORE - Secrétaire Général",
         description: "Secrétaire Général du Gouvernement UIE",
         url: "/gouvernement",
         category: "member",
-        keywords: ["secrétaire", "général", "sidiki"],
+        keywords: ["secrétaire", "général", "sidiki", "traore"],
     },
     {
         id: "secretaire-general-adjoint",
-        title: "Bintou Toumagnon - Secrétaire Générale Adjointe",
+        title: "BINTOU TOUMAGNON - Secrétaire Générale Adjointe",
         description: "Secrétaire Générale Adjointe",
         url: "/gouvernement",
         category: "member",
@@ -85,7 +85,7 @@ export const searchIndex: SearchItem[] = [
     },
     {
         id: "tresoriere",
-        title: "Fatou Timbiné - Trésorière",
+        title: "FATOU TIMBINÉ - Trésorière",
         description: "Trésorière du Gouvernement UIE",
         url: "/gouvernement",
         category: "member",
@@ -93,7 +93,7 @@ export const searchIndex: SearchItem[] = [
     },
     {
         id: "tresorier-adjoint",
-        title: "Mah Mallé - Trésorier Adjoint",
+        title: "MAH MALLÉ - Trésorier Adjoint",
         description: "Trésorier Adjoint",
         url: "/gouvernement",
         category: "member",

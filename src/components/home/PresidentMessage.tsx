@@ -24,14 +24,14 @@ export function PresidentMessage() {
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-primary-foreground bg-white shadow-inner overflow-hidden border-2 border-white">
                   <img
                     src="/images/Madina.jpeg"
-                    alt="Madina Ali Touré"
+                    alt="MADINA ALI TOURÉ"
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                     loading="lazy"
                   />
                 </div>
               </div>
               <div className="mt-6 text-center">
-                <p className="font-display font-bold text-2xl text-foreground tracking-tight">Madina Ali Touré</p>
+                <p className="font-display font-bold text-2xl text-foreground tracking-tight">MADINA ALI TOURÉ</p>
                 <p className="font-body text-[10px] uppercase tracking-[0.3em] text-primary mt-1">Élue Présidente 2025</p>
               </div>
             </div>

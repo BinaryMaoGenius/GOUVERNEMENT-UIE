@@ -19,7 +19,7 @@ interface ActivityCardProps {
 
 export function ActivityCard({ activity }: ActivityCardProps) {
     return (
-        <div className="glass-dark rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-accent/20 transition-all duration-300 group">
+        <div className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-200 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-100/50 transition-all duration-500 group shadow-sm">
             {activity.image && (
                 <div className="h-48 gradient-hero relative overflow-hidden">
                     {typeof activity.image === 'string' ? (

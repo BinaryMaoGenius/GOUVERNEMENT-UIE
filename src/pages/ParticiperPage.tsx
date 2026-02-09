@@ -98,7 +98,7 @@ const ParticiperPage = () => {
                 </div>
               </div>
               <p className="text-slate-300 font-body mb-8 leading-relaxed">
-                Incarnez le leadership étudiant. Accompagnez Madina dans sa vision et gérez les pôles stratégiques.
+                Incarnez le leadership étudiant. Accompagnez MADINA dans sa vision et gérez les pôles stratégiques.
               </p>
               <Button
                 className="w-full h-14 rounded-2xl bg-white text-slate-900 hover:bg-white/90 font-bold shadow-xl transition-transform active:scale-[0.98]"
@@ -166,14 +166,16 @@ const ParticiperPage = () => {
             </div>
           </div>
         </div>
+        {/* Spacer for BottomNav on mobile */}
+        <div className="h-24 md:hidden"></div>
       </section>
 
       <BottomNav hidden={selectedAction !== null} />
 
       {/* Form Modal */}
       {selectedAction && (
-        <section className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white w-full max-w-2xl rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 my-4 border border-slate-200 shadow-2xl animate-scale-in relative">
+        <section className="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[60] flex items-start justify-center p-4 overflow-y-auto pt-6 pb-24 md:pt-12 md:pb-12">
+          <div className="bg-white w-full max-w-2xl rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-12 border border-white/20 shadow-2xl animate-scale-in relative">
             {submitted ? (
               <div className="text-center py-12">
                 <div className="w-20 h-20 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/20">

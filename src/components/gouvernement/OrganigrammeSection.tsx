@@ -15,12 +15,12 @@ interface Pole {
 }
 
 const bureauExecutif: Member[] = [
-  { role: "Présidente", name: "Madina Ali Touré" },
-  { role: "Vice-Président", name: "Mohamed Sogodogo" },
-  { role: "Secrétaire Général", name: "Sidiki" },
-  { role: "Secrétaire Générale Adjointe", name: "Bintou Toumagnon", isAdjoint: true },
-  { role: "Trésorière", name: "Fatou Timbiné" },
-  { role: "Trésorier Adjoint", name: "Mah Mallé", isAdjoint: true },
+  { role: "Présidente", name: "MADINA ALI TOURÉ" },
+  { role: "Vice-Président", name: "MOHAMED SOGODOGO" },
+  { role: "Secrétaire Général", name: "SIDIKI TRAORE" },
+  { role: "Secrétaire Générale Adjointe", name: "BINTOU TOUMAGNON", isAdjoint: true },
+  { role: "Trésorière", name: "FATOU TIMBINÉ" },
+  { role: "Trésorier Adjoint", name: "MAH MALLÉ", isAdjoint: true },
 ];
 
 const poles: Pole[] = [
@@ -68,7 +68,7 @@ export function OrganigrammeSection() {
                   <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden border border-slate-100">
                     <img
                       src="/images/Madina.jpeg"
-                      alt="Madina Ali Touré"
+                      alt="MADINA ALI TOURÉ"
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                       loading="lazy"
                     />
@@ -76,7 +76,7 @@ export function OrganigrammeSection() {
                 </div>
                 <div className="text-center md:text-left">
                   <p className="text-blue-600 font-body text-xs uppercase tracking-[0.4em] mb-2 font-bold">Présidente du Gouvernement</p>
-                  <p className="font-display font-bold text-4xl text-slate-900 tracking-tight mb-2">Madina Ali Touré</p>
+                  <p className="font-display font-bold text-4xl text-slate-900 tracking-tight mb-2">MADINA ALI TOURÉ</p>
                   <p className="text-slate-500 font-body italic text-lg leading-relaxed max-w-2xl">
                     "Notre engagement est le socle de notre réussite commune. Ensemble, bâtissons l'université de demain."
                   </p>

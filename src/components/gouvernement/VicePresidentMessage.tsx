@@ -19,7 +19,7 @@ export function VicePresidentMessage() {
                                     Message du Vice-Président
                                 </p>
                                 <h3 className="font-display font-bold text-xl md:text-2xl text-slate-900 italic">
-                                    Un Mot de Mohamed Sogodogo
+                                    Un Mot de MOHAMED SOGODOGO
                                 </h3>
                             </div>
                         </div>
@@ -31,7 +31,7 @@ export function VicePresidentMessage() {
                                     <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center overflow-hidden border border-slate-200">
                                         <img
                                             src="/images/Madina_Mohamed.jpeg"
-                                            alt="Madina & Mohamed"
+                                            alt="MADINA & MOHAMED"
                                             className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-110"
                                             loading="lazy"
                                         />
@@ -58,7 +58,7 @@ export function VicePresidentMessage() {
                                     <div className="flex items-center gap-3">
                                         <div className="flex-1">
                                             <p className="font-display font-bold text-lg text-slate-900">
-                                                Mohamed Sogodogo
+                                                MOHAMED SOGODOGO
                                             </p>
                                             <p className="text-sm text-blue-600 font-medium">
                                                 Vice-Président du Gouvernement UIE
