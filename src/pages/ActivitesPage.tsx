@@ -69,7 +69,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Culture & Sport",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1591901393643-fc2761823eb2?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1566417713940-fe7c737d9ef2?q=80&w=1000",
     isNew: true,
   },
   {
