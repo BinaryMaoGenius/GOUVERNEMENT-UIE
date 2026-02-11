@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 
 export function NextActivitySection() {
   const nextActivity = {
-    title: "Journées d'Intégration UIE",
-    description: "Deux jours d'intégration sportive et culturelle pour accueillir nos nouveaux talents et renforcer l'esprit de communauté.",
-    date: "Prochainement",
-    time: "Vendredi & Samedi",
-    location: "Campus UIE & Terrains Sportifs",
-    participants: 500,
-    pole: "Organisation & Culture",
+    title: "Rupture Collective (Iftar)",
+    description: "Un moment sacré de partage et de fraternité. Rejoignez la communauté UIE pour rompre le jeûne ensemble dans une ambiance conviviale et chaleureuse.",
+    date: "Ramadan 2026",
+    time: "Au coucher du soleil",
+    location: "Esplanade du Campus UIE",
+    participants: 1000,
+    pole: "Culture & Cohésion",
   };
 
   return (
@@ -61,8 +61,8 @@ export function NextActivitySection() {
               {/* Côté Visuel (Image/Gradient) */}
               <div className="relative min-h-[300px] flex items-center justify-center p-12 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1541339907198-e08759dfc3f3?q=80&w=1000"
-                  alt="Campus UIE"
+                  src="https://images.unsplash.com/photo-1581073107630-95747d589483?q=80&w=1000"
+                  alt="Rupture Collective UIE"
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-blue-900/60 backdrop-blur-[2px]" />

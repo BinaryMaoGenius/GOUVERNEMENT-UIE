@@ -34,7 +34,7 @@ const poles = [
     activities: [
       "Journées d'intégration sportive (Vendredi/Samedi)",
       "Soirée culturelle (Miss, Spectacles, Artistes)",
-      "Concours de débat pour les nouveaux arrivants"
+      "Grande Chasse au Trésor sur le campus"
     ],
     results: [
       "100% des nouveaux étudiants intégrés",

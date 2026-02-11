@@ -60,6 +60,30 @@ const activities: Activity[] = [
     status: "upcoming",
     image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1000",
   },
+  {
+    id: 6,
+    title: "Rupture Collective (Iftar)",
+    description: "Un moment de partage et de convivialité pour la rupture du jeûne, réunissant tous les étudiants dans l'esprit de fraternité malienne.",
+    date: "Mars - Avril 2026",
+    location: "Esplanade UIE",
+    participants: 0,
+    pole: "Culture & Sport",
+    status: "upcoming",
+    image: "https://images.unsplash.com/photo-1591901393643-fc2761823eb2?q=80&w=1000",
+    isNew: true,
+  },
+  {
+    id: 7,
+    title: "Grande Chasse au Trésor",
+    description: "Partez à l'aventure sur tout le campus ! Résolvez des énigmes, relevez des défis et trouvez le trésor caché de l'UIE.",
+    date: "À déterminer",
+    location: "Campus UIE",
+    participants: 0,
+    pole: "Culture & Sport",
+    status: "upcoming",
+    image: "https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?q=80&w=1000",
+    isNew: true,
+  },
 ];
 
 const filters = ["À venir", "Réalisées"];

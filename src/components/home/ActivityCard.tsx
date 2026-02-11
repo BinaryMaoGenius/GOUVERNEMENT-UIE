@@ -11,6 +11,7 @@ export interface Activity {
     pole: string;
     status: string;
     image: string | boolean;
+    isNew?: boolean;
 }
 
 interface ActivityCardProps {
@@ -34,8 +35,15 @@ export function ActivityCard({ activity }: ActivityCardProps) {
                         </div>
                     )}
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                    <div className="absolute top-4 right-4 bg-accent text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
-                        {activity.pole}
+                    <div className="absolute top-4 right-4 flex gap-2">
+                        {activity.isNew && (
+                            <div className="bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg animate-pulse">
+                                Nouveau
+                            </div>
+                        )}
+                        <div className="bg-accent text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                            {activity.pole}
+                        </div>
                     </div>
                 </div>
             )}

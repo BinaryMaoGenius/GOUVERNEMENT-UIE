@@ -29,12 +29,23 @@ export function CTASection() {
                 Le Gouvernement n'est pas qu'une institution, c'est une aventure humaine. Trouvez votre place parmi nous et portez la voix de vos camarades.
               </p>
 
-              <Link to="/participer">
-                <Button className="h-14 px-10 rounded-full bg-white text-black hover:bg-white/90 font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                  Déposer ma candidature
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link to="/participer">
+                  <Button className="h-14 px-10 rounded-full bg-white text-black hover:bg-white/90 font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    Déposer ma candidature
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfe9ceCcGUCqMft7La9s2wXulBSb8ASY9kA9T4tmPUe_6y7jg/viewform?usp=publish-editor"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" className="h-14 px-10 rounded-full border-white/20 text-white hover:bg-white/10 font-bold text-lg transition-all hover:scale-105">
+                    Donner mon avis
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
