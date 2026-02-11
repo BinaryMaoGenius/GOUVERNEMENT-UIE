@@ -61,7 +61,7 @@ export function NextActivitySection() {
               {/* Côté Visuel (Image/Gradient) */}
               <div className="relative min-h-[300px] flex items-center justify-center p-12 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1566417713940-fe7c737d9ef2?q=80&w=1000"
+                  src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=1000"
                   alt="Rupture Collective UIE"
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                 />

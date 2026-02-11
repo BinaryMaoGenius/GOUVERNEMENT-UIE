@@ -28,7 +28,9 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans antialiased selection:bg-primary/10 selection:text-primary">
-      <SurveyBanner />
+      <div className="sticky top-0 z-[60]">
+        <SurveyBanner />
+      </div>
       <Header />
       <main className="flex-1 pb-20 md:pb-0 relative animate-fade-in">
         {children}

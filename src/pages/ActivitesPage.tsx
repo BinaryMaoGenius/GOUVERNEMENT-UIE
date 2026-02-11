@@ -69,7 +69,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Culture & Sport",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1566417713940-fe7c737d9ef2?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=1000",
     isNew: true,
   },
   {
@@ -81,7 +81,7 @@ const activities: Activity[] = [
     participants: 0,
     pole: "Culture & Sport",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=1000",
     isNew: true,
   },
 ];
