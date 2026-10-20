@@ -1,22 +1,36 @@
 <div align="center">
-  <h1>🏛️ Gouvernement UIE</h1>
-  <p><strong>Institutional web interface for the UIE Government project.</strong></p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+    <img src="assets/banner-light.svg" alt="Gouvernement UIE" width="100%">
+  </picture>
 </div>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-</p>
+Interface web institutionnelle du **Gouvernement UIE**, pensée pour les étudiants : présentation du gouvernement, activités, programme et services.
 
-## 🚀 Overview
-**Gouvernement UIE** is a professional institutional web portal designed to provide citizens with seamless access to governmental information, services, and digital resources. It focuses on accessibility, clarity, and security.
+![React](https://img.shields.io/badge/React-0E0E0C?style=flat-square&logo=react&logoColor=D9A441) ![TypeScript](https://img.shields.io/badge/TypeScript-0E0E0C?style=flat-square&logo=typescript&logoColor=D9A441) ![Vite](https://img.shields.io/badge/Vite-0E0E0C?style=flat-square&logo=vite&logoColor=D9A441) ![shadcn/ui](https://img.shields.io/badge/shadcn/ui-0E0E0C?style=flat-square&logo=shadcnui&logoColor=D9A441) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-0E0E0C?style=flat-square&logo=tailwindcss&logoColor=D9A441)
 
-## ✨ Key Features
-- 📜 **Institutional Dashboard**: Clean presentation of administrative data and news.
-- ♿ **Accessibility First**: Designed to be usable by all citizens, regardless of device or ability.
-- 🔒 **Secure Architecture**: Implemented with robust frontend security practices.
-- 📱 **Responsive Design**: Flawless mobile integration for on-the-go access.
+## Pages
+| Route | Contenu |
+|---|---|
+| `/` | Accueil |
+| `/gouvernement` | Présentation du gouvernement |
+| `/activites` · `/programme` | Activités et programme |
+| `/participer` | Participer à la vie du gouvernement |
+| `/services` | Services, avec **Moov**, **Telimani** et **restauration** |
 
-## 👨‍💻 Developer
-Built by [BinaryMaoGenius](https://github.com/BinaryMaoGenius).
+## Fonctionnalités techniques
+- Recherche globale dans le site (index de recherche côté client)
+- Hook de notifications
+- Composants shadcn/ui (Radix) et design responsive
+- Tests avec Vitest
+
+## Lancer le projet
+```bash
+npm install
+npm run dev
+```
+Une configuration Netlify est incluse pour le déploiement.
+
+---
+
+Construit par **Emmanuel Elisé Koné** ([BinaryMaoGenius](https://github.com/BinaryMaoGenius)) · *La tech en clair*
