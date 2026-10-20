@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>ðŸ›ï¸ Gouvernement UIE</h1>
+  <h1>🏛️ Gouvernement UIE</h1>
   <p><strong>Institutional web interface for the UIE Government project.</strong></p>
 </div>
 
@@ -18,5 +18,5 @@
 - 🔒 **Secure Architecture**: Implemented with robust frontend security practices.
 - 📱 **Responsive Design**: Flawless mobile integration for on-the-go access.
 
-## ðŸ‘¨â€ðŸ’» Developer
+## 👨‍💻 Developer
 Built by [BinaryMaoGenius](https://github.com/BinaryMaoGenius).
