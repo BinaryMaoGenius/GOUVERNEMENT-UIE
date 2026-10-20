@@ -31,6 +31,11 @@ npm run dev
 ```
 Une configuration Netlify est incluse pour le déploiement.
 
+## Licence
+
+Code sous [licence MIT](./LICENSE) · © 2026 Emmanuel Elisé Koné.
+Le nom, les logos et l’identité visuelle de **l’UIE et du Gouvernement UIE** ne sont pas couverts par cette licence.
+
 ---
 
 Construit par **Emmanuel Elisé Koné** ([BinaryMaoGenius](https://github.com/BinaryMaoGenius)) · *La tech en clair*
